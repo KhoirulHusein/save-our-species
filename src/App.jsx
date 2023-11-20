@@ -10,7 +10,7 @@ function App() {
       <div className="stars3" aria-hidden="true" />
       <main className="main">
         <section className="contact">
-          <h1 className="title text-3xl font-bold underline">Save Our Species</h1>
+          <h1 className="title">Save Our Species</h1>
           <h2 className="sub-title">Site Under Construction</h2>
         </section>
       </main>
