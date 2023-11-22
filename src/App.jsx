@@ -1,9 +1,11 @@
 import React from 'react';
 import './styles/App.css';
+import Navbar from './components/Navbar/navbar';
 
 function App() {
   return (
     <>
+      <Navbar />
       <div className="overlay" />
       <div className="stars" aria-hidden="true" />
       <div className="starts2" aria-hidden="true" />
