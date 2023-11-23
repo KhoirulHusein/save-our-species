@@ -54,6 +54,15 @@ body {
 	text-align: center;
 }
 
+.rounded-icon {
+	color: #283618;
+	background-color: #ffffff; 
+	padding: 10px; 
+	border-radius: 50%; 
+	display: inline-flex; 
+	margin-right: 10px;
+}
+
 
 /* CSS hack using multiple box-shadows to get them **Stars** */
 
