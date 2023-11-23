@@ -1,6 +1,7 @@
 import React from 'react';
 import './styles/App.css';
 import Navbar from './components/Navbar/navbar';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <h2 className="sub-title">Site Under Construction</h2>
         </section>
       </main>
+      <Footer />
     </>
   );
 }
