@@ -1,13 +1,20 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 
-function Images(props) {
-  const { source } = props;
+const Img = ({
+  className,
+  src = 'images/defaultNoData.png',
+  alt = 'testImg',
+  ...restProps
+}) => {
   return (
-    <div className="absolute top-0 left-0 w-full h-full">
-      <img className="flex w-full h-full object-cover object-center" src={source} alt="" />
-    </div>
+    <img
+      className={className}
+      src={src}
+      alt={alt}
+      {...restProps}
+      loading={'lazy'}
+    />
   );
-}
+};
 
-export default Images;
+export { Img };
