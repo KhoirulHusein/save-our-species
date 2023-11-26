@@ -1,10 +1,12 @@
 import React from 'react';
+import Button from '../button/Buttons';
 
 // eslint-disable-next-line react/prop-types
 function Card({
   // eslint-disable-next-line react/prop-types
   showHeader = true, showStatus = true, showBlur = true, showButton = true, namaButton = 'Apply Now', cardMaxWidth = 'max-w-xs',
 }) {
+  // ini fungsi if else, kalau showBlur = true maka 'backdrop-filter backdrop-blur-sm' jika false ''
   const blurClass = showBlur ? 'backdrop-filter backdrop-blur-sm' : '';
 
   return (
@@ -28,7 +30,7 @@ function Card({
             <p className="text-sm font-thin text-white mt-5">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order. </p>
           </div>
           {showButton && (
-            <button className="bg-primary-color hover:bg-secondary-1 text-white font-bold py-2 px-4 rounded" type="submit">{namaButton}</button>
+            <Button buttonText={namaButton} />
           )}
         </div>
       </a>
