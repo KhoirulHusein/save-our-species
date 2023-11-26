@@ -23,5 +23,12 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
+    'import/prefer-default-export': 0,
+    'react/jsx-curly-brace-presence': 0,
+    'react/jsx-props-no-spreading': 0,
+    'arrow-body-style': 0,
+    'react/prop-types': 0,
+    'react/function-component-definition': 0,
+    'object-curly-newline': 0,
   },
 };
