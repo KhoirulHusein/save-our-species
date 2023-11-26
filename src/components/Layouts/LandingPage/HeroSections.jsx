@@ -1,31 +1,39 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable max-len */
-/* eslint-disable react/no-children-prop */
 import React from 'react';
-import Image from '../../Elements/Jumroton/Images';
-import Title from '../../Elements/title/Titles';
-import SubTitles from '../../Elements/title/SubTitles';
-import Button from '../../Elements/Button';
+import { Img } from '../../Elements/Jumroton/Images';
+import { Text } from '../../Elements/Text/Texts';
+import Button from '../../Elements/Button/Buttons';
+import Header from '../../Fragments/Navigation/Navbar';
 
-function HeroLanding(props) {
-  const { variant } = props;
+function HeroLanding() {
   return (
-    <div className={`${variant}`}>
-      <Image source="./images/heroLandingPage.jpg" />
-      <div className="container w-2/5 z-10">
-        <div className="flex flex-col p-10">
-          <Title
-            variant="text-3xl font-bold text-[#DDA15E] leading-tight"
-            children="Melindungi Keajaiban Terancam"
-          />
-          <SubTitles
-            variants="text-xl py-6"
-            childrens="Jelajahi kisah-kisah penuh keajaiban, tantangan, dan harapan yang melibatkan kita semua dalam menjaga keberlanjutan hidup sang raja hutan."
-          />
+    <>
+      <Img
+        className="absolute top-0 left-0 w-full h-full object-cover object-center"
+        src="images/heroLandingPage.jpg"
+        alt="herolandingpage"
+      />
+      <div className="absolute flex flex-col md:gap-10 gap-[291px] inset-x-[0] items-start justify-start mx-auto top-[2%] w-[89%]">
+        <Header className="flex flex-row items-center justify-center w-full" />
+        <div className="flex flex-col gap-[23px] items-start justify-start w-[38%] md:w-full">
+          <Text
+            className="text-3xl sm:text-[32px] md:text-[34px] text-deep_orange-300 w-full"
+            size="txtUbuntuBold36"
+          >
+            Melindungi Keajaiban Terancam
+          </Text>
+          <Text
+            className="leading-[130.00%] text-orange-50 text-xl w-fit sm:w-full"
+            size="txtUbuntuRegular20"
+          >
+            Jelajahi kisah-kisah penuh keajaiban, tantangan, dan harapan
+            yang melibatkan kita semua dalam menjaga keberlanjutan hidup
+            sang raja hutan.
+          </Text>
           <Button buttonText="Learn More" />
         </div>
       </div>
-    </div>
+    </>
+
   );
 }
 
