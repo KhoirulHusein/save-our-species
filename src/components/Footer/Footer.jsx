@@ -10,7 +10,7 @@ import { Text } from '../Elements/Text/Texts';
 function Footer() {
   return (
     <footer
-      className="absolute bottom-0 w-full text-white text-center bg-gray-900_01"
+      className="absolute bottom--1 w-full text-white text-center bg-gray-900_01"
     >
       <div className="mx-auto mt-[30px] d-flex justify-content-between">
         <a href="URL_GITHUB" target="_blank" rel="noopener noreferrer" className="mr-[10px] text-gray-900_01 bg-[white] p-[10px] rounded-[50px]">

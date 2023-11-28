@@ -39,6 +39,9 @@ function Navbar() {
   const navbarStyle = {
     backgroundColor: scrollBackground ? '#283618' : 'transparent',
     transition: 'background-color 0.3s ease',
+    position: 'fixed',
+    width: '100%',
+    top: 0,
   };
 
   const menuStyle = {
@@ -52,7 +55,7 @@ function Navbar() {
     textAlign: 'center',
     textDecoration: 'none',
     color: 'white',
-    transition: 'background-color 0.3s ease', /* Animasi perubahan warna saat hover */
+    transition: 'background-color 0.3s ease',
   };
 
   return (
