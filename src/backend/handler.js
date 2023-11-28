@@ -17,9 +17,16 @@ const animalModel = mongoose.model('animals', {
   gambarPotrait: String,
 });
 
+const lembagaModel = mongoose.model('lembagas', {
+  namaLembagaYayasan: String,
+  overview: String,
+  kontak: String,
+  website: String,
+  gambar: Array,
+});
+
 // POST data animals
 const addAnimalHandler = async (request, h) => {
-  // eslint-disable-next-line new-cap
   const animals = new animalModel(request.payload);
   const result = await animals.save();
   return h.response(result);
@@ -31,7 +38,7 @@ const getAnimalHandler = async (request, h) => {
   return h.response(animals);
 };
 
-// GET data animals berdasarkan keyword dari nama hewan, contoh "http://localhost:9000/search?searchTerm=keyword"
+// GET data animals berdasarkan keyword dari nama hewan
 const getSearchAnimalHandler = async (request, h) => {
   const db = client.db('SOS');
   const collection = db.collection('animals');
@@ -58,23 +65,58 @@ const getAnimalByIdHandler = async (request, h) => {
 };
 
 // PUT data animals berdasarkan id
-const EditAnimalByIdHandler = async (request, h) => {
-  // eslint-disable-next-line max-len
+const editAnimalByIdHandler = async (request, h) => {
   const result = await animalModel.findByIdAndUpdate(request.params.id, request.payload, { new: true });
   return h.response(result);
 };
 
 // DELETE data animals berdasarkan id
-const DeleteAnimalByIdHandler = async (request, h) => {
+const deleteAnimalByIdHandler = async (request, h) => {
   const result = await animalModel.findByIdAndDelete(request.params.id);
+  return h.response(result);
+};
+
+// POST data lembaga
+const addLembagaHandler = async (request, h) => {
+  const lembaga = new lembagaModel(request.payload);
+  const result = await lembaga.save();
+  return h.response(result);
+};
+
+// GET semua data lembaga
+const getLembagaHandler = async (request, h) => {
+  const lembaga = await lembagaModel.find().exec();
+  return h.response(lembaga);
+};
+
+// GET data lembaga berdasarkan id
+const getLembagaByIdHandler = async (request, h) => {
+  const lembaga = await lembagaModel.findById(request.params.id).exec();
+  return h.response(lembaga);
+};
+
+// PUT data lembaga berdasarkan id
+const editLembagaByIdHandler = async (request, h) => {
+  const result = await lembagaModel.findByIdAndUpdate(request.params.id, request.payload, { new: true });
+  return h.response(result);
+};
+
+// DELETE data lembaga berdasarkan id
+const deleteLembagaByIdHandler = async (request, h) => {
+  const result = await lembagaModel.findByIdAndDelete(request.params.id);
   return h.response(result);
 };
 
 module.exports = {
   addAnimalHandler,
   getAnimalHandler,
-  getAnimalByIdHandler,
-  EditAnimalByIdHandler,
-  DeleteAnimalByIdHandler,
   getSearchAnimalHandler,
+  getAnimalByIdHandler,
+  editAnimalByIdHandler,
+  deleteAnimalByIdHandler,
+  addLembagaHandler,
+  getLembagaHandler,
+  getLembagaByIdHandler,
+  editLembagaByIdHandler,
+  deleteLembagaByIdHandler,
 };

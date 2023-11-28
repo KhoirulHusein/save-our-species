@@ -2,47 +2,74 @@ const {
   addAnimalHandler,
   getAnimalHandler,
   getAnimalByIdHandler,
-  EditAnimalByIdHandler,
-  DeleteAnimalByIdHandler,
+  editAnimalByIdHandler,
+  deleteAnimalByIdHandler,
   getSearchAnimalHandler,
+  addLembagaHandler,
+  getLembagaHandler,
+  getLembagaByIdHandler,
+  editLembagaByIdHandler,
+  deleteLembagaByIdHandler,
 } = require('./handler');
 
 const routes = [
-  // handler menabahkan data animals
+  // Animals Endpoints
   {
     method: 'POST',
     path: '/animals',
     handler: addAnimalHandler,
   },
-  // handler request semua data animals
   {
     method: 'GET',
     path: '/animals',
     handler: getAnimalHandler,
   },
-  // handler request data animals berdasarkan id
   {
     method: 'GET',
     path: '/animals/{id}',
     handler: getAnimalByIdHandler,
   },
-  // handler request data animals berdasarkan nama hewan
   {
     method: 'GET',
     path: '/search',
     handler: getSearchAnimalHandler,
   },
-  // handler edit data animals berdasarkan id
   {
     method: 'PUT',
     path: '/animals/{id}',
-    handler: EditAnimalByIdHandler,
+    handler: editAnimalByIdHandler,
   },
-  // handler hapus data animals berdasarkan id
   {
     method: 'DELETE',
     path: '/animals/{id}',
-    handler: DeleteAnimalByIdHandler,
+    handler: deleteAnimalByIdHandler,
+  },
+
+  // Lembaga Endpoints
+  {
+    method: 'POST',
+    path: '/lembaga',
+    handler: addLembagaHandler,
+  },
+  {
+    method: 'GET',
+    path: '/lembaga',
+    handler: getLembagaHandler,
+  },
+  {
+    method: 'GET',
+    path: '/lembaga/{id}',
+    handler: getLembagaByIdHandler,
+  },
+  {
+    method: 'PUT',
+    path: '/lembaga/{id}',
+    handler: editLembagaByIdHandler,
+  },
+  {
+    method: 'DELETE',
+    path: '/lembaga/{id}',
+    handler: deleteLembagaByIdHandler,
   },
 ];
 
