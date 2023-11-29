@@ -1,79 +1,153 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import Select from 'react-select';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import PropTypes from 'prop-types';
 
-function Select({
-  priorityInput,
-  statusInput,
-  genderInput,
-  ageInput,
-}) {
-  return (
-    <>
-      {priorityInput && (
-        <div>
-          <label htmlFor="priorityInput" className="block mb-2 text-sm font-medium text-white-900 dark:text-white">Prioritas</label>
-          <select id="priorityInput" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-1/4 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-            <option>Pelajar</option>
-            <option>Sedang</option>
-            <option>Rendah</option>
-          </select>
-        </div>
-      )}
+const shapes = { round: 'rounded-[5px]' };
+const sizes = { xs: 'p-[18px]', sm: 'pb-[17px] pl-[17px] pr-3 pt-[19px]' };
 
-      {statusInput && (
-        <div>
-          <label htmlFor="statusInput" className="block mb-2 text-sm font-medium text-white-900 dark:text-white">Status</label>
-          <select id="statusInput" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-            <option>Tinggi</option>
-            <option>Sedang</option>
-            <option>Rendah</option>
-          </select>
-        </div>
-      )}
+const SelectBox = React.forwardRef(
+  (
+    {
+      children,
+      placeholder,
+      className,
+      options,
+      isSearchable,
+      placeholderClassName,
+      isMulti,
+      onChange,
+      value,
+      errors,
+      indicator,
+      shape,
+      size,
+      ...restProps
+    },
+    ref,
+  ) => {
+    const [selectedVal, setSelectedVal] = React.useState(value);
 
-      {genderInput && (
-        <div>
-          <label htmlFor="genderInput" className="block mb-2 text-sm font-medium text-white-900 dark:text-white">Jenis Kelamin</label>
-          <select id="genderInput" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-            <option>Pria</option>
-            <option>Wanita</option>
-            <option>Tidak ingin disebutkan</option>
-          </select>
-        </div>
-      )}
+    const handleChange = (data) => {
+      setSelectedVal(data);
+      if (isMulti) {
+        onChange?.(data?.map((d) => d.value) || []);
+      } else {
+        onChange?.(data?.value);
+      }
+    };
 
-      {ageInput && (
-        <div>
-          <label htmlFor="ageInput" className="block mb-2 text-sm font-medium text-white-900 dark:text-white">Umur</label>
-          <select id="ageInput" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-            <option>13-19</option>
-            <option>20-29</option>
-            <option>30-39</option>
-            <option>40-49</option>
-            <option>50-59</option>
-            <option>60-69</option>
-            <option>70-79</option>
-          </select>
-        </div>
-      )}
-    </>
-  );
-}
+    return (
+      <>
+        <Select
+          ref={ref}
+          options={options}
+          className={`${className} ${(shape && shapes[shape]) || ''} ${
+            (size && sizes[size]) || ''
+          } bg-white-A700 text-black-900`}
+          placeholder={
+            <div className={placeholderClassName}>{placeholder}</div>
+          }
+          isSearchable={isSearchable}
+          isMulti={isMulti}
+          components={{
+            IndicatorSeparator: () => null,
+            ...(indicator && { DropdownIndicator: () => indicator }),
+          }}
+          value={selectedVal}
+          onChange={handleChange}
+          styles={{
+            container: (provided) => ({
+              ...provided,
+              zIndex: 0,
+            }),
+            control: (provided) => ({
+              ...provided,
+              backgroundColor: 'transparent',
+              border: '0 !important',
+              boxShadow: '0 !important',
+              minHeight: 'auto',
+              '&:hover': {
+                border: '0 !important',
+              },
+            }),
+            option: (provided, state) => ({
+              ...provided,
+              color: state.isSelected && '#fafafa',
+              backgroundColor: state.isSelected && '#606c38',
+              '&:hover': { backgroundColor: '#606c38', color: '#ffffff' },
+            }),
+            singleValue: (provided) => ({
+              ...provided,
+              color: 'inherit',
+            }),
+            input: (provided) => ({
+              ...provided,
+              color: 'inherit',
+              margin: '0',
+              padding: '0',
+              // height: "0",
+            }),
+            valueContainer: (provided) => ({
+              ...provided,
+              padding: '0',
+            }),
+            dropdownIndicator: (provided) => ({
+              ...provided,
+              paddingTop: '0px',
+              paddingBottom: '0px',
+            }),
+            clearIndicator: (provided) => ({
+              ...provided,
+              padding: '0',
+            }),
+            multiValueLabel: (provided) => ({
+              ...provided,
+              padding: '0',
+            }),
+            menuPortal: (base) => ({ ...base, zIndex: 999999 }),
+            placeholder: (base) => ({
+              ...base,
+              margin: 0,
+            }),
+          }}
+          menuPortalTarget={document.body}
+          closeMenuOnScroll={(event) => {
+            return event.target.id === 'scrollContainer';
+          }}
+          {...restProps}
+        />
+        {children}
+      </>
+    );
+  },
+);
 
-Select.propTypes = {
-  priorityInput: PropTypes.bool,
-  statusInput: PropTypes.bool,
-  genderInput: PropTypes.bool,
-  ageInput: PropTypes.string,
+SelectBox.propTypes = {
+  placeholder: PropTypes.string,
+  className: PropTypes.string,
+  // eslint-disable-next-line react/forbid-prop-types
+  options: PropTypes.array,
+  isSearchable: PropTypes.bool,
+  placeholderClassName: PropTypes.string,
+  isMulti: PropTypes.bool,
+  onChange: PropTypes.func,
+  value: PropTypes.string,
+  shape: PropTypes.oneOf(['round']),
+  size: PropTypes.oneOf(['xs', 'sm']),
 };
 
-Select.defaultProps = {
-  priorityInput: false,
-  statusInput: false,
-  genderInput: false,
-  ageInput: false,
+SelectBox.defaultProps = {
+  placeholder: 'Select',
+  className: '',
+  isSearchable: false,
+  placeholderClassName: '',
+  isMulti: false,
+  value: '',
+  shape: '',
+  size: 'xs',
+  options: [],
+  onChange: () => {},
 };
-
-export default Select;
+export { SelectBox };
