@@ -15,7 +15,7 @@ function LandingPages() {
       <div className="bg-black-900 flex flex-col font-ubuntu items-center justify-start mx-auto w-full">
         <div className="flex flex-col items-center justify-start w-full">
           <Navbar />
-          <div className="min-h-screen md:px-5 relative w-full">
+          <div className="h-screen md:px-5 relative w-full">
             <HeroSection />
           </div>
           <ExploreAnimal />
