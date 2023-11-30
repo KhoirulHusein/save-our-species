@@ -7,20 +7,20 @@ const Teams = () => {
   return (
     <>
       <Text
-        className="mt-20 text-4xl sm:text-[32px] md:text-[34px] text-center text-orange-50"
+        className="mt-20 text-4xl sm:text-[32px] md:text-[34px] text-center text-orange-50 xs:text-2xl sm:text-2xl"
         size="txtUbuntuRegular36"
       >
         Team Capstone
       </Text>
       <Text
-        className="mt-[13px] text-lg text-orange-50"
+        className="mt-[13px] text-lg text-orange-50 text-center xs:text-base sm:text-base px-2"
         size="txtUbuntuRegular18"
       >
         Lorem Ipsum is simply dummy text of the printing and typesetting
         industry.
       </Text>
       <List
-        className="sm:flex-col flex-row gap-5 grid sm:grid-cols-1 md:grid-cols-3 grid-cols-5 justify-center max-w-7xl mt-[79px] mx-auto md:px-5 w-full"
+        className="sm:flex-col flex-row gap-5 grid sm:grid-cols-1 md:grid-cols-3 grid-cols-5 justify-center max-w-7xl mt-[79px] mx-auto md:px-5 w-full pb-10"
         orientation="horizontal"
       >
         <div className="h-80 relative w-full">
@@ -38,7 +38,7 @@ const Teams = () => {
               {' '}
             </Text>
             <Text
-              className="mb-[27px] md:ml-[0] ml-[9px] text-orange-50 text-xs w-[92%] sm:w-full"
+              className="mb-[27px] md:ml-[0] ml-[9px] text-orange-50 w-[92%] sm:w-full text-xs"
               size="txtUbuntuRegular12"
             >
               Lorem Ipsum is simply dummy text of the printing and

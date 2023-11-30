@@ -7,15 +7,15 @@ import { Button } from '../../Elements/Button/Buttons';
 const Donation = () => {
   const navigate = useNavigate();
   return (
-    <div className="h-[420px] md:h-[643px] mt-[223px] md:px-5 relative w-full">
+    <div className="h-screen md:h-[643px] mt-[223px] relative w-full">
       <Img
-        className="h-[420px] m-auto object-cover w-full"
-        src="images/donationTurtle.png"
+        className="h-screen m-auto object-cover w-full"
+        src="images/donationTurtle.jpg"
         alt="rectangle521"
       />
-      <div className="absolute bottom-[28%] flex flex-col gap-[19px] inset-x-[0] items-center justify-start mx-auto w-[77%]">
+      <div className="absolute bottom-[28%] flex flex-col gap-[19px] inset-x-[0] items-center justify-start mx-auto w-[77%] xs:justify-center sm:justify-center">
         <Text
-          className="text-4xl sm:text-[32px] md:text-[34px] text-center text-white-A700 w-full"
+          className="text-4xl sm:text-[32px] md:text-[34px] text-center text-white-A700 w-full xs:text-xl sm:text-xl"
           size="txtUbuntuBold36WhiteA700"
         >
           Kami Mengandalkan Dukungan Kalian untuk Melindungi Hewan Liar
