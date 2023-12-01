@@ -6,7 +6,7 @@ function ExploreAnimals() {
   return (
     <>
       <Text
-        className="mt-[114px] md:text-3xl sm:text-3xl text-[32px] text-light_green-800"
+        className="mt-[114px] md:text-3xl sm:text-3xl text-[32px] text-light_green-800 xs:p-1 xs:text-center"
         size="txtUbuntuBold32"
       >
         Explore The Animal
@@ -26,7 +26,7 @@ function ExploreAnimals() {
             src="images/tiger.png"
             alt="rectangle475"
           />
-          <div className="absolute backdrop-opacity-[0.5] bg-black-900_4c bottom-[0] flex flex-col inset-x-[0] items-center justify-start mx-auto p-2.5 rounded-b-[20px] w-full" style={{ zIndex: 1 }}>
+          <div className="absolute backdrop-opacity-[0.5] bg-black-900_4c backdrop-blur-md bottom-[0] flex flex-col inset-x-[0] items-center justify-start mx-auto p-2.5 rounded-b-[20px] w-full" style={{ zIndex: 1 }}>
             <Text
               className="mb-[90px] text-2xl md:text-[22px] text-white-A700 sm:text-lg w-[90%] sm:w-full xs:text-base"
               size="txtUbuntuRegular24WhiteA700"
@@ -43,7 +43,7 @@ function ExploreAnimals() {
             src="images/orangUtan.png"
             alt="rectangle476"
           />
-          <div className="absolute backdrop-opacity-[0.5] bg-black-900_4c bottom-[0] flex flex-col inset-x-[0] items-center justify-start mx-auto p-1.5 rounded-b-[20px] w-full">
+          <div className="absolute backdrop-opacity-[0.5] bg-black-900_4c backdrop-blur-md bottom-[0] flex flex-col inset-x-[0] items-center justify-start mx-auto p-1.5 rounded-b-[20px] w-full">
             <Text
               className="mb-[98px] text-2xl md:text-[22px] text-white-A700 sm:text-lg w-[84%] sm:w-full xs:text-base"
               size="txtUbuntuRegular24WhiteA700"
@@ -60,7 +60,7 @@ function ExploreAnimals() {
             src="images/peacock.png"
             alt="rectangle477"
           />
-          <div className="absolute backdrop-opacity-[0.5] bg-black-900_4c bottom-[0] flex flex-col inset-x-[0] items-center justify-start mx-auto p-1.5 rounded-b-[20px] w-full">
+          <div className="absolute backdrop-opacity-[0.5] bg-black-900_4c backdrop-blur-md bottom-[0] flex flex-col inset-x-[0] items-center justify-start mx-auto p-1.5 rounded-b-[20px] w-full">
             <Text
               className="mb-[98px] text-2xl md:text-[22px] text-white-A700 sm:text-lg w-[93%] sm:w-full xs:text-base"
               size="txtUbuntuRegular24WhiteA700"

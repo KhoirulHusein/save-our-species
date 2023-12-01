@@ -11,7 +11,7 @@ function HeroLanding() {
         src="images/heroLandingPage.jpg"
         alt="herolandingpage"
       />
-      <div className="absolute flex flex-col md:gap-10 gap-[291px] inset-x-[0] items-start justify-start mx-auto xl:top-[30%] lg:top-[28%] content-center w-[89%]">
+      <div className="absolute flex flex-col md:gap-10 gap-[291px] inset-x-[0] items-start justify-start mx-auto xl:top-[40%] lg:top-[28%] content-center w-[89%]">
         <div className="flex flex-col gap-[23px] items-start justify-start w-[38%] md:w-full">
           <Text
             className="text-3xl sm:text-[32px] md:text-[34px] text-deep_orange-300 w-full md:w-[50%] sm:w-[70%]"

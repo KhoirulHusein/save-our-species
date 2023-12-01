@@ -20,7 +20,7 @@ const Teams = () => {
         industry.
       </Text>
       <List
-        className="sm:flex-col flex-row gap-5 grid sm:grid-cols-1 md:grid-cols-3 grid-cols-5 justify-center max-w-7xl mt-[79px] mx-auto md:px-5 w-full pb-10"
+        className="sm:flex-col px-5 flex-row gap-5 grid sm:grid-cols-1 md:grid-cols-3 grid-cols-5 justify-center max-w-7xl mt-[79px] mx-auto md:px-5 w-full pb-10"
         orientation="horizontal"
       >
         <div className="h-80 relative w-full">

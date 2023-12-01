@@ -10,7 +10,7 @@ function Jumroton() {
         src="images/redArowana.jpg"
         alt="Red Arowana"
       />
-      <div className="absolute w-[959px] h-[234px] flex flex-col gap-[43px] xs:gap-[10px] inset-[0] items-center justify-center m-auto p-[13px] rounded-[20px] z-10 sm:w-[90%] md:w-[80%] lg:w-[90%]">
+      <div className="absolute w-[959px] backdrop-blur-sm h-[234px] flex flex-col gap-[43px] xs:gap-[10px] inset-[0] items-center justify-center m-auto p-[13px] rounded-[20px] z-10 sm:w-[90%] md:w-[80%] lg:w-[90%]">
         <Text
           className="text-3xl text-orange-50 lg:text-2xl md:text-2xl sm:text-xl"
           size="txtUbuntuBold32Orange50"
