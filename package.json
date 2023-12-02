@@ -2,29 +2,11 @@
   "name": "sos",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.4.2",
-    "@fortawesome/free-brands-svg-icons": "^6.4.2",
-    "@fortawesome/free-solid-svg-icons": "^6.4.2",
-    "@fortawesome/react-fontawesome": "^0.2.0",
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "axios": "^1.6.2",
-    "flowbite": "^2.1.1",
-    "flowbite-react": "^0.6.4",
-    "prop-type": "^0.0.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.20.0",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
-  },
   "scripts": {
     "start": "react-scripts start",
     "build": "webpack --config webpack.prod.js",
-    "dev": "react-scripts build"
-    "start-be": "nodemon ./src/bakend/server.js",
+    "dev": "react-scripts build",
+    "start-be": "nodemon ./src/bakend/server.js"
   },
   "eslintConfig": {
     "extends": [
@@ -62,7 +44,7 @@
     "tailwindcss": "^3.3.5",
     "webpack": "^5.89.0",
     "webpack-cli": "^5.1.4",
-    "webpack-merge": "^5.10.0"
+    "webpack-merge": "^5.10.0",
     "nodemon": "^3.0.1"
   },
   "dependencies": {
@@ -70,6 +52,22 @@
     "joi": "^17.11.0",
     "mongodb": "^6.3.0",
     "mongoose": "^8.0.1",
-    "nanoid": "^3.3.7"
+    "nanoid": "^3.3.7",
+    "@fortawesome/fontawesome-svg-core": "^6.4.2",
+    "@fortawesome/free-brands-svg-icons": "^6.4.2",
+    "@fortawesome/free-solid-svg-icons": "^6.4.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.6.2",
+    "flowbite": "^2.1.1",
+    "flowbite-react": "^0.6.4",
+    "prop-type": "^0.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
   }
 }
