@@ -23,7 +23,9 @@ const Input = React.forwardRef(
 
     return (
       <>
+        {isLabel && (
         <label htmlFor={`${inputId}`} className="block mb-2 text-sm font-medium text-white-900 dark:text-white">{labelName}</label>
+        )}
         <input
           ref={ref}
           id={inputId}
