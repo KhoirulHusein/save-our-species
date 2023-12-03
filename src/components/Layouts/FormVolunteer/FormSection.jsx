@@ -42,8 +42,8 @@ function FormSection() {
         </Text>
         <Input
           labelName=""
-          name="rectangle563"
-          placeholder=""
+          name="nama"
+          placeholder="Isi disini...."
           className="md:ml-[0] p-0 w-full"
           wrapClassName="border border-blue_gray-900_01 border-solid flex mt-[19px] mx-auto w-full"
           shape="round"
@@ -57,7 +57,7 @@ function FormSection() {
         </Text>
         <Input
           labelName=""
-          name="group1806"
+          name="email"
           placeholder="Isi disini...."
           className="md:ml-[0] font-bold leading-[normal] p-0 placeholder:text-black-900_6d text-[15px] text-left w-full"
           wrapClassName="border border-blue_gray-900_01 border-solid flex mt-[19px] mx-auto w-full"
@@ -72,7 +72,7 @@ function FormSection() {
         </Text>
         <Input
           labelName=""
-          name="group1806"
+          name="telp"
           placeholder="Isi disini...."
           className="md:ml-[0] font-bold leading-[normal] p-0 placeholder:text-black-900_6d text-[15px] text-left w-full"
           wrapClassName="border border-blue_gray-900_01 border-solid flex mt-[19px] mx-auto w-full"
@@ -80,17 +80,17 @@ function FormSection() {
           size="sm"
         />
       </div>
-      <div className="md:ml-0 mt-[35px] flex flex-row md:gap-5 items-center justify-center w-full">
-        <div className="flex items-center md:ml-[100%]">
-          <Text className="md:ml-[0] md:w-full text-white-A700 text-xl" size="txtUbuntuBold20WhiteA700">
+      <div className="md:mx-auto md:ml-0 md:items-start md:w-full mt-[35px] flex flex-row md:flex-col items-center justify-center w-full">
+        <div className="md:ml-[25%] flex items-center">
+          <Text className="text-white-A700 text-xl" size="txtUbuntuBold20WhiteA700">
             Status
           </Text>
           <SelectBox
-            className="border border-blue_gray-900_01 border-solid font-bold leading-[normal] text-[15px] text-left w-full md:w-full ml-5"
+            className="border border-blue_gray-900_01 border-solid font-bold leading-[normal] text-[15px] text-left w-full ml-5 md:ml-8"
             placeholderClassName="text-black-900"
-            indicator={<FontAwesomeIcon icon={faCaretDown} className="h-[25px] mr-[0] w-2.5 text-green-800 cursor-pointer" />}
+            indicator={<FontAwesomeIcon icon={faCaretDown} className="h-[25px] ml-10 mr-[0] w-2.5 text-green-800 cursor-pointer" />}
             isMulti={false}
-            name="group1803"
+            name="status"
             options={statusOptionsList}
             isSearchable={false}
             placeholder="Mahasiswa"
@@ -100,16 +100,16 @@ function FormSection() {
             variant="fill"
           />
         </div>
-        <div className="flex items-center ml-10">
-          <Text className="md:ml-[0] text-white-A700 text-xl" size="txtUbuntuBold20WhiteA700">
+        <div className="md:ml-[25%] flex items-center ml-7 md:mt-[35px]">
+          <Text className="text-white-A700 text-xl" size="txtUbuntuBold20WhiteA700">
             Jenis kelamin
           </Text>
           <SelectBox
-            className="border border-blue_gray-900_01 border-solid font-bold leading-[normal] text-[15px] text-left w-full md:ml-[0] md:w-full ml-5"
+            className="border border-blue_gray-900_01 border-solid font-bold leading-[normal] text-[15px] text-left w-full ml-5"
             placeholderClassName="text-black-900"
-            indicator={<FontAwesomeIcon icon={faCaretDown} className="h-[25px] mr-[0] w-2.5 text-green-800 cursor-pointer" />}
+            indicator={<FontAwesomeIcon icon={faCaretDown} className="h-[25px] ml-5 mr-[0] w-2.5 text-green-800 cursor-pointer" />}
             isMulti={false}
-            name="group1802"
+            name="gender"
             options={genderOptionsList}
             isSearchable={false}
             placeholder="Pria"
@@ -119,16 +119,16 @@ function FormSection() {
             variant="fill"
           />
         </div>
-        <div className="flex items-center ml-10">
-          <Text className="md:ml-[0] md:w-full text-white-A700 text-xl" size="txtUbuntuBold20WhiteA700">
+        <div className="md:ml-[25%] flex items-center ml-10 md:mt-[35px]">
+          <Text className="text-white-A700 text-xl" size="txtUbuntuBold20WhiteA700">
             Umur
           </Text>
           <SelectBox
-            className="border border-blue_gray-900_01 border-solid font-bold leading-[normal] text-[15px] text-left w-full d:ml-[0] md:w-full ml-5"
+            className="border border-blue_gray-900_01 border-solid font-bold leading-[normal] text-[15px] text-left w-full ml-5 md:ml-11"
             placeholderClassName="text-black-900"
-            indicator={<FontAwesomeIcon icon={faCaretDown} className="h-[25px] mr-[0] w-2.5 text-green-800 cursor-pointer" />}
+            indicator={<FontAwesomeIcon icon={faCaretDown} className="h-[25px] ml-5 mr-[0] w-2.5 text-green-800 cursor-pointer" />}
             isMulti={false}
-            name="group1801"
+            name="umur"
             options={umurList}
             isSearchable={false}
             placeholder="23"
