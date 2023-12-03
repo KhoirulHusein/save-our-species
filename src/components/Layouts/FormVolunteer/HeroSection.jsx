@@ -2,7 +2,7 @@ import React from 'react';
 import { Img } from '../../Elements/Jumroton/Images';
 import { Text } from '../../Elements/Text/Texts';
 
-function HeroLanding() {
+function HeroFormVolunteer() {
   return (
     <div className="relative w-full">
       <Img
@@ -30,4 +30,4 @@ function HeroLanding() {
   );
 }
 
-export default HeroLanding;
+export default HeroFormVolunteer;
