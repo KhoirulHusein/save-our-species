@@ -10,17 +10,13 @@ const Input = React.forwardRef(
       placeholder,
       type,
       children,
-      onChange,
       inputId,
       labelName,
+      isLabel,
       ...restProps
     },
     ref,
   ) => {
-    const handleChange = (e) => {
-      if (onChange) onChange(e?.target?.value);
-    };
-
     return (
       <>
         {isLabel && (
@@ -29,10 +25,9 @@ const Input = React.forwardRef(
         <input
           ref={ref}
           id={inputId}
-          className={`${className} bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
+          className={`${className} bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
           type={type}
           name={name}
-          onChange={handleChange}
           placeholder={placeholder}
           {...restProps}
         />
@@ -49,6 +44,7 @@ Input.propTypes = {
   type: PropTypes.string,
   inputId: PropTypes.string,
   labelName: PropTypes.string,
+  isLabel: PropTypes.bool,
 };
 
 Input.defaultProps = {
@@ -58,7 +54,8 @@ Input.defaultProps = {
   labelName: 'label',
   name: 'name',
   placeholder: 'input',
-  type: 'input',
+  type: 'text',
+  isLabel: true,
 };
 
 export { Input };
