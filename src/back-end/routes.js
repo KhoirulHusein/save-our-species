@@ -10,6 +10,7 @@ const {
   getLembagaByIdHandler,
   editLembagaByIdHandler,
   deleteLembagaByIdHandler,
+  paymentHandler,
 } = require('./handler');
 
 const routes = [
@@ -70,6 +71,11 @@ const routes = [
     method: 'DELETE',
     path: '/lembaga/{id}',
     handler: deleteLembagaByIdHandler,
+  },
+  {
+    method: 'POST',
+    path: '/api/v1/payment',
+    handler: paymentHandler,
   },
 ];
 

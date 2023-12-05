@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const { MongoClient } = require('mongodb');
+const midtransClient = require('midtrans-client');
 
 const uri = 'mongodb+srv://capstonedcd2023:Dicoding2023@capstone-project.frtoemt.mongodb.net/SOS';
 const client = new MongoClient(uri);
@@ -107,6 +108,39 @@ const deleteLembagaByIdHandler = async (request, h) => {
   return h.response(result);
 };
 
+const paymentHandler = async (request, h) => {
+  try {
+    const snap = new midtransClient.Snap({
+      isProduction: false,
+      serverKey: 'SB-Mid-server-N7Of0iJ7TbvMBAYvorw7ZkGo',
+      clientKey: 'SB-Mid-client-lGpWVxBMZHS4pBnj',
+    });
+    console.log('Server Key:', process.env.SECRET);
+    console.log('Client Key:', process.env.NEXT_PUBLIC_CLIENT);
+
+    const parameter = {
+      transaction_details: {
+        order_id: request.payload.order_id,
+        gross_amount: request.payload.amount,
+      },
+      customer_details: {
+        first_name: request.payload.firstName,
+      },
+    };
+
+    const transaction = await snap.createTransaction(parameter);
+    const dataPayment = {
+      response: JSON.stringify(transaction),
+    };
+
+    const token = transaction.token;
+
+    return h.response({ message: 'Success', dataPayment, token }).code(200);
+  } catch (error) {
+    return h.response({ message: error.message }).code(500);
+  }
+};
+
 module.exports = {
   addAnimalHandler,
   getAnimalHandler,
@@ -119,4 +153,5 @@ module.exports = {
   getLembagaByIdHandler,
   editLembagaByIdHandler,
   deleteLembagaByIdHandler,
+  paymentHandler,
 };
