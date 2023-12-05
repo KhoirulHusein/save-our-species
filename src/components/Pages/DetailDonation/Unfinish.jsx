@@ -1,15 +1,15 @@
 import React from 'react';
-import { IconArrowLeft } from '@tabler/icons-react';
 
 import { useNavigate } from 'react-router-dom';
+import { IconArrowLeft } from '@tabler/icons-react';
 import { Img } from '../../Elements/Jumroton/Images';
 import { Button } from '../../Elements/Button/Buttons';
 
 import Header from '../../Fragments/Navbar/Navbar';
 import Footer from '../../Fragments/Footer/Footer';
-import DonationSection from '../../Layouts/DetailDonation/DonationSection';
+import UnfinishSection from '../../Layouts/DetailDonation/UnfinishsSection';
 
-const DetailDonations = () => {
+const Unfinish = () => {
   const navigate = useNavigate();
   return (
     <div className="bg-slate-950 min-h-screen font-ubuntu">
@@ -28,7 +28,7 @@ const DetailDonations = () => {
             src="images/donationDetail.png"
             alt="Elephant"
           />
-          <DonationSection />
+          <UnfinishSection />
         </div>
       </div>
       <div className="relative bottom-0">
@@ -38,4 +38,4 @@ const DetailDonations = () => {
   );
 };
 
-export default DetailDonations;
+export default Unfinish;
