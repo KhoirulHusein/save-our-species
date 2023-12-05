@@ -6,9 +6,9 @@ function SubmitButton() {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-gray-900 font-ubuntu mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 p-0">
+    <div className="bg-gray-900 font-ubuntu mx-auto grid grid-cols-1 md:grid-cols-1 gap-8 p-0">
       <Button
-        className="cursor-pointer min-w-[198px] mt-20 md:ml-[50%] ml-auto mr-auto mb-20 rounded-full text-center text-lg md:text-l tracking-[-0.20px] transition-transform duration-300 transform hover:scale-105"
+        className="common-pointer cursor-pointer mx-auto mb-20 mt-20 text-center min-w-[198px] md:min-w-[198px] text-lg tracking-[-0.18px] transition-transform duration-300 transform hover:scale-105 sm:text-sm rounded-full"
         onClick={() => navigate('/laporansuccess')}
         shape="round"
         size="md"
