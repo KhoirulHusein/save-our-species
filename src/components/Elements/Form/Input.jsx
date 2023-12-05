@@ -14,12 +14,13 @@ const Input = React.forwardRef(
       inputId,
       isLabel,
       labelName,
+      wrapClassName,
       ...restProps
     },
     ref,
   ) => {
     const handleChange = (e) => {
-      if (onChange) onChange(e?.target?.value);
+      if (onChange) onChange(e);
     };
 
     return (
