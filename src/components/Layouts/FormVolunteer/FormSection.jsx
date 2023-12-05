@@ -44,7 +44,7 @@ function FormSection() {
           labelName=""
           name="nama"
           placeholder="Isi disini...."
-          className="md:ml-[0] p-0 w-full"
+          className="md:ml-[0] font-bold leading-[normal] p-0 placeholder:text-black-900_6d text-[15px] text-left w-full"
           wrapClassName="border border-blue_gray-900_01 border-solid flex mt-[19px] mx-auto w-full"
           shape="round"
           size="sm"
