@@ -30,6 +30,5 @@ module.exports = {
     'react/prop-types': 0,
     'react/function-component-definition': 0,
     'object-curly-newline': 0,
-    'linebreak-style': 0,
   },
 };
