@@ -11,7 +11,8 @@ function HeroFormVolunteer() {
         alt="hero-image"
       />
       <div className="absolute inset-0 flex flex-col items-center justify-center">
-        <div className="backdrop-opacity-[0.5] bg-black-900_6d flex flex-col items-center justify-start p-10 sm:px-5">
+        <div className="flex flex-col items-center justify-start p-10 sm:px-5 drop-shadow-[0_35px_35px_#000]">
+          {' '}
           <Text
             className="sm:text-4xl md:text-[38px] text-[40px] text-orange-50 tracking-[-0.40px] z-[999]"
             size="txtUbuntuBold40"
