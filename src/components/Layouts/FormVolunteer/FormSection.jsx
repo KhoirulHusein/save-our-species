@@ -86,7 +86,7 @@ function FormSection() {
             Status
           </Text>
           <SelectBox
-            className="border border-blue_gray-900_01 border-solid font-bold leading-[normal] text-[15px] text-left w-full ml-5 md:ml-8"
+            className="border border-blue_gray-900_01 border-solid font-bold leading-[normal] text-[15px] text-left w-full ml-5 md:ml-8  md:pt-[5px] md:pb-[5px]"
             placeholderClassName="text-black-900"
             indicator={<FontAwesomeIcon icon={faCaretDown} className="h-[25px] ml-10 mr-[0] w-2.5 text-green-800 cursor-pointer" />}
             isMulti={false}
@@ -105,7 +105,7 @@ function FormSection() {
             Jenis kelamin
           </Text>
           <SelectBox
-            className="border border-blue_gray-900_01 border-solid font-bold leading-[normal] text-[15px] text-left w-full ml-5"
+            className="border border-blue_gray-900_01 border-solid font-bold leading-[normal] text-[15px] text-left w-full ml-5 md:pt-[5px] md:pb-[5px]"
             placeholderClassName="text-black-900"
             indicator={<FontAwesomeIcon icon={faCaretDown} className="h-[25px] ml-5 mr-[0] w-2.5 text-green-800 cursor-pointer" />}
             isMulti={false}
@@ -124,7 +124,7 @@ function FormSection() {
             Umur
           </Text>
           <SelectBox
-            className="border border-blue_gray-900_01 border-solid font-bold leading-[normal] text-[15px] text-left w-full ml-5 md:ml-11"
+            className="border border-blue_gray-900_01 border-solid font-bold leading-[normal] text-[15px] text-left w-full ml-5 md:ml-11 md:pt-[5px] md:pb-[5px]"
             placeholderClassName="text-black-900"
             indicator={<FontAwesomeIcon icon={faCaretDown} className="h-[25px] ml-5 mr-[0] w-2.5 text-green-800 cursor-pointer" />}
             isMulti={false}
