@@ -15,10 +15,6 @@ const ProjectRoutes = () => {
         <Routes>
           <Route path="/" element={<Landingpage />} />
           <Route path="/maintance" element={<App />} />
-          <Route path="/detaildonation" element={<DetailDonation />} />
-          <Route path="/finishspayment" element={<FinishPayment />} />
-          <Route path="/unfinishpayment" element={<UnfinishPayment />} />
-          <Route path="/failspayment" element={<FailsPayment />} />
 
           {/* <Route path="/" element={<DetailVolunteer />} /> */}
         </Routes>
