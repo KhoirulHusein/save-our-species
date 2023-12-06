@@ -19,6 +19,8 @@ const ProjectRoutes = () => {
           <Route path="/finishspayment" element={<FinishPayment />} />
           <Route path="/unfinishpayment" element={<UnfinishPayment />} />
           <Route path="/failspayment" element={<FailsPayment />} />
+
+          {/* <Route path="/" element={<DetailVolunteer />} /> */}
         </Routes>
       </Router>
     </React.Suspense>
