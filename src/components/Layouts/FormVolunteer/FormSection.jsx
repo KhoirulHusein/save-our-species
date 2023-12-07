@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '../../Elements/Button/Buttons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
@@ -32,6 +33,7 @@ const umurList = [
 ];
 
 function FormSection() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     namaVolunteer: '',
     emailVolunteer: '',
@@ -70,7 +72,7 @@ function FormSection() {
       });
 
       if (response.ok) {
-        // window.location.href = '/formvolunteersucces';
+        navigate('/formvolunteersucces');
       } else {
         const errorData = await response.json(); // Assuming the server returns a JSON error message
         console.error('Error:', errorData);
