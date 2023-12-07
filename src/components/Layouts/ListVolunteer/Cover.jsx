@@ -8,9 +8,9 @@ function CoverListVolunteer() {
   const navigate = useNavigate();
 
   return (
-    <div className="h-[1000px] md:h-[1259px] sm:h-[895px] md:px-5 relative w-full">
-      <div className="absolute bg-gray-900_01 flex flex-col md:flex-row-reverse inset-x-0 items-center justify-start mx-auto p-[125px] md:px-10 sm:px-5 top-0 w-full">
-        <div className="flex md:flex-col flex-row md:gap-10 items-center justify-between mb-[193px] w-[94%] md:w-full">
+    <div className="h-[800px] lg:h-[1100px] md:h-[1000px] sm:h-[950px] md:px-5 relative w-full">
+      <div className="absolute bg-gray-900_01 flex flex-col md:flex-row-reverse inset-x-0 items-center justify-start mx-auto p-[100px] md:px-10 sm:px-5 top-0 w-full">
+        <div className="flex md:flex-col flex-row md:gap-10 items-center justify-between mb-[193px] w-[94%] md:w-full md:mb-[13px] pt-10 ">
           <div className="flex flex-col items-start justify-start">
             <Text className="text-lg text-orange-50" size="txtUbuntuBold18">
               13 November 2023

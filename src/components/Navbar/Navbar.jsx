@@ -42,6 +42,7 @@ function Navbar() {
     position: 'fixed',
     width: '100%',
     top: 0,
+    zIndex: 100,
   };
 
   const menuStyle = {
@@ -59,8 +60,8 @@ function Navbar() {
   };
 
   return (
-    <nav ref={navbarRef} style={navbarStyle} className="p-4 backdrop-blur-md">
-      <div className="flex items-center justify-between p-4">
+    <nav ref={navbarRef} style={navbarStyle} className="p-4 backdrop-blur-sm">
+      <div className="flex items-center justify-between p-1">
         {/* Logo dan Nama Brand */}
         <div className="flex items-center">
           <img src="logo80x80.png" alt="Logo" className="h-8 w-8 mr-2" />

@@ -9,13 +9,13 @@ function BenefitListVolunteer() {
     {
       id: 1,
       title: 'Konservasi dan Lindungi',
-      description: 'Berpartisipasi dalam upaya konservasi  satwa liar untuk melestarikan keanekaragaman hayati Indonesia.',
+      description: 'Berpartisipasi dalam konservasi  satwa liar untuk melestarikan keanekaragaman hayati Indonesia.',
       icon: <FontAwesomeIcon icon={faShieldDog} size="3x" color="white" />,
     },
     {
       id: 2,
       title: 'Eksplorasi Alam',
-      description: 'Rasakan pengalaman eksplorasi dan petualangan di habitat alami para satwa.',
+      description: 'Rasakan eksplorasi dan petualangan di habitat alami para satwa.',
       icon: <FontAwesomeIcon icon={faTree} size="3x" color="white" />,
     },
     {
@@ -27,21 +27,21 @@ function BenefitListVolunteer() {
   ];
 
   return (
-    <List className="flex justify-center gap-4">
+    <List className="flex justify-center gap-4 ">
       {items.map((item) => (
         <div
           key={item.id}
-          className="bg-deep_orange-300 rounded-[20px] p-2 flex flex-col items-center text-white max-w-[270px] h-[225px] sm:max-w-[155px] md:max-w-[200px] "
+          className="bg-deep_orange-300 rounded-[20px] p-2 flex flex-col items-center text-white max-w-[270px] h-[225px] sm:max-w-[220px] sm:p-0 md:max-w-[210px] md:max-h-[250px] "
         >
-          <div className="mb-4">{item.icon}</div>
+          <div className="mb-0">{item.icon}</div>
           <Text
-            className="mt-5 text-orange-50 text-xl  xs:text-xs sm:text-sm md:text-base text-lg"
+            className="mt-5 text-orange-50 text-xl xs:text-xs sm:text-sm md:text-base text-lg"
             size="txtUbuntuBold20"
           >
             {item.title}
           </Text>
           <Text
-            className="leading-[19.00px] mt-4 xs:text-2xs sm:text-xs md:text-sm text-base text-center text-orange-50 w-full"
+            className="leading-[15.00px] mt-4 xs:text-2xs sm:text-xs md:text-md text-base text-center text-orange-50 w-full"
             size="txtUbuntuRegular14"
           >
             {item.description}

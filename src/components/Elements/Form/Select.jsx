@@ -1,5 +1,5 @@
 import React from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
+// eslint-disable-next-line import/no-unresolved
 import Select from 'react-select';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import PropTypes from 'prop-types';
