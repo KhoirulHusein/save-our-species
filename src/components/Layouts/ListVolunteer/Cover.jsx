@@ -1,11 +1,15 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+/* eslint-disable max-len */
+import React, { useRef } from 'react'; // Import useRef
 import { Img } from '../../Elements/Jumroton/Images';
 import { Text } from '../../Elements/Text/Texts';
 import { Button } from '../../Elements/Button/Buttons';
 
 function CoverListVolunteer() {
-  const navigate = useNavigate();
+  const listVolunteerRef = useRef(null);
+
+  const handleScrollToListVolunteer = () => {
+    listVolunteerRef.current.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <div className="h-[800px] lg:h-[1100px] md:h-[1000px] sm:h-[950px] md:px-5 relative w-full">
@@ -25,14 +29,12 @@ function CoverListVolunteer() {
               className="leading-[25.00px] mt-2 text-lg text-orange-50 tracking-[-0.18px] w-full"
               size="txtUbuntuRegular18"
             >
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industrys standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book.
+
+              YABI telah berhasil membawa bersama lebih dari 100 hingga 130 individu yang berkomitmen, tersebar di tiga wilayah operasional utama YABI, yaitu Ujung Kulon, Way Kambas, dan Bukit Barisan Selatan. Melalui upaya bersama ini, Yayasan Badak Indonesia telah memastikan kelangsungan hidup badak di Indonesia.
             </Text>
             <Button
               className="common-pointer cursor-pointer min-w-[175px] mt-[22px] text-center text-lg tracking-[-0.18px] md:mx-auto"
-              onClick={() => navigate('/DetailVolunteer')}
+              onClick={handleScrollToListVolunteer}
               shape="round"
               color="light_green_800"
               size="lg"
@@ -49,6 +51,7 @@ function CoverListVolunteer() {
           />
         </div>
       </div>
+      <div ref={listVolunteerRef} />
     </div>
   );
 }

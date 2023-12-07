@@ -24,7 +24,7 @@ function HeroListVolunteer() {
             className="my-[3px] sm:text-lg md:text-xl lg:text-2xl text-3xl text-orange-50 tracking-[-0.40px] z-[999]"
             size="txtUbuntuBold40"
           >
-            Bergabung Untuk Lindungi Satwa
+            Bergabung Dalam Aksi Lestarikan Satwa
           </Text>
         </div>
       </div>
