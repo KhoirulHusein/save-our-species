@@ -9,6 +9,7 @@ const DetailDonation = React.lazy(() => import('../components/Pages/DetailDonati
 const FinishPayment = React.lazy(() => import('../components/Pages/DetailDonation/Finish'));
 const UnfinishPayment = React.lazy(() => import('../components/Pages/DetailDonation/Unfinish'));
 const FailsPayment = React.lazy(() => import('../components/Pages/DetailDonation/Fails'));
+const Donation = React.lazy(() => import('../components/Pages/Donation/Donations'));
 
 const ProjectRoutes = () => {
   return (
@@ -17,7 +18,8 @@ const ProjectRoutes = () => {
         <Routes>
           <Route path="/" element={<Landingpage />} />
           <Route path="/maintance" element={<App />} />
-          <Route path="/detaildonation" element={<DetailDonation />} />
+          <Route path="/donation" element={<Donation />} />
+          <Route path="/donation/lembagas/:_id" element={<DetailDonation />} />
           <Route path="/finishspayment" element={<FinishPayment />} />
           <Route path="/unfinishpayment" element={<UnfinishPayment />} />
           <Route path="/failspayment" element={<FailsPayment />} />
