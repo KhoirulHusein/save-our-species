@@ -12,8 +12,7 @@ import Footer from '../../Footer/Footer';
 const DetailVolunteerPage = () => {
   const navigate = useNavigate();
   return (
-    <div style={{ backgroundColor: 'black', color: 'white', minHeight: '100vh' }}>
-      {/* Navbar */}
+    <div className="bg-gray-900 text-white-A700 font-ubuntu justify-start mx-auto w-full">
       <Navbar />
 
       <div

@@ -63,7 +63,7 @@ function Navbar() {
       <div className="flex items-center justify-between p-4">
         {/* Logo dan Nama Brand */}
         <div className="flex items-center">
-          <img src="path/to/logo.png" alt="Logo" className="h-8 w-8 mr-2" />
+          <img src="logo80x80.png" alt="Logo" className="h-8 w-8 mr-2" />
           <Text className="text-light_green-800 text-lg font-semibold">Save Our Species</Text>
         </div>
 
