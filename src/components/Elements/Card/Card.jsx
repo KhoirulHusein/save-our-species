@@ -54,7 +54,7 @@ function Card({
         </div>
         {showButton && (
           <Button
-            className={`${buttonClass} z-50 hover:z-50`}
+            className={`${buttonClass} z-50 hover:z-50 `}
             shape={buttonShape}
             color={buttonColor}
             size={buttonSize}

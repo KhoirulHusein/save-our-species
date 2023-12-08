@@ -8,7 +8,13 @@ function CoverListVolunteer() {
   const listVolunteerRef = useRef(null);
 
   const handleScrollToListVolunteer = () => {
-    listVolunteerRef.current.scrollIntoView({ behavior: 'smooth' });
+    const listVolunteerElement = document.getElementById('listVolunteer');
+    if (listVolunteerElement) {
+      listVolunteerElement.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      // eslint-disable-next-line no-console
+      console.error('listVolunteerElement is null');
+    }
   };
 
   return (
