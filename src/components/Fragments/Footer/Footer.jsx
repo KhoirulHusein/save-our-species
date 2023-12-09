@@ -30,7 +30,7 @@ function Footer() {
         </a>
       </div>
       <Text
-        className="mt-[15px] mb-[15px] text-center text-white text-s"
+        className="mt-[15px] mb-[15px] text-center text-white text-s md:text-xs sm:text-xs"
         size="txtUbuntuRegular25"
       >
         &copy; 2023 Save Our Species (SOS). All Rights Reserved.

@@ -13,6 +13,8 @@ const Input = React.forwardRef(
       onChange,
       inputId,
       labelName,
+      isLabel,
+      wrapClassName,
       ...restProps
     },
     ref,
@@ -22,8 +24,12 @@ const Input = React.forwardRef(
     };
 
     return (
-      <>
-        <label htmlFor={`${inputId}`} className="block mb-2 text-sm font-medium text-white-900 dark:text-white">{labelName}</label>
+      <div className={wrapClassName}>
+        {isLabel && (
+          <label htmlFor={inputId} className="block mb-2 text-sm font-medium text-white-900 dark:text-white">
+            {labelName}
+          </label>
+        )}
         <input
           ref={ref}
           id={inputId}
@@ -34,7 +40,7 @@ const Input = React.forwardRef(
           placeholder={placeholder}
           {...restProps}
         />
-      </>
+      </div>
     );
   },
 );
@@ -47,6 +53,7 @@ Input.propTypes = {
   type: PropTypes.string,
   inputId: PropTypes.string,
   labelName: PropTypes.string,
+  isLabel: PropTypes.bool,
 };
 
 Input.defaultProps = {
@@ -57,6 +64,7 @@ Input.defaultProps = {
   name: 'name',
   placeholder: 'input',
   type: 'input',
+  isLabel: false,
 };
 
 export { Input };
