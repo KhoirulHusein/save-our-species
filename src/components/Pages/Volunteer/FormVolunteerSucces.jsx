@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Button from '../../Elements/Button/Buttons';
+import { Button } from '../../Elements/Button/Buttons';
 import { Text } from '../../Elements/Text/Texts';
 import Navbar from '../../Navbar/Navbar';
 import Footer from '../../Footer/Footer';
