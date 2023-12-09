@@ -32,7 +32,7 @@ const FormVolunteerSuccess = () => {
           linkTo="/"
           buttonText="Kembali ke Halaman Utama"
           className="common-pointer cursor-pointer min-w-[269px] mt-[100px] text-center text-lg tracking-[-0.18px]"
-          onClick={() => navigate('/landingpage')}
+          onClick={() => navigate('/')}
           shape="round"
           color="light_green_800"
           size="lg"

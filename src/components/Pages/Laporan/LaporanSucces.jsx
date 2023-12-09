@@ -1,10 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '../../Elements/Button/Buttons';
 import { Text } from '../../Elements/Text/Texts';
 import Footer from '../../Fragments/Footer/Footer';
 import Navbar from '../../Fragments/Navbar/Navbar';
 
 const LaporanSuccess = () => {
+  const navigate = useNavigate();
   return (
     <div className="bg-gray-900 text-white-A700">
       <Navbar />
@@ -26,9 +28,8 @@ const LaporanSuccess = () => {
         </Text>
         <div className="font-ubuntu grid grid-cols-1 md:grid-cols-1 gap-8 p-0">
           <Button
-            linkTo="/"
             className="common-pointer cursor-pointer mx-auto text-center min-w-[269px] md:min-w-0 text-lg tracking-[-0.18px] transition-transform duration-300 transform hover:scale-105 sm:text-sm"
-            onClick={() => ('/landingpage')}
+            onClick={() => navigate('/')}
             shape="round"
             color="light_green_800"
             size="lg"

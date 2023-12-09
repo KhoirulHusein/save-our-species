@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Button } from '../../Elements/Button/Buttons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { Text } from '../../Elements/Text/Texts';
@@ -31,6 +33,54 @@ const umurList = [
 ];
 
 function FormSection() {
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    namaVolunteer: '',
+    emailVolunteer: '',
+    notelpVolunteer: '',
+    statusVolunteer: '',
+    genderVolunteer: '',
+    umurVolunteer: '',
+  });
+
+  const handleChange = (e) => {
+    if (e.target) {
+      // Handle regular input changes
+      const { name, value } = e.target;
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    } else if (e && e.value) {
+      // Handle SelectBox changes
+      setFormData((prevData) => ({
+        ...prevData,
+        [e.name]: e.value,
+      }));
+    }
+  };
+
+  const handleSubmit = async () => {
+    console.log('Mengirimkan Data Formulir:', formData);
+    try {
+      const response = await fetch('http://45.76.149.156/volunteer', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        navigate('/formvolunteersucces');
+      } else {
+        const errorData = await response.json(); // Assuming the server returns a JSON error message
+        console.error('Error:', errorData);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
   return (
     <>
       <div className="bg-gray-900 flex flex-col font-ubuntu items-center justify-start mx-auto w-[50%]">
@@ -42,12 +92,14 @@ function FormSection() {
         </Text>
         <Input
           labelName=""
-          name="nama"
+          name="namaVolunteer"
           placeholder="Isi disini...."
           className="md:ml-[0] font-bold leading-[normal] p-2 placeholder:text-black-900_6d text-[15px] text-left w-full"
           wrapClassName="border border-blue_gray-900_01 border-solid flex mt-[19px] mx-auto w-full"
           shape="round"
           size="sm"
+          value={formData.namaVolunteer}
+          onChange={handleChange}
         />
         <Text
           className="md:ml-[0] mt-[35px] text-white-A700 text-xl w-full"
@@ -57,12 +109,14 @@ function FormSection() {
         </Text>
         <Input
           labelName=""
-          name="email"
+          name="emailVolunteer"
           placeholder="Isi disini...."
           className="md:ml-[0] font-bold leading-[normal] p-2 placeholder:text-black-900_6d text-[15px] text-left w-full"
           wrapClassName="border border-blue_gray-900_01 border-solid flex mt-[19px] mx-auto w-full"
           shape="round"
           size="sm"
+          value={formData.emailVolunteer}
+          onChange={handleChange}
         />
         <Text
           className="md:ml-[0] mt-[35px] text-white-A700 text-xl w-full"
@@ -72,12 +126,14 @@ function FormSection() {
         </Text>
         <Input
           labelName=""
-          name="telp"
+          name="notelpVolunteer"
           placeholder="Isi disini...."
           className="md:ml-[0] font-bold leading-[normal] p-2 placeholder:text-black-900_6d text-[15px] text-left w-full"
           wrapClassName="border border-blue_gray-900_01 border-solid flex mt-[19px] mx-auto w-full"
           shape="round"
           size="sm"
+          value={formData.notelpVolunteer}
+          onChange={handleChange}
         />
       </div>
       <div className="md:mx-auto md:ml-0 md:items-start md:w-full mt-[35px] flex flex-row md:flex-col items-center justify-center w-full">
@@ -90,7 +146,7 @@ function FormSection() {
             placeholderClassName="text-black-900"
             indicator={<FontAwesomeIcon icon={faCaretDown} className="h-[25px] ml-10 mr-[0] w-2.5 text-green-800 cursor-pointer" />}
             isMulti={false}
-            name="status"
+            name="statusVolunteer"
             options={statusOptionsList}
             isSearchable={false}
             placeholder="Mahasiswa"
@@ -98,7 +154,9 @@ function FormSection() {
             color="white_A700"
             size="sm"
             variant="fill"
-          />
+            value={formData.statusVolunteer}
+            onChange={(selectedOption) => handleChange({ name: 'statusVolunteer', value: selectedOption })}
+            />
         </div>
         <div className="md:ml-[25%] flex items-center ml-7 md:mt-[35px]">
           <Text className="text-white-A700 text-xl" size="txtUbuntuBold20WhiteA700">
@@ -109,7 +167,7 @@ function FormSection() {
             placeholderClassName="text-black-900"
             indicator={<FontAwesomeIcon icon={faCaretDown} className="h-[25px] ml-5 mr-[0] w-2.5 text-green-800 cursor-pointer" />}
             isMulti={false}
-            name="gender"
+            name="genderVolunteer"
             options={genderOptionsList}
             isSearchable={false}
             placeholder="Pria"
@@ -117,7 +175,9 @@ function FormSection() {
             color="white_A700"
             size="sm"
             variant="fill"
-          />
+            value={formData.genderVolunteer}
+            onChange={(selectedOption) => handleChange({ name: 'genderVolunteer', value: selectedOption })}
+            />
         </div>
         <div className="md:ml-[25%] flex items-center ml-10 md:mt-[35px]">
           <Text className="text-white-A700 text-xl" size="txtUbuntuBold20WhiteA700">
@@ -128,7 +188,7 @@ function FormSection() {
             placeholderClassName="text-black-900"
             indicator={<FontAwesomeIcon icon={faCaretDown} className="h-[25px] ml-5 mr-[0] w-2.5 text-green-800 cursor-pointer" />}
             isMulti={false}
-            name="umur"
+            name="umurVolunteer"
             options={umurList}
             isSearchable={false}
             placeholder="23"
@@ -136,9 +196,23 @@ function FormSection() {
             color="white_A700"
             size="sm"
             variant="fill"
-          />
+            value={formData.umurVolunteer}
+            onChange={(selectedOption) => handleChange({ name: 'umurVolunteer', value: selectedOption })}
+            />
         </div>
       </div>
+          <div className="bg-gray-900 font-ubuntu mx-auto grid grid-cols-1 md:grid-cols-1 gap-8 p-0">
+      <Button
+        className="common-pointer cursor-pointer mx-auto mb-20 mt-20 text-center min-w-[198px] md:min-w-[198px] text-lg tracking-[-0.18px] transition-transform duration-300 transform hover:scale-105 sm:text-sm rounded-full"
+        onClick={handleSubmit}
+        shape="round"
+        size="md"
+        variant="fill"
+        color="light_green_800"
+      >
+        Apply
+      </Button>
+    </div>
     </>
   );
 }
