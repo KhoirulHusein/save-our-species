@@ -5,8 +5,8 @@ import { faArrowLeft, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import { Text } from '../../Elements/Text/Texts';
 import { Img } from '../../Elements/Jumroton/Images';
 import { Button } from '../../Elements/Button/Buttons';
-import Navbar from '../../Navbar/Navbar';
-import Footer from '../../Footer/Footer';
+import Footer from '../../Fragments/Footer/Footer';
+import Navbar from '../../Fragments/Navbar/Navbar';
 
 const DetailVolunteerPage = () => {
   const navigate = useNavigate();
