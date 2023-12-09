@@ -1,6 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+const App = React.lazy(() => import('../App'));
+const ListAnimals = React.lazy(() => import('../components/Pages/ListAnimals/ListAnimals'));
+const DetailAnimals = React.lazy(() => import('../components/Pages/DetailAnimals/DetailAnimals'));
 const Landingpage = React.lazy(() => import('../components/Pages/LandingPage/LandingPages'));
 // const DetailVolunteer = React.lazy(() =>
 // import('../components/Pages/Volunteer/DetailVolunteer'));
@@ -19,6 +22,9 @@ const ProjectRoutes = () => {
     <React.Suspense fallback={<>Loading...</>}>
       <Router>
         <Routes>
+          <Route path="/animals/details/:id" element={<DetailAnimals />} />
+          <Route path="/animals" element={<ListAnimals />} />
+          <Route path="/" element={<App />} />
           <Route path="/" element={<Landingpage />} />
           <Route path="/maintance" element={<App />} />
           <Route path="/detaildonation" element={<DetailDonation />} />
