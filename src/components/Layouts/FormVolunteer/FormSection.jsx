@@ -100,7 +100,7 @@ function FormSection() {
           shape="round"
           size="sm"
           value={formData.namaVolunteer}
-          onChange={handleChange}
+          onChange={(e) => handleChange({ target: { name: 'namaVolunteer', value: e } })}
         />
         <Text
           className="md:ml-[0] mt-[35px] text-white-A700 text-xl w-full"
@@ -117,7 +117,7 @@ function FormSection() {
           shape="round"
           size="sm"
           value={formData.emailVolunteer}
-          onChange={handleChange}
+          onChange={(e) => handleChange({ target: { name: 'emailVolunteer', value: e } })}
         />
         <Text
           className="md:ml-[0] mt-[35px] text-white-A700 text-xl w-full"
@@ -134,7 +134,7 @@ function FormSection() {
           shape="round"
           size="sm"
           value={formData.notelpVolunteer}
-          onChange={handleChange}
+          onChange={(e) => handleChange({ target: { name: 'notelpVolunteer', value: e } })}
         />
       </div>
       <div className="md:mx-auto md:ml-0 md:items-start md:w-full mt-[35px] flex flex-row md:flex-col items-center justify-center w-full">

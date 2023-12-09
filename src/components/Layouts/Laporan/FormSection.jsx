@@ -80,7 +80,7 @@ function FormSection() {
         shape="round"
         size="sm"
         value={formData.namaPelapor}
-        onChange={handleChange}
+        onChange={(e) => handleChange({ target: { name: 'namaPelapor', value: e } })}
       />
       <Text
         className="md:ml-[0] mt-10 md:mt-[10px] w-full text-white-A700 text-xl md:text-[15px]"
@@ -119,7 +119,7 @@ function FormSection() {
         shape="round"
         size="sm"
         value={formData.tkpPelapor}
-        onChange={handleChange}
+        onChange={(e) => handleChange({ target: { name: 'tkpPelapor', value: e } })}
       />
       <Text
         className="md:ml-[0] mt-10 md:mt-[10px] w-full text-white-A700 text-xl md:text-[15px]"
@@ -136,7 +136,7 @@ function FormSection() {
         shape="round"
         size="sm"
         value={formData.ciriPelapor}
-        onChange={handleChange}
+        onChange={(e) => handleChange({ target: { name: 'ciriPelapor', value: e } })}
       />
       <Text
         className="md:ml-[0] mt-10 md:mt-[10px] w-full text-white-A700 text-xl md:text-[15px]"
