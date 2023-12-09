@@ -1,9 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Button from '../../Elements/Button/Buttons';
+import { Button } from '../../Elements/Button/Buttons';
 import { Text } from '../../Elements/Text/Texts';
-import Navbar from '../../Navbar/Navbar';
-import Footer from '../../Footer/Footer';
+import Footer from '../../Fragments/Footer/Footer';
+import Navbar from '../../Fragments/Navbar/Navbar';
 
 const FormVolunteerSuccess = () => {
   const navigate = useNavigate();
@@ -30,14 +30,17 @@ const FormVolunteerSuccess = () => {
         {/* Back to Home Button */}
         <Button
           linkTo="/"
-          buttonText="Kembali ke Halaman Utama"
           className="common-pointer cursor-pointer min-w-[269px] mt-[100px] text-center text-lg tracking-[-0.18px]"
           onClick={() => navigate('/')}
           shape="round"
           color="light_green_800"
           size="lg"
           variant="fill"
-        />
+        >
+          {' '}
+          Kembali ke Halaman Utama
+
+        </Button>
       </div>
 
       {/* Footer */}

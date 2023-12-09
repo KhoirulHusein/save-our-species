@@ -1,16 +1,63 @@
-/* eslint-disable max-len */
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import { Text } from '../../Elements/Text/Texts';
 import { Img } from '../../Elements/Jumroton/Images';
 import { Button } from '../../Elements/Button/Buttons';
-import Navbar from '../../Navbar/Navbar';
-import Footer from '../../Footer/Footer';
+import Footer from '../../Fragments/Footer/Footer';
+import Navbar from '../../Fragments/Navbar/Navbar';
 
 const DetailVolunteerPage = () => {
   const navigate = useNavigate();
+  const { id } = useParams();
+  const [lembaga, setLembaga] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const getFirstSentence = (text) => {
+    const sentences = text.split(/\.|\?|!/);
+    return sentences[0];
+  };
+
+  const getRemainingSentences = (text) => {
+    const sentences = text.split(/\.|\?|!/);
+    const remainingSentences = sentences.slice(1);
+    return remainingSentences.join('. ');
+  };
+
+  useEffect(() => {
+    const fetchLembaga = async () => {
+      try {
+        const response = await fetch(`http://45.76.149.156/lembaga/${id}`);
+        const data = await response.json();
+        setLembaga(data);
+      } catch (err) {
+        // eslint-disable-next-line no-console
+        console.error('Error fetching lembaga details:', error);
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchLembaga();
+  }, [id]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return (
+      <div>
+        Error fetching data:
+        {' '}
+        {error.message}
+      </div>
+    );
+  }
+
   return (
     <div className="bg-gray-900 text-white-A700 font-ubuntu justify-start mx-auto w-full">
       <Navbar />
@@ -31,25 +78,25 @@ const DetailVolunteerPage = () => {
           {/* Gambar Volunteer */}
           <Img
             className="h-[463px] sm:h-auto mt-[21px] object-cover rounded-lg w-full "
-            src="images/yayasan-rasi.jpg"
-            alt="Gambar Kegiatan Yayasan Rasi"
+            src={lembaga.gambar}
+            alt={`Gambar Kegiatan ${lembaga.name}`}
           />
           <div className="flex md:flex-col flex-row md:gap-2 items-end justify-between mt-9 w-full">
-            <div className="flex md:flex-1 flex-col gap-1.5 items-start justify-start w-[42%] md:w-full">
+            <div className="flex md:flex-1 flex-col gap-1.5 items-start justify-start w-[85%] md:w-full">
               <Text
                 className="sm:text-3xl md:text-[38px] text-[40px]sm:text-3xl md:text-[38px] text-[40px] text-white-A700 tracking-[-0.40px]"
                 size="txtUbuntuBold40WhiteA700"
               >
-                Yayasan Konservasi RASI
+                {lembaga.namaLembagayayasan}
               </Text>
               <div className="flex flex-row gap-[19px] items-center justify-start w-1/4 md:w-full">
                 {/* Ikon Location */}
                 <FontAwesomeIcon icon={faMapMarkerAlt} className="text-green-900 text-xl tracking-[-0.20px]" />
                 <Text
-                  className="text-white-A700 text-lg tracking-[-0.20px]"
+                  className="text-white-A700 text-lg tracking-[1px]"
                   size="txtUbuntuRegular20WhiteA700"
                 >
-                  Samarinda
+                  {lembaga.kontak}
                 </Text>
               </div>
             </div>
@@ -75,24 +122,21 @@ const DetailVolunteerPage = () => {
           </Text>
           <Text
             as="h1"
-            className="leading-[20.00px] ml-1.5 md:ml-[0] mt-[25px] xs:text-[21px] sm:text-[23px] md:text-[25px] text-[25px] text-white-A700 tracking-[-0.25px] w-[84%] sm:w-full"
+            className="leading-[32.00px] ml-1.5 md:ml-[0] mt-[25px] xs:text-[21px] sm:text-[23px] md:text-[25px] text-[25px] text-white-A700 tracking-[-0.25px] w-[84%] sm:w-full"
             size="txtUbuntuBold20WhiteA700"
           >
-            Menyelamatkan Pesut Sungai Mahakam
+            {getFirstSentence(lembaga.overview)}
           </Text>
           <Text
-            className="leading-[25.00px] ml-1.5 md:ml-[0] mt-[25px] xs:text-[16px] sm:text-[18px] md:text-[20px] text-[25px] text-white-A700 w-[84%] sm:w-full"
+            className="leading-[32.00px] text-justify ml-1.5 md:ml-[0] mt-[25px] xs:text-[16px] sm:text-[18px] md:text-[20px] text-[25px] text-white-A700 w-[97%] sm:w-full"
             size="txtUbuntuRegular25"
           >
-            Yayasan Konservasi RASIA bertujuan menyelamatkan pesut sungai Mahakam yang terancam punah. Populasinya tinggal sekitar 80 individu, terutama karena belenggu jaring insang.
-            <br />
-            <br />
-            Yayasan ini sedang membangun kawasan lindung melibatkan 26 desa untuk konservasi pesut, praktik penangkapan ikan berkelanjutan, ekowisata, dan restorasi. Tujuannya adalah melestarikan pesut sambil mendukung perikanan lokal dan peluang ekowisata.
+            {getRemainingSentences(lembaga.overview)}
           </Text>
           <div className="flex justify-center mt-5 self-center">
             <Button
               className="common-pointer cursor-pointer min-w-[142px] md:ml-[0] text-center text-lg  mt-8"
-              onClick={() => navigate('/FormVolunteer')}
+              onClick={() => navigate('/formvolunteer')}
               shape="round"
               color="light_green_800"
               size="lg"

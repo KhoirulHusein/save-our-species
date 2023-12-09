@@ -1,9 +1,10 @@
+/* eslint-disable no-console */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Card from '../../Card/Card';
-import { Input } from '../../Input/Input';
-import { Button } from '../../Button/Buttons';
-import { SelectBox } from '../../Select/Select';
+import Card from '../../Elements/Card/Card';
+import { Input } from '../../Elements/Form/Input';
+import { Button } from '../../Elements/Button/Buttons';
+import { SelectBox } from '../../Elements/Form/Select';
 
 const statusOptionsList = [
   { label: 'Resiko', value: 'Resiko' },

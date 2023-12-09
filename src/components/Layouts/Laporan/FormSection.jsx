@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -39,7 +40,6 @@ function FormSection() {
       }));
     }
   };
-   
 
   const handleSubmit = async () => {
     console.log('Mengirimkan Data Formulir:', formData);
@@ -51,7 +51,7 @@ function FormSection() {
         },
         body: JSON.stringify(formData),
       });
-    
+
       if (response.ok) {
         navigate('/laporansucces');
       } else {
@@ -62,7 +62,7 @@ function FormSection() {
       console.error('Error:', error);
     }
   };
-  
+
   return (
     <div className="bg-gray-900 flex flex-col font-ubuntu items-center justify-start mx-auto w-[50%]">
       <Text
@@ -80,8 +80,8 @@ function FormSection() {
         shape="round"
         size="sm"
         value={formData.namaPelapor}
-        onChange={handleChange}
-        />
+        onChange={(e) => handleChange({ target: { name: 'namaPelapor', value: e } })}
+      />
       <Text
         className="md:ml-[0] mt-10 md:mt-[10px] w-full text-white-A700 text-xl md:text-[15px]"
         size="txtUbuntuBold20WhiteA700"
@@ -103,7 +103,7 @@ function FormSection() {
         variant="fill"
         value={formData.prioritas}
         onChange={(selectedOption) => handleChange({ name: 'prioritasPelapor', value: selectedOption })}
-        />
+      />
       <Text
         className="md:ml-[0] mt-10 md:mt-[10px] w-full text-white-A700 text-xl md:text-[15px]"
         size="txtUbuntuBold20WhiteA700"
@@ -119,8 +119,8 @@ function FormSection() {
         shape="round"
         size="sm"
         value={formData.tkpPelapor}
-        onChange={handleChange}
-        />
+        onChange={(e) => handleChange({ target: { name: 'tkpPelapor', value: e } })}
+      />
       <Text
         className="md:ml-[0] mt-10 md:mt-[10px] w-full text-white-A700 text-xl md:text-[15px]"
         size="txtUbuntuBold20WhiteA700"
@@ -136,8 +136,8 @@ function FormSection() {
         shape="round"
         size="sm"
         value={formData.ciriPelapor}
-        onChange={handleChange}
-        />
+        onChange={(e) => handleChange({ target: { name: 'ciriPelapor', value: e } })}
+      />
       <Text
         className="md:ml-[0] mt-10 md:mt-[10px] w-full text-white-A700 text-xl md:text-[15px]"
         size="txtUbuntuBold20WhiteA700"
@@ -151,7 +151,7 @@ function FormSection() {
         rows="4"
         value={formData.deskripsiPelapor}
         onChange={handleChange}
-        />
+      />
       <Button
         className="common-pointer cursor-pointer mx-auto mb-20 mt-20 text-center min-w-[198px] md:min-w-[198px] text-lg tracking-[-0.18px] transition-transform duration-300 transform hover:scale-105 sm:text-sm rounded-full bg-light_green_800"
         onClick={handleSubmit}

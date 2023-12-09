@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Carousel from './Carousel';
-import { Button } from '../../Button/Buttons';
+import { Button } from '../../Elements/Button/Buttons';
 
 const DetailHewan = () => {
   const { id } = useParams();
@@ -48,6 +48,7 @@ const DetailHewan = () => {
       const response = await axios.get(`http://45.76.149.156/animals/${id}`);
       setAnimalData(response.data);
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.error('Error fetching animal data:', error);
     }
   };

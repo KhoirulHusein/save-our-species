@@ -1,5 +1,5 @@
 import React from 'react';
-import DetailHewan from '../../Elements/layouts/DetailHewan/DetailHewan';
+import DetailHewan from '../../Layouts/DetailHewan/DetailHewan';
 
 function DetailAnimals() {
   return (

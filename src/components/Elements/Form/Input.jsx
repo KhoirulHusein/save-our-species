@@ -9,7 +9,6 @@ const Input = React.forwardRef(
       name,
       placeholder,
       type,
-      children,
       onChange,
       inputId,
       labelName,
@@ -54,6 +53,7 @@ Input.propTypes = {
   inputId: PropTypes.string,
   labelName: PropTypes.string,
   isLabel: PropTypes.bool,
+  onChange: PropTypes.func,
 };
 
 Input.defaultProps = {
@@ -65,6 +65,7 @@ Input.defaultProps = {
   placeholder: 'input',
   type: 'input',
   isLabel: false,
+  onChange: null,
 };
 
 export { Input };

@@ -1,8 +1,9 @@
+/* eslint-disable no-console */
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button } from '../../Elements/Button/Buttons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
+import { Button } from '../../Elements/Button/Buttons';
 import { Text } from '../../Elements/Text/Texts';
 import { Input } from '../../Elements/Form/Input';
 import { SelectBox } from '../../Elements/Form/Select';
@@ -99,7 +100,7 @@ function FormSection() {
           shape="round"
           size="sm"
           value={formData.namaVolunteer}
-          onChange={handleChange}
+          onChange={(e) => handleChange({ target: { name: 'namaVolunteer', value: e } })}
         />
         <Text
           className="md:ml-[0] mt-[35px] text-white-A700 text-xl w-full"
@@ -116,7 +117,7 @@ function FormSection() {
           shape="round"
           size="sm"
           value={formData.emailVolunteer}
-          onChange={handleChange}
+          onChange={(e) => handleChange({ target: { name: 'emailVolunteer', value: e } })}
         />
         <Text
           className="md:ml-[0] mt-[35px] text-white-A700 text-xl w-full"
@@ -133,7 +134,7 @@ function FormSection() {
           shape="round"
           size="sm"
           value={formData.notelpVolunteer}
-          onChange={handleChange}
+          onChange={(e) => handleChange({ target: { name: 'notelpVolunteer', value: e } })}
         />
       </div>
       <div className="md:mx-auto md:ml-0 md:items-start md:w-full mt-[35px] flex flex-row md:flex-col items-center justify-center w-full">
@@ -156,7 +157,7 @@ function FormSection() {
             variant="fill"
             value={formData.statusVolunteer}
             onChange={(selectedOption) => handleChange({ name: 'statusVolunteer', value: selectedOption })}
-            />
+          />
         </div>
         <div className="md:ml-[25%] flex items-center ml-7 md:mt-[35px]">
           <Text className="text-white-A700 text-xl" size="txtUbuntuBold20WhiteA700">
@@ -177,7 +178,7 @@ function FormSection() {
             variant="fill"
             value={formData.genderVolunteer}
             onChange={(selectedOption) => handleChange({ name: 'genderVolunteer', value: selectedOption })}
-            />
+          />
         </div>
         <div className="md:ml-[25%] flex items-center ml-10 md:mt-[35px]">
           <Text className="text-white-A700 text-xl" size="txtUbuntuBold20WhiteA700">
@@ -198,21 +199,21 @@ function FormSection() {
             variant="fill"
             value={formData.umurVolunteer}
             onChange={(selectedOption) => handleChange({ name: 'umurVolunteer', value: selectedOption })}
-            />
+          />
         </div>
       </div>
-          <div className="bg-gray-900 font-ubuntu mx-auto grid grid-cols-1 md:grid-cols-1 gap-8 p-0">
-      <Button
-        className="common-pointer cursor-pointer mx-auto mb-20 mt-20 text-center min-w-[198px] md:min-w-[198px] text-lg tracking-[-0.18px] transition-transform duration-300 transform hover:scale-105 sm:text-sm rounded-full"
-        onClick={handleSubmit}
-        shape="round"
-        size="md"
-        variant="fill"
-        color="light_green_800"
-      >
-        Apply
-      </Button>
-    </div>
+      <div className="bg-gray-900 font-ubuntu mx-auto grid grid-cols-1 md:grid-cols-1 gap-8 p-0">
+        <Button
+          className="common-pointer cursor-pointer mx-auto mb-20 mt-20 text-center min-w-[198px] md:min-w-[198px] text-lg tracking-[-0.18px] transition-transform duration-300 transform hover:scale-105 sm:text-sm rounded-full"
+          onClick={handleSubmit}
+          shape="round"
+          size="md"
+          variant="fill"
+          color="light_green_800"
+        >
+          Apply
+        </Button>
+      </div>
     </>
   );
 }
