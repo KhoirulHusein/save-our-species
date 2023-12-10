@@ -12,18 +12,21 @@ import Teams from '../../Layouts/LandingPage/Teams';
 function LandingPages() {
   return (
     <>
-      <div className="bg-black-900 flex flex-col font-ubuntu items-center justify-start mx-auto w-full">
-        <div className="flex flex-col items-center justify-start w-full">
-          <Navbar />
-          <div className="h-screen md:px-5 relative w-full">
-            <HeroSection />
+      <div className="bg-gray-900 text-white-A700 font-ubuntu justify-start mx-auto w-full">
+        <Navbar />
+
+        <div className="bg-black-900 flex flex-col font-ubuntu items-center justify-start mx-auto w-full">
+          <div className="flex flex-col items-center justify-start w-full">
+            <div className="h-screen md:px-5 relative w-full">
+              <HeroSection />
+            </div>
+            <ExploreAnimal />
+            <Jumroton />
+            <OurJobs />
+            <Volunteer />
+            <Donation />
+            <Teams />
           </div>
-          <ExploreAnimal />
-          <Jumroton />
-          <OurJobs />
-          <Volunteer />
-          <Donation />
-          <Teams />
         </div>
       </div>
       <Footer />

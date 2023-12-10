@@ -1,17 +1,68 @@
-import React from 'react';
+/* eslint-disable no-console */
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { Text } from '../../Elements/Text/Texts';
 import { Input } from '../../Elements/Form/Input';
 import { SelectBox } from '../../Elements/Form/Select';
+import { Button } from '../../Elements/Button/Buttons';
 
 const prioritasOptionsList = [
   { label: 'Tinggi', value: 'tinggi' },
   { label: 'Sedang', value: 'sedang' },
-  { label: 'Rendah', value: 'pekerja' },
+  { label: 'Rendah', value: 'rendah' },
 ];
 
 function FormSection() {
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    namaPelapor: '',
+    prioritasPelapor: '',
+    tkpPelapor: '',
+    ciriPelapor: '',
+    deskripsiPelapor: '',
+  });
+
+  const handleChange = (e) => {
+    if (e.target) {
+      // Handle regular input changes
+      const { name, value } = e.target;
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    } else if (e && e.value) {
+      // Handle SelectBox changes
+      setFormData((prevData) => ({
+        ...prevData,
+        [e.name]: e.value,
+      }));
+    }
+  };
+
+  const handleSubmit = async () => {
+    console.log('Mengirimkan Data Formulir:', formData);
+    try {
+      const response = await fetch('http://45.76.149.156/report', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        navigate('/laporansucces');
+      } else {
+        const errorData = await response.json();
+        console.error('Error:', errorData);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
   return (
     <div className="bg-gray-900 flex flex-col font-ubuntu items-center justify-start mx-auto w-[50%]">
       <Text
@@ -24,10 +75,12 @@ function FormSection() {
         labelName=""
         name="namaPelapor"
         placeholder="Isi disini...."
-        className="md:ml-[0] p-0 w-full"
+        className="md:ml-[0] p-2 w-full"
         wrapClassName="border border-blue_gray-900_01 border-solid flex mt-[19px] mx-auto w-full"
         shape="round"
         size="sm"
+        value={formData.namaPelapor}
+        onChange={(e) => handleChange({ target: { name: 'namaPelapor', value: e } })}
       />
       <Text
         className="md:ml-[0] mt-10 md:mt-[10px] w-full text-white-A700 text-xl md:text-[15px]"
@@ -40,7 +93,7 @@ function FormSection() {
         placeholderClassName="text-black-900"
         indicator={<FontAwesomeIcon icon={faCaretDown} className="h-[25px] w-2.5 text-green-800 cursor-pointer" />}
         isMulti={false}
-        name="prioritas"
+        name="prioritasPelapor"
         options={prioritasOptionsList}
         isSearchable={false}
         placeholder="Tinggi"
@@ -48,6 +101,8 @@ function FormSection() {
         color="white_A700"
         size="sm"
         variant="fill"
+        value={formData.prioritas}
+        onChange={(selectedOption) => handleChange({ name: 'prioritasPelapor', value: selectedOption })}
       />
       <Text
         className="md:ml-[0] mt-10 md:mt-[10px] w-full text-white-A700 text-xl md:text-[15px]"
@@ -57,12 +112,14 @@ function FormSection() {
       </Text>
       <Input
         labelName=""
-        name="tempatKejadian"
+        name="tkpPelapor"
         placeholder="Isi disini...."
-        className="md:ml-[0] p-0 w-full"
+        className="md:ml-[0] p-2 w-full"
         wrapClassName="border border-blue_gray-900_01 border-solid flex mt-[19px] mx-auto w-full"
         shape="round"
         size="sm"
+        value={formData.tkpPelapor}
+        onChange={(e) => handleChange({ target: { name: 'tkpPelapor', value: e } })}
       />
       <Text
         className="md:ml-[0] mt-10 md:mt-[10px] w-full text-white-A700 text-xl md:text-[15px]"
@@ -72,12 +129,14 @@ function FormSection() {
       </Text>
       <Input
         labelName=""
-        name="ciriPelaku"
+        name="ciriPelapor"
         placeholder="Isi disini...."
-        className="md:ml-[0] p-0 w-full"
+        className="md:ml-[0] p-2 w-full"
         wrapClassName="border border-blue_gray-900_01 border-solid flex mt-[19px] mx-auto w-full"
         shape="round"
         size="sm"
+        value={formData.ciriPelapor}
+        onChange={(e) => handleChange({ target: { name: 'ciriPelapor', value: e } })}
       />
       <Text
         className="md:ml-[0] mt-10 md:mt-[10px] w-full text-white-A700 text-xl md:text-[15px]"
@@ -86,11 +145,23 @@ function FormSection() {
         Deskripsi Kejadian
       </Text>
       <textarea
-        name="deskripsiKejadian"
+        name="deskripsiPelapor"
         placeholder="Isi disini...."
         className="md:ml-[0] ml-0 p-2 w-full mt-[5px] h-48 border border-blue_gray-900_01 border-solid flex mt-[19px] mx-auto w-full rounded-sm md:text-[15px]"
         rows="4"
+        value={formData.deskripsiPelapor}
+        onChange={handleChange}
       />
+      <Button
+        className="common-pointer cursor-pointer mx-auto mb-20 mt-20 text-center min-w-[198px] md:min-w-[198px] text-lg tracking-[-0.18px] transition-transform duration-300 transform hover:scale-105 sm:text-sm rounded-full bg-light_green_800"
+        onClick={handleSubmit}
+        shape="round"
+        size="md"
+        variant="fill"
+        color="light_green_800"
+      >
+        Submit
+      </Button>
     </div>
   );
 }

@@ -151,4 +151,5 @@ SelectBox.defaultProps = {
   options: [],
   onChange: () => {},
 };
+
 export { SelectBox };

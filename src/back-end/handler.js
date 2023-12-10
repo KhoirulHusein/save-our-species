@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const { MongoClient } = require('mongodb');
 const midtransClient = require('midtrans-client');
 
+
 const uri = 'mongodb+srv://capstonedcd2023:Dicoding2023@capstone-project.frtoemt.mongodb.net/SOS';
 const client = new MongoClient(uri);
 
@@ -140,6 +141,7 @@ const paymentHandler = async (request, h) => {
     return h.response({ message: error.message }).code(500);
   }
 };
+
 
 module.exports = {
   addAnimalHandler,

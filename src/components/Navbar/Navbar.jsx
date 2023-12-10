@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable react/button-has-type */
 import React, { useState, useEffect, useRef } from 'react';
+import { NavLink } from 'react-router-dom';
 import { Text } from '../Elements/Text/Texts';
 
 function Navbar() {
@@ -42,6 +43,7 @@ function Navbar() {
     position: 'fixed',
     width: '100%',
     top: 0,
+    zIndex: 100,
   };
 
   const menuStyle = {
@@ -59,24 +61,24 @@ function Navbar() {
   };
 
   return (
-    <nav ref={navbarRef} style={navbarStyle} className="p-4 backdrop-blur-md">
-      <div className="flex items-center justify-between p-4">
-        {/* Logo dan Nama Brand */}
-        <div className="flex items-center">
-          <img src="path/to/logo.png" alt="Logo" className="h-8 w-8 mr-2" />
+    <nav ref={navbarRef} style={navbarStyle} className="p-4 backdrop-blur-sm">
+      <div className="flex items-center justify-between p-1">
+        {/* Logo dan Nama Brand dengan NavLink */}
+        <NavLink to="/" className="flex items-center">
+          <img src="logo80x80.png" alt="Logo" className="h-8 w-8 mr-2" />
           <Text className="text-light_green-800 text-lg font-semibold">Save Our Species</Text>
-        </div>
+        </NavLink>
 
         {/* Navigasi untuk layar besar */}
-        <div className=" d-flex md:hidden sm:hidden  space-x-4" style={{ textShadow: '0 0 8px rgba(255, 255, 255, 0.8)' }}>
-          <a href="/lindungi" className="text-white hover:text-green-700">LINDUNGI</a>
+        <div className="d-flex md:hidden sm:hidden space-x-4" style={{ textShadow: '0 0 8px rgba(255, 255, 255, 0.8)' }}>
+          <a href="/animals" className="text-white hover:text-green-700">LINDUNGI</a>
           <a href="/lapor" className="text-white hover:text-green-700">LAPOR</a>
-          <a href="/artikel" className="text-white hover:text-green-700">ARTIKEL</a>
-          <a href="/volunteer" className="text-white hover:text-green-700">Volunteer</a>
+          <a href="/Artikel" className="text-white hover:text-green-700">ARTIKEL</a>
+          <a href="/Volunteer" className="text-white hover:text-green-700">Volunteer</a>
         </div>
 
         {/* Hamburger Button untuk Responsif */}
-        <div className=" hidden md:flex sm:flex">
+        <div className="hidden md:flex sm:flex">
           <button onClick={() => setIsOpen(!isOpen)} className="text-white focus:outline-none">
             <svg
               className="h-6 w-6"
@@ -94,10 +96,10 @@ function Navbar() {
       {/* Menu Hamburger saat Responsif */}
       {isOpen && (
         <div style={menuStyle} className="mt-2">
-          <a href="/lindungi" style={linkStyle}>LINDUNGI</a>
+          <a href="/animals" style={linkStyle}>LINDUNGI</a>
           <a href="/lapor" style={linkStyle}>LAPOR</a>
-          <a href="/artikel" style={linkStyle}>ARTIKEL</a>
-          <a href="/volunteer" style={linkStyle}>Volunteer</a>
+          <a href="/Artikel" style={linkStyle}>ARTIKEL</a>
+          <a href="/Volunteer" style={linkStyle}>Volunteer</a>
         </div>
       )}
     </nav>

@@ -9,36 +9,37 @@ const Input = React.forwardRef(
       name,
       placeholder,
       type,
-      children,
       onChange,
       inputId,
-      isLabel,
       labelName,
+      isLabel,
       wrapClassName,
       ...restProps
     },
     ref,
   ) => {
     const handleChange = (e) => {
-      if (onChange) onChange(e);
+      if (onChange) onChange(e?.target?.value);
     };
 
     return (
-      <>
+      <div className={wrapClassName}>
         {isLabel && (
-          <label htmlFor={`${inputId}`} className="block mb-2 text-sm font-medium text-white-900 dark:text-white">{labelName}</label>
+          <label htmlFor={inputId} className="block mb-2 text-sm font-medium text-white-900 dark:text-white">
+            {labelName}
+          </label>
         )}
         <input
           ref={ref}
           id={inputId}
-          className={className}
+          className={`${className} bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
           type={type}
           name={name}
           onChange={handleChange}
           placeholder={placeholder}
           {...restProps}
         />
-      </>
+      </div>
     );
   },
 );
@@ -51,6 +52,8 @@ Input.propTypes = {
   type: PropTypes.string,
   inputId: PropTypes.string,
   labelName: PropTypes.string,
+  isLabel: PropTypes.bool,
+  onChange: PropTypes.func,
 };
 
 Input.defaultProps = {
@@ -61,6 +64,8 @@ Input.defaultProps = {
   name: 'name',
   placeholder: 'input',
   type: 'input',
+  isLabel: false,
+  onChange: null,
 };
 
 export { Input };
