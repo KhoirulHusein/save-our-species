@@ -27,6 +27,32 @@ const DonationSection = () => {
     return emailRegex.test(inputEmail);
   };
 
+  const handleChange = (e) => {
+    if (e.target) {
+      // Handle regular input changes
+      const { name, value } = e.target;
+      switch (name) {
+        case 'email':
+          setEmail(value);
+          break;
+        case 'firstName':
+          setFirstName(value);
+          break;
+        case 'lastName':
+          setLastName(value);
+          break;
+        case 'amount':
+          setAmount(value);
+          break;
+        default:
+          break;
+      }
+    } else if (e && e.value) {
+      // Handle CheckBox changes
+      setAgreementChecked(!agreementChecked);
+    }
+  };
+
   // Generate Order ID
   const generateOrderId = () => {
     const randomString = Math.random().toString(36).substring(7);
@@ -128,7 +154,7 @@ const DonationSection = () => {
           placeholder="Masukkan Email"
           className="w-full bg-blue_gray-100 border border-light_green-800 border-solid h-10 justify-center pl-[17px] sm:pr-5 pr-[35px] py-[11px] rounded-[5px] text-black-900_6d text-sm tracking-[-0.14px]"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => handleChange({ target: { name: 'email', value: e } })}
         />
         {emailError && <p className="text-red-500 text-sm mt-1">{emailError}</p>}
       </div>
@@ -139,7 +165,7 @@ const DonationSection = () => {
           placeholder="First Name"
           className="w-full bg-blue_gray-100 border border-light_green-800 border-solid h-10 justify-center pl-[17px] sm:pr-5 pr-[35px] py-[11px] rounded-[5px] text-black-900_6d text-sm tracking-[-0.14px]"
           value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
+          onChange={(e) => handleChange({ target: { name: 'firstName', value: e } })}
         />
         <Input
           isLabel={false}
@@ -147,7 +173,7 @@ const DonationSection = () => {
           placeholder="Last Name"
           className="w-full bg-blue_gray-100 border border-light_green-800 border-solid h-10 justify-center pl-[17px] sm:pr-5 pr-[35px] py-[11px] rounded-[5px] text-black-900_6d text-sm tracking-[-0.14px]"
           value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
+          onChange={(e) => handleChange({ target: { name: 'lastName', value: e } })}
         />
       </div>
       <Text
@@ -163,7 +189,7 @@ const DonationSection = () => {
         placeholder="Jumlah Donasi"
         className="w-full bg-blue_gray-100 border border-light_green-800 border-solid h-10 justify-center pl-[17px] sm:pr-5 pr-[35px] py-[11px] rounded-[5px] text-black-900_6d text-sm tracking-[-0.14px]"
         value={amount}
-        onChange={(e) => setAmount(e.target.value)}
+        onChange={(e) => handleChange({ target: { name: 'amount', value: e } })}
       />
       <CheckBox
         className="mt-5 mb-5 text-[15px] text-left text-orange-50 xs:text-sm"
