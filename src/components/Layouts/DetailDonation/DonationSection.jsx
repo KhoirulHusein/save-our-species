@@ -59,7 +59,7 @@ const DonationSection = () => {
       },
     };
 
-    const response = await axios.post('http://localhost:9000/api/v1/payment', data, config);
+    const response = await axios.post('http://18.141.159.81/api/v1/payment', data, config);
 
     setToken(response.data.token);
   };
@@ -119,8 +119,7 @@ const DonationSection = () => {
         className=" text-orange-50 text-xl w-fit mt-1 xs:text-sm"
         size="txtUbuntuLight20"
       >
-        Lorem Ipsum is simply dummy text of the printing and
-        typesetting industry.
+        Untuk membatu hewan liar dan dilindung tetap terjaga tidak punah
       </Text>
       <div className="py-4">
         <Input
