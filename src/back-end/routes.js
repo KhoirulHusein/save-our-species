@@ -1,16 +1,20 @@
 const {
   addAnimalHandler,
   getAnimalHandler,
+  getSearchAnimalHandler,
   getAnimalByIdHandler,
   editAnimalByIdHandler,
   deleteAnimalByIdHandler,
-  getSearchAnimalHandler,
   addLembagaHandler,
   getLembagaHandler,
   getLembagaByIdHandler,
   editLembagaByIdHandler,
   deleteLembagaByIdHandler,
   paymentHandler,
+  registerUserHandler,
+  loginUserHandler,
+  isUserLoggedIn,
+  userLogoutHandler
 } = require('./handler');
 
 const routes = [
@@ -77,6 +81,28 @@ const routes = [
     path: '/api/v1/payment',
     handler: paymentHandler,
   },
+
+  // Authentication Endpoint
+  {
+    method: 'POST',
+    path:  '/register',
+    handler: registerUserHandler,
+  },
+  {
+    method: 'POST',
+    path:  '/login',
+    handler: loginUserHandler,
+  },
+  {
+    method: 'GET',
+    path:  '/isLogged',
+    handler: isUserLoggedIn,
+  },
+  {
+    method: 'GET',
+    path: '/logout',
+    handler: userLogoutHandler,
+  }
 ];
 
 module.exports = routes;
