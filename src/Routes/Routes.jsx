@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Loaders from '../components/Fragments/Loader/Loaders';
 
 const Landingpage = React.lazy(() => import('../components/Pages/LandingPage/LandingPages'));
 const ListAnimals = React.lazy(() => import('../components/Pages/ListAnimals/ListAnimals'));
@@ -8,6 +9,7 @@ const DetailDonation = React.lazy(() => import('../components/Pages/DetailDonati
 const FinishPayment = React.lazy(() => import('../components/Pages/DetailDonation/Finish'));
 const UnfinishPayment = React.lazy(() => import('../components/Pages/DetailDonation/Unfinish'));
 const FailsPayment = React.lazy(() => import('../components/Pages/DetailDonation/Fails'));
+const Donation = React.lazy(() => import('../components/Pages/Donation/Donations'));
 const Laporan = React.lazy(() => import('../components/Pages/Laporan/Laporan'));
 const LaporanSucces = React.lazy(() => import('../components/Pages/Laporan/LaporanSucces'));
 const Volunteer = React.lazy(() => import('../components/Pages/Volunteer/Volunteer'));
@@ -17,10 +19,13 @@ const FormVolunteerSucces = React.lazy(() => import('../components/Pages/Volunte
 
 const ProjectRoutes = () => {
   return (
-    <React.Suspense fallback={<>Loading...</>}>
+    <React.Suspense fallback={<Loaders />}>
       <Router>
         <Routes>
           <Route path="/" element={<Landingpage />} />
+          <Route path="/maintance" element={<App />} />
+          <Route path="/donation" element={<Donation />} />
+          <Route path="/donation/lembaga/:_id" element={<DetailDonation />} />
           <Route path="/animals/details/:id" element={<DetailAnimals />} />
           <Route path="/animals" element={<ListAnimals />} />
           <Route path="/detaildonation" element={<DetailDonation />} />
