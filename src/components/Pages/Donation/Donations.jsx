@@ -1,5 +1,6 @@
+/* eslint-disable react/jsx-boolean-value */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable max-len */
+/* eslint-disable no-shadow */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -11,20 +12,23 @@ import { Img } from '../../Elements/Jumroton/Images';
 
 import Header from '../../Fragments/Navbar/Navbar';
 import Card from '../../Elements/Card/Card';
+import Loadings from '../../Fragments/Loader/Loadings';
 
 const DonationPage = () => {
-  // const navigate = useNavigate();
-
   const [data, setData] = useState([]);
   const [visibleData, setVisibleData] = useState(9);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get('http://18.141.159.81/lembaga');
         setData(response.data);
+        setLoading(false);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        setError('An error occurred while fetching data.');
+        setLoading(false);
       }
     };
 
@@ -37,64 +41,85 @@ const DonationPage = () => {
 
   return (
     <div className="bg-gray-900 flex flex-col font-ubuntu items-center justify-start mx-auto w-full">
-      <div className="h-[865px] md:px-5 relative w-full">
-        <div className="h-[865px] m-auto w-full">
+      <div className="h-[865px] relative w-full">
+        <div className="h-[865px] w-full">
           <Img
             className="h-[865px] m-auto object-cover w-full"
             src="images/donationJumroton.jpeg"
             alt="d18f4d2e2b5f"
           />
-          <div className="absolute flex flex-col md:gap-10 gap-[243px] inset-x-[0] items-center justify-start mx-auto top-[5%] w-[89%]">
+          <div className="absolute flex flex-col md:gap-10 gap-[243px] inset-x-[0] items-center justify-start mx-auto top-[35%] w-[89%]">
             <Header className="flex flex-row items-center justify-center w-full" />
-            <div className="backdrop-opacity-[0.5] bg-black-900_6d backdrop-blur-md flex flex-col items-end justify-center p-11 md:px-10 sm:px-5">
+            <div className="backdrop-opacity-[0.5] rounded-[20px] flex flex-col items-center justify-center p-11 xs:p-2 backdrop-blur-[100px]">
               <Text
-                className="mb-[45px] mr-[34px] sm:text-4xl md:text-[38px] text-[40px] text-orange-50 tracking-[-0.40px]"
+                className="text-center mb-[45px] mr-[34px] xs:text-xl xs:mb-4 sm:text-4xl md:text-[38px] text-[40px] text-orange-50 tracking-[-0.40px]"
                 size="txtUbuntuBold40"
               >
-                Lorem Ipsum is sim
+                Satu tindakan, satu perlindungan
               </Text>
               <Text
-                className=" text-orange-50 text-shadow-ts text-xl tracking-[-0.20px]"
+                className="text-center text-orange-50 text-shadow-ts text-xl tracking-[-0.20px] xs:text-sm sm:text-base"
                 size="txtUbuntuBold20"
               >
-                Lorem Ipsum is sim Lorem Ipsum is sim Lorem Ipsum is sim
+                Yuk, bersama kita jaga keberlanjutan hidup hewan
+                liar dan dilindungi. Sumbangkan sekarang untuk mendukung habitat alaminya!
               </Text>
             </div>
           </div>
         </div>
       </div>
       <Text
-        className="mt-[39px] text-4xl sm:text-[32px] md:text-[34px] text-deep_orange-300 tracking-[-0.36px]"
+        className="mt-[39px] text-center text-4xl sm:text-[32px] md:text-[34px] text-deep_orange-300 tracking-[-0.36px]"
         size="txtUbuntuBold36"
       >
-        Lorem Ipsum is sim
+        Lembaga Konservasi
       </Text>
-      <Text className="text-orange-50 text-xl" size="txtUbuntuLight20">
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry.
+      <Text className="text-orange-50 text-xl xs:text-sm sm:text-base md:text-lg text-center" size="txtUbuntuLight20">
+        ayo bergerak membantu hewan yang terancam punah
+        agar anak dan cucu kita dapat melihatnya
       </Text>
-      <div className="lembaga max-w-6xl sm:max-w-sm md:max-w-lg xl:max-w-7xl mx-auto sm:gap-x-4 grid grid-cols-3 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-x-24 gap-y-8 items-stretch sm:text-xs">
-        {data.slice(0, visibleData).map((animal) => (
-          <Link key={animal._id} to={`lembagas/${animal._id}`}>
-            <Card
-              showStatus={false}
-              idData={`lembaga/${animal._id}`}
-              name={animal.namaLembagayayasan}
-              backgroundImage={animal.gambar}
-              description={animal.overview}
-              heightImage="pt-60 md:pt-40 sm:pt-20"
-            />
-          </Link>
-        ))}
+      {error && (
+        <div className="text-center text-red-500 mt-4">
+          Error:
+          {' '}
+          {error}
+        </div>
+      )}
+      <div className="listAnimals grid grid-cols-3 p-5 max-w-6xl xs:grid-col-1 xs:max-w-[250px] sm:max-w-[600px] md:max-w-[750px] xl:max-w-7xl mx-auto sm:gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8 items-stretch sm:text-xs">
+        {loading ? (
+          <Loadings />
+        ) : (
+          data.slice(0, visibleData).map((animal) => (
+            <Link key={animal._id} to={`lembaga/${animal._id}`}>
+              <Card
+                showStatus={false}
+                showButton={true}
+                buttonClass="flex flex-row justify-end z-50 hover:z-50"
+                buttonShape="round"
+                buttonColor="light_green_800"
+                buttonSize="md"
+                buttonVariant="fill"
+                buttonText="Donate"
+                idData={`lembaga/${animal._id}`}
+                name={animal.namaLembagayayasan}
+                backgroundImage={Array.isArray(animal.gambar) ? animal.gambar[0] : animal.gambar}
+                description={animal.overview}
+                heightImage="pt-60 md:pt-40 sm:pt-20"
+                cardMaxWidth=""
+                hiddenOption={'overflow-hidden h-[100px]'}
+              />
+            </Link>
+          ))
+        )}
       </div>
       {data.length > visibleData && (
       <div className="text-center">
         <Button
           onClick={handleShowMore}
-          className="Button bg-light_green-800 text-white-A700 hover:bg-light_green-800"
+          className="cursor-pointer font-medium min-w-[132px] text-base text-center tracking-[-0.16px] xs:text-sm xs:min-w-[100px]"
           shape="round"
           variant="fill"
-          color=""
+          color="light_green_800"
           size="md"
         >
           Show More
