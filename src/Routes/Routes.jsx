@@ -16,6 +16,8 @@ const Volunteer = React.lazy(() => import('../components/Pages/Volunteer/Volunte
 const DetailVolunteerPage = React.lazy(() => import('../components/Pages/Volunteer/DetailVolunteer'));
 const FormVolunteer = React.lazy(() => import('../components/Pages/Volunteer/FormVolunteer'));
 const FormVolunteerSucces = React.lazy(() => import('../components/Pages/Volunteer/FormVolunteerSucces'));
+const ListArticles = React.lazy(() => import('../components/Pages/ListArticles/ListArticles'));
+const DetailArticles = React.lazy(() => import('../components/Pages/DetailArticles/DetailArticles'));
 
 const ProjectRoutes = () => {
   return (
@@ -38,6 +40,8 @@ const ProjectRoutes = () => {
           <Route path="//DetailVolunteerPage/:id" element={<DetailVolunteerPage />} />
           <Route path="/formvolunteer" element={<FormVolunteer />} />
           <Route path="/formvolunteersucces" element={<FormVolunteerSucces />} />
+          <Route path="/articles" element={<ListArticles />} />
+          <Route path="/articles/details/:id" element={<DetailArticles />} />
         </Routes>
       </Router>
     </React.Suspense>
