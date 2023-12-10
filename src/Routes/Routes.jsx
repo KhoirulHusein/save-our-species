@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Loaders from '../components/Fragments/Loader/Loaders';
 
 const Landingpage = React.lazy(() => import('../components/Pages/LandingPage/LandingPages'));
 // const DetailVolunteer = React.lazy(() =>
@@ -13,13 +14,13 @@ const Donation = React.lazy(() => import('../components/Pages/Donation/Donations
 
 const ProjectRoutes = () => {
   return (
-    <React.Suspense fallback={<>Loading...</>}>
+    <React.Suspense fallback={<Loaders />}>
       <Router>
         <Routes>
           <Route path="/" element={<Landingpage />} />
           <Route path="/maintance" element={<App />} />
           <Route path="/donation" element={<Donation />} />
-          <Route path="/donation/lembagas/:_id" element={<DetailDonation />} />
+          <Route path="/donation/lembaga/:_id" element={<DetailDonation />} />
           <Route path="/finishspayment" element={<FinishPayment />} />
           <Route path="/unfinishpayment" element={<UnfinishPayment />} />
           <Route path="/failspayment" element={<FailsPayment />} />
