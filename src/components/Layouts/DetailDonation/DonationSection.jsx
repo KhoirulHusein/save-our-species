@@ -130,6 +130,7 @@ const DonationSection = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
+
         {emailError && <p className="text-red-500 text-sm mt-1">{emailError}</p>}
       </div>
       <div className="flex py-2 gap-4">
