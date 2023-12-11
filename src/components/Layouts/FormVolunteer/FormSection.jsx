@@ -44,6 +44,15 @@ function FormSection() {
     umurVolunteer: '',
   });
 
+  const [validationErrors, setValidationErrors] = useState({
+    namaVolunteer: '',
+    emailVolunteer: '',
+    notelpVolunteer: '',
+    statusVolunteer: '',
+    genderVolunteer: '',
+    umurVolunteer: '',
+  });
+
   const handleChange = (e) => {
     if (e.target) {
       // Handle regular input changes
@@ -62,6 +71,21 @@ function FormSection() {
   };
 
   const handleSubmit = async () => {
+    const errors = {};
+    Object.keys(formData).forEach((key) => {
+      if (!formData[key]) {
+        errors[key] = 'Field ini tidak boleh kosong';
+      } else {
+        errors[key] = ''; 
+      }
+    });
+
+    setValidationErrors(errors);
+
+    if (Object.values(errors).some((error) => error)) {
+      return;
+    }
+
     console.log('Mengirimkan Data Formulir:', formData);
     try {
       const response = await fetch('http://45.76.149.156/volunteer', {
@@ -75,7 +99,7 @@ function FormSection() {
       if (response.ok) {
         navigate('/formvolunteersucces');
       } else {
-        const errorData = await response.json(); // Assuming the server returns a JSON error message
+        const errorData = await response.json(); 
         console.error('Error:', errorData);
       }
     } catch (error) {
@@ -85,23 +109,29 @@ function FormSection() {
   return (
     <>
       <div className="bg-gray-900 flex flex-col font-ubuntu items-center justify-start mx-auto w-[50%]">
-        <Text
-          className="md:ml-[0] mt-[11vh] w-full text-white-A700 text-xl"
-          size="txtUbuntuBold20WhiteA700"
-        >
-          Nama
-        </Text>
-        <Input
-          labelName=""
-          name="namaVolunteer"
-          placeholder="Isi disini...."
-          className="md:ml-[0] font-bold leading-[normal] p-2 placeholder:text-black-900_6d text-[15px] text-left w-full"
-          wrapClassName="border border-blue_gray-900_01 border-solid flex mt-[19px] mx-auto w-full"
-          shape="round"
-          size="sm"
-          value={formData.namaVolunteer}
-          onChange={(e) => handleChange({ target: { name: 'namaVolunteer', value: e } })}
-        />
+        <div className="w-full">
+          <Text
+            className="md:ml-[0] mt-[11vh] w-full text-white-A700 text-xl"
+            size="txtUbuntuBold20WhiteA700"
+          >
+            Nama
+          </Text>
+          <Input
+            labelName=""
+            name="namaVolunteer"
+            placeholder="Isi disini...."
+            className="md:ml-[0] font-bold leading-[normal] p-2 placeholder:text-black-900_6d text-[15px] text-left w-full"
+            wrapClassName="border border-blue_gray-900_01 border-solid flex mt-[19px] mx-auto w-full"
+            shape="round"
+            size="sm"
+            value={formData.namaVolunteer}
+            onChange={(e) => handleChange({ target: { name: 'namaVolunteer', value: e } })}
+          />
+          {validationErrors.namaVolunteer && (
+          <small className="text-red-500">{validationErrors.namaVolunteer}</small>
+          )}
+        </div>
+        <div className="w-full">
         <Text
           className="md:ml-[0] mt-[35px] text-white-A700 text-xl w-full"
           size="txtUbuntuBold20WhiteA700"
@@ -119,6 +149,11 @@ function FormSection() {
           value={formData.emailVolunteer}
           onChange={(e) => handleChange({ target: { name: 'emailVolunteer', value: e } })}
         />
+        {validationErrors.emailVolunteer && (
+          <small className="text-red-500">{validationErrors.emailVolunteer}</small>
+          )}
+        </div>
+        <div className="w-full">
         <Text
           className="md:ml-[0] mt-[35px] text-white-A700 text-xl w-full"
           size="txtUbuntuBold20WhiteA700"
@@ -136,6 +171,10 @@ function FormSection() {
           value={formData.notelpVolunteer}
           onChange={(e) => handleChange({ target: { name: 'notelpVolunteer', value: e } })}
         />
+        {validationErrors.notelpVolunteer && (
+          <small className="text-red-500">{validationErrors.notelpVolunteer}</small>
+          )}
+        </div>
       </div>
       <div className="md:mx-auto md:ml-0 md:items-start md:w-full mt-[35px] flex flex-row md:flex-col items-center justify-center w-full">
         <div className="md:ml-[25%] flex items-center">
@@ -158,6 +197,9 @@ function FormSection() {
             value={formData.statusVolunteer}
             onChange={(selectedOption) => handleChange({ name: 'statusVolunteer', value: selectedOption })}
           />
+            {validationErrors.statusVolunteer && (
+            <small className="text-red-500">{validationErrors.statusVolunteer}</small>
+            )}
         </div>
         <div className="md:ml-[25%] flex items-center ml-7 md:mt-[35px]">
           <Text className="text-white-A700 text-xl" size="txtUbuntuBold20WhiteA700">
@@ -179,6 +221,9 @@ function FormSection() {
             value={formData.genderVolunteer}
             onChange={(selectedOption) => handleChange({ name: 'genderVolunteer', value: selectedOption })}
           />
+          {validationErrors.genderVolunteer && (
+            <small className="text-red-500">{validationErrors.genderVolunteer}</small>
+          )}
         </div>
         <div className="md:ml-[25%] flex items-center ml-10 md:mt-[35px]">
           <Text className="text-white-A700 text-xl" size="txtUbuntuBold20WhiteA700">
@@ -200,6 +245,9 @@ function FormSection() {
             value={formData.umurVolunteer}
             onChange={(selectedOption) => handleChange({ name: 'umurVolunteer', value: selectedOption })}
           />
+          {validationErrors.umurVolunteer && (
+            <small className="text-red-500">{validationErrors.umurVolunteer}</small>
+          )}
         </div>
       </div>
       <div className="bg-gray-900 font-ubuntu mx-auto grid grid-cols-1 md:grid-cols-1 gap-8 p-0">

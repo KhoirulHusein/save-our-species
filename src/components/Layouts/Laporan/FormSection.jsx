@@ -24,6 +24,14 @@ function FormSection() {
     deskripsiPelapor: '',
   });
 
+  const [validationErrors, setValidationErrors] = useState({
+    namaPelapor: '',
+    prioritasPelapor: '',
+    tkpPelapor: '',
+    ciriPelapor: '',
+    deskripsiPelapor: '',
+  });
+
   const handleChange = (e) => {
     if (e.target) {
       // Handle regular input changes
@@ -42,6 +50,21 @@ function FormSection() {
   };
 
   const handleSubmit = async () => {
+    const errors = {};
+    Object.keys(formData).forEach((key) => {
+      if (!formData[key]) {
+        errors[key] = 'Field ini tidak boleh kosong';
+      } else {
+        errors[key] = ''; 
+      }
+    });
+
+    setValidationErrors(errors);
+
+    if (Object.values(errors).some((error) => error)) {
+      return;
+    }
+
     console.log('Mengirimkan Data Formulir:', formData);
     try {
       const response = await fetch('http://45.76.149.156/report', {
@@ -65,6 +88,7 @@ function FormSection() {
 
   return (
     <div className="bg-gray-900 flex flex-col font-ubuntu items-center justify-start mx-auto w-[50%]">
+      <div className="w-full">
       <Text
         className="md:ml-[0] mt-10 w-full text-white-A700 text-xl md:text-[15px]"
         size="txtUbuntuBold20WhiteA700"
@@ -82,6 +106,11 @@ function FormSection() {
         value={formData.namaPelapor}
         onChange={(e) => handleChange({ target: { name: 'namaPelapor', value: e } })}
       />
+      {validationErrors.namaPelapor && (
+        <small className="text-red-500">{validationErrors.namaPelapor}</small>
+      )}
+      </div>
+      <div className="w-full">
       <Text
         className="md:ml-[0] mt-10 md:mt-[10px] w-full text-white-A700 text-xl md:text-[15px]"
         size="txtUbuntuBold20WhiteA700"
@@ -104,6 +133,11 @@ function FormSection() {
         value={formData.prioritas}
         onChange={(selectedOption) => handleChange({ name: 'prioritasPelapor', value: selectedOption })}
       />
+      {validationErrors.prioritasPelapor && (
+        <small className="text-red-500">{validationErrors.prioritasPelapor}</small>
+      )}
+      </div>
+      <div className="w-full">
       <Text
         className="md:ml-[0] mt-10 md:mt-[10px] w-full text-white-A700 text-xl md:text-[15px]"
         size="txtUbuntuBold20WhiteA700"
@@ -121,6 +155,11 @@ function FormSection() {
         value={formData.tkpPelapor}
         onChange={(e) => handleChange({ target: { name: 'tkpPelapor', value: e } })}
       />
+      {validationErrors.tkpPelapor && (
+        <small className="text-red-500">{validationErrors.tkpPelapor}</small>
+      )}
+      </div>
+      <div className="w-full">
       <Text
         className="md:ml-[0] mt-10 md:mt-[10px] w-full text-white-A700 text-xl md:text-[15px]"
         size="txtUbuntuBold20WhiteA700"
@@ -138,6 +177,11 @@ function FormSection() {
         value={formData.ciriPelapor}
         onChange={(e) => handleChange({ target: { name: 'ciriPelapor', value: e } })}
       />
+      {validationErrors.ciriPelapor && (
+        <small className="text-red-500">{validationErrors.ciriPelapor}</small>
+      )}
+      </div>
+      <div className="w-full">
       <Text
         className="md:ml-[0] mt-10 md:mt-[10px] w-full text-white-A700 text-xl md:text-[15px]"
         size="txtUbuntuBold20WhiteA700"
@@ -152,6 +196,10 @@ function FormSection() {
         value={formData.deskripsiPelapor}
         onChange={handleChange}
       />
+      {validationErrors.deskripsiPelapor && (
+        <small className="text-red-500">{validationErrors.deskripsiPelapor}</small>
+      )}
+      </div>
       <Button
         className="common-pointer cursor-pointer mx-auto mb-20 mt-20 text-center min-w-[198px] md:min-w-[198px] text-lg tracking-[-0.18px] transition-transform duration-300 transform hover:scale-105 sm:text-sm rounded-full bg-light_green_800"
         onClick={handleSubmit}
