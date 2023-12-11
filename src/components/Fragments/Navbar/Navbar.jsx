@@ -157,6 +157,8 @@ function Navbar() {
       {/* Menu Hamburger saat Responsif */}
       {isOpen && (
         <div style={menuStyle} className="mt-2">
+          <a href="/login" style={linkStyle}>LOGIN</a>
+          <a href="/register" style={linkStyle}>REGISTER</a>
           <a href="/animals" style={linkStyle}>LINDUNGI</a>
           <a href="/lapor" style={linkStyle}>LAPOR</a>
           <a href="/Artikel" style={linkStyle}>ARTIKEL</a>
