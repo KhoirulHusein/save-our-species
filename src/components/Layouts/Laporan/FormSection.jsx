@@ -44,7 +44,7 @@ function FormSection() {
   const handleSubmit = async () => {
     console.log('Mengirimkan Data Formulir:', formData);
     try {
-      const response = await fetch('http://45.76.149.156/report', {
+      const response = await fetch('http://18.141.159.81/report', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

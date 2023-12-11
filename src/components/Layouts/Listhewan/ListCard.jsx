@@ -22,7 +22,7 @@ const ListCards = () => {
   const [visibleData, setVisibleData] = useState(9);
   const [selectedButton, setSelectedButton] = useState();
   const [selectedValue, setSelectedValue] = useState('');
-  const apiUrl = 'http://45.76.149.156/animals';
+  const apiUrl = 'http://18.141.159.81/animals';
 
   const getAllData = () => {
     axios.get(apiUrl)
@@ -38,7 +38,7 @@ const ListCards = () => {
   // Fetch API
   useEffect(() => {
     if (searchTerm) {
-      axios.get(`http://45.76.149.156/search?searchTerm=${searchTerm}`)
+      axios.get(`http://18.141.159.81/search?searchTerm=${searchTerm}`)
         .then((response) => {
           setData(response.data);
         })
@@ -47,7 +47,7 @@ const ListCards = () => {
         });
     }
     if (filterTerm) {
-      axios.get(`http://45.76.149.156/search?statusTerm=${filterTerm}`)
+      axios.get(`http://18.141.159.81/search?statusTerm=${filterTerm}`)
         .then((response) => {
           setData(response.data);
         })
@@ -56,7 +56,7 @@ const ListCards = () => {
         });
     }
     if (filterTerm && searchTerm) {
-      axios.get(`http://45.76.149.156/search?searchTerm=${searchTerm}&statusTerm=${filterTerm}`)
+      axios.get(`http://18.141.159.81/search?searchTerm=${searchTerm}&statusTerm=${filterTerm}`)
         .then((response) => {
           setData(response.data);
         })
@@ -84,8 +84,8 @@ const ListCards = () => {
   };
 
   // Get Search Value
-  const handleSearch = (e) => {
-    setSearchTerm(e.target.value);
+  const handleSearch = (value) => {
+    setSearchTerm(value);
     setSelectedButton(null);
   };
 
@@ -96,7 +96,7 @@ const ListCards = () => {
 
   return (
     <>
-      <div className="bg-cover bg-center h-80" style={{ backgroundImage: "url('./images/animals-banner.png')" }}>
+      <div className="bg-cover bg-center h-96 w-full" style={{ backgroundImage: "url('./images/animals-banner.png')" }}>
         <div className="max-w-sm sm:max-w-xs mx-auto pt-36 flex flex-col gap-8 p-4">
           <h1 className="text-center font-bold text-3xl md:text-2xl text-white-A700">Explore Protected Animal</h1>
           <Input type="search" onChange={handleSearch} isLabel={false} value={searchTerm} className="rounded-full border-gray-700 p-3 sm:px-4 sm:py-2 focus:outline-none focus:ring-2 focus:ring-light_green-800 focus:border-transparent " placeholder="Search here..." />
@@ -161,7 +161,7 @@ const ListCards = () => {
               )}
             </div>
           </div>
-          <div className="listAnimals max-w-6xl sm:max-w-sm md:max-w-lg xl:max-w-7xl mx-auto sm:gap-x-4 grid grid-cols-3 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-x-24 gap-y-8 items-stretch sm:text-xs">
+          <div className="listAnimals max-w-6xl sm:max-w-sm md:max-w-lg xl:max-w-7xl mx-auto sm:gap-x-4 grid grid-cols-3 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-x-24 gap-y-8 items-stretch sm:text-xs">
             {data.slice(0, visibleData).map((animal, index) => (
               <Card
               // eslint-disable-next-line react/no-array-index-key

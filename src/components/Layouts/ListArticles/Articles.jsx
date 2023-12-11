@@ -2,20 +2,20 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Card from '../../Elements/Card/Card';
 import { Button } from '../../Elements/Button/Buttons';
-import { Input } from '../../Elements/Input/Input';
+import { Input } from '../../Elements/Form/Input';
 
 const ListArticles = () => {
   const [data, setData] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [searchTriggered, setSearchTriggered] = useState(false);
   const [visibleData, setVisibleData] = useState(9);
-  const apiUrl = 'http://localhost:9000/article';
+  const apiUrl = 'http://18.141.159.81/article';
   const renderData = data;
 
   // Fetch API
   useEffect(() => {
     if (searchTriggered) {
-      axios.get(`http://localhost:9000/searcharticle?searchTerm=${searchTerm}`)
+      axios.get(`http://18.141.159.81/searcharticle?searchTerm=${searchTerm}`)
         .then((response) => {
           setData(response.data);
         })
@@ -79,7 +79,7 @@ const ListArticles = () => {
               .slice(0, visibleData)
               .map((article) => (
                 // eslint-disable-next-line no-underscore-dangle
-                <a href={`http://localhost:3000/articles/details/${article._id}`}>
+                <a href={`http://localhost:3000/artikel/details/${article._id}`}>
                   <div className="container flex gap-6 sm:gap-0 xs:gap-4 max-w-6xl sm:max-w-sm md:max-w-lg xl:max-w-7xl max-h-80 md:max-h-60 sm:max-h-24 mx-auto">
                     <div className="image-container max-w-md">
                       <img className="rounded-md max-w-full max-h-full" src={article.gambarArticle} alt="" />
@@ -97,7 +97,7 @@ const ListArticles = () => {
               ))}
 
           </div>
-          <div className="listAnimals sm:gap-x-4 grid grid-cols-3 xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-x-24 gap-y-8 items-stretch sm:text-xs">
+          <div className="listAnimals grid grid-cols-3 sm:max-w-sm md:max-w-xl mx-auto sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-x-4 gap-y-8 items-stretch sm:text-xs">
             {renderData.slice(0, visibleData).map((article, index) => (
               <Card
               // eslint-disable-next-line react/no-array-index-key
@@ -106,7 +106,7 @@ const ListArticles = () => {
                 backgroundImage={article.gambarArticle}
                 description={article.isiArticle}
               // eslint-disable-next-line no-underscore-dangle
-                idData={`articles/details/${article._id}`}
+                idData={`artikel/details/${article._id}`}
                 heightImage="pt-40 sm:pt-20"
               />
             ))}

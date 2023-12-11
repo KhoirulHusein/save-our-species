@@ -45,7 +45,7 @@ const DetailHewan = () => {
 
   const fetchAnimalData = async () => {
     try {
-      const response = await axios.get(`http://45.76.149.156/animals/${id}`);
+      const response = await axios.get(`http://18.141.159.81/animals/${id}`);
       setAnimalData(response.data);
     } catch (error) {
       // eslint-disable-next-line no-console

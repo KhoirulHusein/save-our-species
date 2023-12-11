@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -8,7 +9,7 @@ const DetailArticles = () => {
 
   const fetchAnimalData = async () => {
     try {
-      const response = await axios.get(`http://localhost:9000/article/${id}`);
+      const response = await axios.get(`http://18.141.159.81/article/${id}`);
       setAnimalData(response.data);
     } catch (error) {
       console.error('Error fetching animal data:', error);

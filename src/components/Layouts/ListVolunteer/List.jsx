@@ -9,7 +9,7 @@ const ListVolunteer = () => {
   const [data, setData] = useState([]);
   const listVolunteerRef = useRef(null);
 
-  const apiUrl = 'http://45.76.149.156/lembaga';
+  const apiUrl = 'http://18.141.159.81/lembaga';
 
   const getAllData = () => {
     axios.get(apiUrl)

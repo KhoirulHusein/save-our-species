@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React from 'react';
 import { Text } from '../../Elements/Text/Texts';
 import { Img } from '../../Elements/Jumroton/Images';
@@ -15,9 +16,7 @@ function ExploreAnimals() {
         className="mt-[17px] text-center text-orange-50 text-xl w-[78%] sm:w-ful sm:p-1 xs:text-base sm:text-base"
         size="txtUbuntuRegular20"
       >
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry&#39;s standard dummy
-        text ever since the 1500s
+        Mulailah perjalanan menawan melalui beragam alam satwa liar dengan bagian Jelajahi Satwa kami. Temukan keindahan luar biasa dan kisah tak terhitung dari dunia hewan.
       </Text>
       <div className="flex md:flex-col flex-row md:gap-5 items-center justify-start max-w-[1135px] mt-[53px] mx-auto md:px-10 w-full lg:px-5">
         <div className="h-[621px] relative w-[32%] md:w-full">
