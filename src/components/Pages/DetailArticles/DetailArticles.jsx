@@ -1,10 +1,18 @@
 import React from 'react';
-import DetailArticles from '../../layouts/DetailArticle/DetailArticleMain';
+import DetailArticles from '../../Layouts/DetailArticle/DetailArticleMain';
+import Footer from '../../Fragments/Footer/Footer';
+import Navbar from '../../Fragments/Navbar/Navbar';
 
-function DetailAnimals() {
+function DetailArticlePage() {
   return (
-    <DetailArticles />
+    <>
+      <div className="bg-gray-900 text-white-A700 font-ubuntu justify-start mx-auto w-full">
+        <Navbar />
+      </div>
+      <DetailArticles />
+      <Footer />
+    </>
   );
 }
 
-export default DetailAnimals;
+export default DetailArticlePage;
