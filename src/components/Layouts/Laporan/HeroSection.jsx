@@ -19,7 +19,7 @@ function HeroLanding() {
             Form Pengaduan
           </Text>
           <Text
-            className="mb-[17px] sm:text-[20px] md:text-[38px] text-[20px] text-orange-50 tracking-[-0.20px] text-shadow-sm text-black-50 sm:text-center"
+            className="mb-[17px] sm:text-[20px] md:text-[20px] text-[20px] text-orange-50 tracking-[-0.20px] text-shadow-sm text-black-50 sm:text-center"
             size="txtUbuntuBold20"
           >
             Isi form dengan benar dan bukan laporan fiktif
