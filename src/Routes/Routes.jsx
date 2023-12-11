@@ -38,11 +38,11 @@ const ProjectRoutes = () => {
           <Route path="/lapor" element={<Laporan />} />
           <Route path="/laporansucces" element={<LaporanSucces />} />
           <Route path="/Volunteer" element={<Volunteer />} />
-          <Route path="//DetailVolunteerPage/:id" element={<DetailVolunteerPage />} />
+          <Route path="/DetailVolunteerPage/:id" element={<DetailVolunteerPage />} />
           <Route path="/formvolunteer" element={<FormVolunteer />} />
           <Route path="/formvolunteersucces" element={<FormVolunteerSucces />} />
-          <Route path="/articles" element={<ListArticles />} />
-          <Route path="/articles/details/:id" element={<DetailArticles />} />
+          <Route path="/artikel" element={<ListArticles />} />
+          <Route path="/artikel/details/:id" element={<DetailArticles />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
         </Routes>
