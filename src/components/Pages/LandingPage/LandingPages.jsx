@@ -28,8 +28,8 @@ function LandingPages() {
             <Teams />
           </div>
         </div>
+        <Footer />
       </div>
-      <Footer />
     </>
   );
 }

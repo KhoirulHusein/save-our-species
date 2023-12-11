@@ -40,7 +40,7 @@ const DonationPage = () => {
   };
 
   return (
-    <div className="bg-gray-900 flex flex-col font-ubuntu items-center justify-start mx-auto w-full">
+    <div className="bg-gray-900 text-white-A700 flex flex-col font-ubuntu items-center justify-start mx-auto w-full">
       <div className="h-[865px] relative w-full">
         <div className="h-[865px] w-full">
           <Img

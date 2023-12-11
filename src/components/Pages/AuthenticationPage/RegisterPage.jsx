@@ -12,7 +12,7 @@ import RegisterFormSection from '../../Layouts/AuthenticationPage/RegisterFormSe
 const RegisterPage = () => {
   const navigate = useNavigate();
   return (
-    <div className="bg-slate-950 min-h-screen font-ubuntu">
+    <div className="bg-slate-950 text-white-A700 min-h-screen font-ubuntu">
       <Header />
       <div className="py-[10%] px-[10%] lg:px-[5%] lg:py-[15%] md:py-[25%] sm:py-[30%] xs:py-[40%]">
         <div className="flex px-2 py-1">
