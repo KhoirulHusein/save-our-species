@@ -16,6 +16,8 @@ const Volunteer = React.lazy(() => import('../components/Pages/Volunteer/Volunte
 const DetailVolunteerPage = React.lazy(() => import('../components/Pages/Volunteer/DetailVolunteer'));
 const FormVolunteer = React.lazy(() => import('../components/Pages/Volunteer/FormVolunteer'));
 const FormVolunteerSucces = React.lazy(() => import('../components/Pages/Volunteer/FormVolunteerSucces'));
+const LoginPage = React.lazy(() => import('../components/Pages/AuthenticationPage/LoginPage'));
+const RegisterPage = React.lazy(() => import('../components/Pages/AuthenticationPage/RegisterPage'));
 
 const ProjectRoutes = () => {
   return (
@@ -23,7 +25,6 @@ const ProjectRoutes = () => {
       <Router>
         <Routes>
           <Route path="/" element={<Landingpage />} />
-          <Route path="/maintance" element={<App />} />
           <Route path="/donation" element={<Donation />} />
           <Route path="/donation/lembaga/:_id" element={<DetailDonation />} />
           <Route path="/animals/details/:id" element={<DetailAnimals />} />
@@ -38,6 +39,8 @@ const ProjectRoutes = () => {
           <Route path="//DetailVolunteerPage/:id" element={<DetailVolunteerPage />} />
           <Route path="/formvolunteer" element={<FormVolunteer />} />
           <Route path="/formvolunteersucces" element={<FormVolunteerSucces />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
         </Routes>
       </Router>
     </React.Suspense>

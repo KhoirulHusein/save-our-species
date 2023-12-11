@@ -20,6 +20,7 @@ const sizes = {
   md: 'p-[15px]',
   lg: 'p-[18px]',
   xl: 'p-[33px] sm:px-5',
+  customLogin: 'py-[12px] px-[60px] sm:px-8',
 };
 
 const Button = ({
@@ -51,7 +52,7 @@ Button.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
   shape: PropTypes.oneOf(['circle', 'round']),
-  size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
+  size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl', 'customLogin']),
   variant: PropTypes.oneOf(['fill']),
   color: PropTypes.oneOf([
     'white_A700',

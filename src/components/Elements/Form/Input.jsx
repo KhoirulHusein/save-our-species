@@ -14,6 +14,7 @@ const Input = React.forwardRef(
       labelName,
       isLabel,
       wrapClassName,
+      textLabelColor,
       ...restProps
     },
     ref,
@@ -22,10 +23,12 @@ const Input = React.forwardRef(
       if (onChange) onChange(e?.target?.value);
     };
 
+    const defaultTextColor = textLabelColor || 'text-white-900';
+
     return (
       <div className={wrapClassName}>
         {isLabel && (
-          <label htmlFor={inputId} className="block mb-2 text-sm font-medium text-white-900 dark:text-white">
+          <label htmlFor={inputId} className={`block mb-2 text-sm font-medium ${defaultTextColor} dark:text-white`}>
             {labelName}
           </label>
         )}
@@ -54,6 +57,7 @@ Input.propTypes = {
   labelName: PropTypes.string,
   isLabel: PropTypes.bool,
   onChange: PropTypes.func,
+  textLabelColor: PropTypes.string,
 };
 
 Input.defaultProps = {
@@ -66,6 +70,7 @@ Input.defaultProps = {
   type: 'input',
   isLabel: false,
   onChange: null,
+  textLabelColor: 'text-white-900',
 };
 
 export { Input };
