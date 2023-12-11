@@ -99,7 +99,7 @@ function Navbar() {
       <div className="flex items-center justify-between p-1">
         {/* Logo dan Nama Brand dengan NavLink */}
         <NavLink to="/" className="flex items-center">
-          <img src="logo80x80.png" alt="Logo" className="h-8 w-8 mr-2" />
+          <img src="https://i.ibb.co/hgm2QBb/logo80x80.png" alt="Logo" className="h-8 w-8 mr-2" />
           <Text className="text-light_green-800 text-lg font-semibold">Save Our Species</Text>
         </NavLink>
 
