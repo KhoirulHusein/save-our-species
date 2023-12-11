@@ -1,13 +1,47 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable react/button-has-type */
 import React, { useState, useEffect, useRef } from 'react';
+import axios from 'axios';
 import { NavLink } from 'react-router-dom';
 import { Text } from '../../Elements/Text/Texts';
+
+const getTokenUser = async () => {
+  try {
+    const url = 'http://localhost:9000/isLogged';
+    await axios.get(url, { withCredentials: true });
+    return true;
+  } catch (err) {
+    return false;
+  }
+};
 
 function Navbar() {
   const [scrollBackground, setScrollBackground] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  // eslint-disable-next-line no-unused-vars
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navbarRef = useRef(null);
+  const handleLogout = async () => {
+    try {
+      const url = 'http://localhost:9000/logout';
+      await axios.get(url, { withCredentials: true });
+      window.location.reload();
+    } catch (error) {
+      window.location.reload();
+    }
+  };
+  const isUserLogged = async () => {
+    const result = await getTokenUser();
+    if (result) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  };
+
+  useEffect(() => {
+    isUserLogged();
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -76,7 +110,34 @@ function Navbar() {
           <a href="/Artikel" className="text-white hover:text-green-700">ARTIKEL</a>
           <a href="/Volunteer" className="text-white hover:text-green-700">Volunteer</a>
         </div>
-
+        <div
+          className="d-flex md:hidden sm:hidden space-x-4"
+          style={{ textShadow: '0 0 8px rgba(255, 255, 255, 0.8)' }}
+        >
+          {isLoggedIn ? (
+            <NavLink
+              onClick={handleLogout}
+              className="text-white hover:text-green-700 mr-4"
+            >
+              Logout
+            </NavLink>
+          ) : (
+            <>
+              <NavLink
+                to="/login"
+                className="text-white hover:text-green-700 mr-4"
+              >
+                Login
+              </NavLink>
+              <NavLink
+                to="/register"
+                className="text-white hover:text-green-700 mr-4"
+              >
+                Register
+              </NavLink>
+            </>
+          )}
+        </div>
         {/* Hamburger Button untuk Responsif */}
         <div className="hidden md:flex sm:flex">
           <button onClick={() => setIsOpen(!isOpen)} className="text-white focus:outline-none">
