@@ -1,15 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Img } from '../../Elements/Jumroton/Images';
 import { Text } from '../../Elements/Text/Texts';
 import { Button } from '../../Elements/Button/Buttons';
+import { initializeAOS } from '../../Fragments/AosInit/AosInits';
 
 function HeroLanding() {
+  useEffect(() => {
+    initializeAOS();
+  }, []);
+
+  const navigate = useNavigate();
   return (
     <>
       <Img
         className="absolute top-0 left-0 w-full h-screen object-cover object-center"
         src="images/heroLandingPage.jpg"
         alt="herolandingpage"
+        data-aos="fade-up"
+        data-aos-duration="3000"
       />
       <div className="absolute flex flex-col md:gap-10 gap-[291px] inset-x-[0] items-start justify-start mx-auto xl:top-[40%] lg:top-[28%] content-center w-[89%]">
         <div className="flex flex-col gap-[23px] items-start justify-start w-[38%] md:w-full">
@@ -33,6 +42,7 @@ function HeroLanding() {
             color="light_green_800"
             size="sm"
             variant="fill"
+            onClick={() => navigate('/animals')}
           >
             Learn More
           </Button>
