@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from '../../Fragments/Navbar/Navbar';
 import HeroSection from '../../Layouts/LandingPage/HeroSections';
 import ExploreAnimal from '../../Layouts/LandingPage/ExploreAnimals';
-import Jumroton from '../../Layouts/Jumroton';
+import Jumroton from '../../Layouts/LandingPage/Jumroton';
 import Footer from '../../Fragments/Footer/Footer';
 import OurJobs from '../../Layouts/LandingPage/OurJobs';
 import Volunteer from '../../Layouts/LandingPage/Volunteer';
