@@ -88,7 +88,7 @@ function FormSection() {
 
     console.log('Mengirimkan Data Formulir:', formData);
     try {
-      const response = await fetch('http://45.76.149.156/volunteer', {
+      const response = await fetch('http://18.141.159.81/volunteer', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
