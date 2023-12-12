@@ -71,7 +71,7 @@ const DetailVolunteerPage = () => {
           <Button
             onClick={() => navigate('/Volunteer')}
             className="h-6 mt-[17px] w-6 cursor-pointer"
-            alt="Button Kembali Ke Halaman Volunteer"
+            alt="Kembali Ke Halaman Volunteer"
           >
             <FontAwesomeIcon icon={faArrowLeft} size="lg" />
           </Button>
@@ -84,7 +84,7 @@ const DetailVolunteerPage = () => {
           <div className="flex md:flex-col flex-row md:gap-2 items-start justify-between mt-9 w-full ">
             <div className="flex md:flex-1 flex-col gap-1.5 items-start justify-start w-[85%] md:w-full ">
               <Text
-                className="text-white-A700 text-3xl font-bold xs:text-sm sm:text-md md:text-2xl"
+                className="text-white-A700 font-bold text-3xl xs:text-sm sm:text-md md:text-2xl"
                 size="txtUbuntuBold40WhiteA700"
               >
                 {lembaga.namaLembagayayasan}
