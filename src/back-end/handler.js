@@ -1,15 +1,14 @@
-const mongoose = require("mongoose");
-const { MongoClient } = require("mongodb");
-const midtransClient = require("midtrans-client");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
+const mongoose = require('mongoose');
+const { MongoClient } = require('mongodb');
+const midtransClient = require('midtrans-client');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 // const uri = 'mongodb+srv://capstonedcd2023:Dicoding2023@capstone-project.frtoemt.mongodb.net/SOS';
-const uri =
-  "mongodb://capstonedcd2023:Dicoding2023@ac-pamozt8-shard-00-00.frtoemt.mongodb.net:27017,ac-pamozt8-shard-00-01.frtoemt.mongodb.net:27017,ac-pamozt8-shard-00-02.frtoemt.mongodb.net:27017/SOS?ssl=true&replicaSet=atlas-yd6omn-shard-0&authSource=admin&retryWrites=true&w=majority";
+const uri = 'mongodb://capstonedcd2023:Dicoding2023@ac-pamozt8-shard-00-00.frtoemt.mongodb.net:27017,ac-pamozt8-shard-00-01.frtoemt.mongodb.net:27017,ac-pamozt8-shard-00-02.frtoemt.mongodb.net:27017/SOS?ssl=true&replicaSet=atlas-yd6omn-shard-0&authSource=admin&retryWrites=true&w=majority';
 const client = new MongoClient(uri);
 
-const animalModel = mongoose.model("animals", {
+const animalModel = mongoose.model('animals', {
   namaHewan: String,
   daerah: String,
   status: String,
@@ -22,7 +21,7 @@ const animalModel = mongoose.model("animals", {
   gambarPotrait: String,
 });
 
-const lembagaModel = mongoose.model("lembagas", {
+const lembagaModel = mongoose.model('lembagas', {
   namaLembagaYayasan: String,
   overview: String,
   kontak: String,
@@ -30,10 +29,47 @@ const lembagaModel = mongoose.model("lembagas", {
   gambar: Array,
 });
 
-const UserModel = mongoose.model("users", {
+const UserModel = mongoose.model('users', {
   email: String,
   password: String,
 });
+
+const paymentModel = mongoose.model('payments', {
+  status_message: String,
+  transaction_id: String,
+  order_id: String,
+  gross_amount: String,
+  payment_type: String,
+  transaction_time: String,
+  transaction_status: String,
+  fraud_status: String,
+  va_numbers: Array,
+});
+
+const addPayment = async (request, h) => {
+  try {
+    const paymentData = request.payload.result;
+    console.log('Received payment data:', paymentData);
+
+    const payment = new paymentModel({
+      status_message: paymentData.status_message,
+      transaction_id: paymentData.transaction_id,
+      order_id: paymentData.order_id,
+      gross_amount: paymentData.gross_amount,
+      payment_type: paymentData.payment_type,
+      transaction_time: paymentData.transaction_time,
+      transaction_status: paymentData.transaction_status,
+      fraud_status: paymentData.fraud_status,
+      va_numbers: paymentData.va_numbers || [],
+    });
+
+    const result = await payment.save();
+    return h.response(result);
+  } catch (error) {
+    console.error(error);
+    return h.response({ message: error.message }).code(500);
+  }
+};
 
 // POST data animals
 const addAnimalHandler = async (request, h) => {
@@ -50,18 +86,18 @@ const getAnimalHandler = async (request, h) => {
 
 // GET data animals berdasarkan keyword dari nama hewan
 const getSearchAnimalHandler = async (request, h) => {
-  const db = client.db("SOS");
-  const collection = db.collection("animals");
+  const db = client.db('SOS');
+  const collection = db.collection('animals');
   const { searchTerm } = request.query;
 
   const searchResults = await collection
     .aggregate([
       {
         $search: {
-          index: "search",
+          index: 'search',
           text: {
             query: searchTerm,
-            path: "namaHewan",
+            path: 'namaHewan',
           },
         },
       },
@@ -131,11 +167,11 @@ const paymentHandler = async (request, h) => {
   try {
     const snap = new midtransClient.Snap({
       isProduction: false,
-      serverKey: "SB-Mid-server-N7Of0iJ7TbvMBAYvorw7ZkGo",
-      clientKey: "SB-Mid-client-lGpWVxBMZHS4pBnj",
+      serverKey: 'SB-Mid-server-N7Of0iJ7TbvMBAYvorw7ZkGo',
+      clientKey: 'SB-Mid-client-lGpWVxBMZHS4pBnj',
     });
-    console.log("Server Key:", process.env.SECRET);
-    console.log("Client Key:", process.env.NEXT_PUBLIC_CLIENT);
+    // console.log("Server Key:", process.env.SECRET);
+    // console.log("Client Key:", process.env.NEXT_PUBLIC_CLIENT);
 
     const parameter = {
       transaction_details: {
@@ -154,8 +190,9 @@ const paymentHandler = async (request, h) => {
 
     const token = transaction.token;
 
-    return h.response({ message: "Success", dataPayment, token }).code(200);
+    return h.response({ message: 'Success', dataPayment, token }).code(200);
   } catch (error) {
+    console.log(error);
     return h.response({ message: error.message }).code(500);
   }
 };
@@ -169,7 +206,7 @@ const registerUserHandler = async (request, h) => {
   try {
     // Cek apakah pengguna sudah masuk
     if (request.state.token) {
-      return h.response({ message: "Anda sudah masuk" }).code(400);
+      return h.response({ message: 'Anda sudah masuk' }).code(400);
     }
 
     const { email, password } = request.payload;
@@ -177,25 +214,25 @@ const registerUserHandler = async (request, h) => {
     // Cek apakah email sudah ada
     const existingUser = await UserModel.findOne({ email });
     if (existingUser) {
-      return h.response({ message: "Email sudah terdaftar" }).code(400);
+      return h.response({ message: 'Email sudah terdaftar' }).code(400);
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = new UserModel({ email, password: hashedPassword });
     await user.save();
 
-    const token = jwt.sign({ id: user.id }, "secret_jwt_key");
+    const token = jwt.sign({ id: user.id }, 'secret_jwt_key');
 
     return h
-      .response({ message: "Akun Berhasil Dibuat" })
+      .response({ message: 'Akun Berhasil Dibuat' })
       .code(201)
-      .state("token", token, {
+      .state('token', token, {
         ttl: 24 * 60 * 60 * 1000, // Waktu expired dalam milidetik (contoh: 24 jam)
-        encoding: "none",
+        encoding: 'none',
         isSecure: true,
         isHttpOnly: true,
-        isSameSite: "none",
-        path: "/",
+        isSameSite: 'none',
+        path: '/',
       });
   } catch (error) {
     return h.response(error).code(500);
@@ -207,31 +244,31 @@ const loginUserHandler = async (request, h) => {
   try {
     // Cek apakah pengguna sudah masuk
     if (request.state.token) {
-      return h.response({ message: "Anda sudah masuk" }).code(400);
+      return h.response({ message: 'Anda sudah masuk' }).code(400);
     }
 
     const { email, password } = request.payload;
     const user = await UserModel.findOne({ email });
 
     if (!user) {
-      return h.response({ error: "User not found" }).code(401);
+      return h.response({ error: 'User not found' }).code(401);
     }
 
     if (!(await bcrypt.compare(password, user.password))) {
-      return h.response({ error: "Wrong password" }).code(401);
+      return h.response({ error: 'Wrong password' }).code(401);
     }
 
-    const token = jwt.sign({ id: user.id }, "secret_jwt_key");
+    const token = jwt.sign({ id: user.id }, 'secret_jwt_key');
 
     return h
-      .response({ message: "anda berhasil login" })
-      .state("token", token, {
+      .response({ message: 'anda berhasil login' })
+      .state('token', token, {
         ttl: 24 * 60 * 60 * 1000, // Waktu expired dalam milidetik (contoh: 24 jam)
-        encoding: "none",
+        encoding: 'none',
         isSecure: true,
         isHttpOnly: true,
-        isSameSite: "none",
-        path: "/",
+        isSameSite: 'none',
+        path: '/',
       });
   } catch (error) {
     return h.response(error).code(500);
@@ -251,14 +288,14 @@ const isUserLoggedIn = async (request, h) => {
 };
 
 const userLogoutHandler = async (request, h) => {
-  const token = jwt.sign('', "secret_jwt_key");
-  return h.response({ message: "anda berhasil logout" }).state("token", token, {
+  const token = jwt.sign('', 'secret_jwt_key');
+  return h.response({ message: 'anda berhasil logout' }).state('token', token, {
     ttl: 1, 
-    encoding: "none",
+    encoding: 'none',
     isSecure: true,
     isHttpOnly: true,
-    isSameSite: "none",
-    path: "/",
+    isSameSite: 'none',
+    path: '/',
   });
 };
 module.exports = {
@@ -278,4 +315,5 @@ module.exports = {
   loginUserHandler,
   isUserLoggedIn,
   userLogoutHandler,
+  addPayment,
 };
