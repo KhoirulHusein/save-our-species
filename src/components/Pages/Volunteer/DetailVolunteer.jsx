@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faLink } from '@fortawesome/free-solid-svg-icons';
 import { Text } from '../../Elements/Text/Texts';
 import { Img } from '../../Elements/Jumroton/Images';
 import { Button } from '../../Elements/Button/Buttons';
@@ -71,7 +71,7 @@ const DetailVolunteerPage = () => {
           <Button
             onClick={() => navigate('/Volunteer')}
             className="h-6 mt-[17px] w-6 cursor-pointer"
-            alt="Button Kembali Ke Halaman Volunteer"
+            alt="Kembali Ke Halaman Volunteer"
           >
             <FontAwesomeIcon icon={faArrowLeft} size="lg" />
           </Button>
@@ -81,33 +81,48 @@ const DetailVolunteerPage = () => {
             src={lembaga.gambar}
             alt={`Gambar Kegiatan ${lembaga.name}`}
           />
-          <div className="flex md:flex-col flex-row md:gap-2 items-end justify-between mt-9 w-full">
-            <div className="flex md:flex-1 flex-col gap-1.5 items-start justify-start w-[85%] md:w-full">
+          <div className="flex md:flex-col flex-row md:gap-2 items-start justify-between mt-9 w-full ">
+            <div className="flex md:flex-1 flex-col gap-1.5 items-start justify-start w-[85%] md:w-full ">
               <Text
-                className="sm:text-3xl md:text-[38px] text-[40px]sm:text-3xl md:text-[38px] text-[40px] text-white-A700 tracking-[-0.40px]"
+                className="text-white-A700 font-bold text-3xl xs:text-sm sm:text-md md:text-2xl"
                 size="txtUbuntuBold40WhiteA700"
               >
                 {lembaga.namaLembagayayasan}
               </Text>
-              <div className="flex flex-row gap-[19px] items-center justify-start w-1/4 md:w-full">
+              <div className="flex flex-row gap-2 items-center justify-start w-full">
                 {/* Ikon Location */}
-                <FontAwesomeIcon icon={faMapMarkerAlt} className="text-green-900 text-xl tracking-[-0.20px]" />
+                <svg className="w-6 h-6 sm:w-3 sm:h-3 md:w-5 md:h-5 text-green-900 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 20">
+                  <path d="M8 0a7.992 7.992 0 0 0-6.583 12.535 1 1 0 0 0 .12.183l.12.146c.112.145.227.285.326.4l5.245 6.374a1 1 0 0 0 1.545-.003l5.092-6.205c.206-.222.4-.455.578-.7l.127-.155a.934.934 0 0 0 .122-.192A8.001 8.001 0 0 0 8 0Zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z" />
+                </svg>
                 <Text
-                  className="text-white-A700 text-lg tracking-[1px]"
+                  className="text-white-A700 text-lg xs:text-[0.6rem] sm:text-sm md:text-md"
                   size="txtUbuntuRegular20WhiteA700"
                 >
-                  {lembaga.kontak}
+                  {lembaga && lembaga.kontak ? getFirstSentence(lembaga.kontak) : 'Loading...'}
                 </Text>
               </div>
+              <div className="flex flex-row gap-2 items-center justify-start w-full">
+                {/* Ikon Link/Chain */}
+                <FontAwesomeIcon icon={faLink} className="w-6 h-6 sm:w-3 sm:h-3 md:w-5 md:h-5 text-green-900 " />
+                <a
+                  href={lembaga.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white-A700  text-lg xs:text-[0.6rem] sm:text-sm md:text-md"
+                >
+                  {lembaga.website}
+                </a>
+              </div>
             </div>
-            <div className="flex md:flex-1 flex-col gap-2.5 items-center justify-start mb-0.5 md:mt-0 mt-2 w-[9%] md:w-full">
+            <div className="animal-info flex sm:flex-col sm:gap-4 justify-between" />
+            <div className="lembaga-status text-center flex flex-col gap-2 sm:text-sm">
               <Text
-                className="text-white-A700 text-xl tracking-[-0.20px] font-bold font-ubuntu"
+                className="text-white-A700 text-lg font-bold md:hidden px-5 py-2 rounded-md sm:w-4/12 sm:text-xs"
               >
                 Status
               </Text>
               <Text
-                className="cursor-pointer font-bold min-w-[103px] rounded-[5px] text-[15px] text-center tracking-[-0.15px] bg-green-400 px-4 py-2 inline-block"
+                className="text-white-A700 font-bold px-4 py-2 rounded-md sm:min-w-[50px] sm:py-1 text-md sm:text-xs md:text-sm cursor-pointer min-w-[90px] text-center bg-green-400"
               >
                 Open
               </Text>
@@ -115,27 +130,27 @@ const DetailVolunteerPage = () => {
           </div>
           <div className="bg-gray-900_02 h-px mt-[13px] w-full" />
           <Text
-            className="ml-1.5 md:ml-[0] mt-7 xs:text-[21px] sm:text-[27px] md:text-[30px] text-[30px] text-white-A700 tracking-[-0.25px]"
+            className="ml-1.5 md:ml-[0] mt-7 text-2xl xs:text-sm sm:text-md md:text-xl text-white-A700 "
             size="txtUbuntuBold25"
           >
             Description
           </Text>
           <Text
             as="h1"
-            className="leading-[32.00px] ml-1.5 md:ml-[0] mt-[25px] xs:text-[21px] sm:text-[23px] md:text-[25px] text-[25px] text-white-A700 tracking-[-0.25px] w-[84%] sm:w-full"
+            className="leading-[32.00px] ml-1.5 md:ml-[0] mt-[25px] text-xl xs:text-sm sm:text-md md:text-lg text-white-A700 tracking-[-0.25px] w-[84%] sm:w-full"
             size="txtUbuntuBold20WhiteA700"
           >
             {getFirstSentence(lembaga.overview)}
           </Text>
           <Text
-            className="leading-[32.00px] text-justify ml-1.5 md:ml-[0] mt-[25px] xs:text-[16px] sm:text-[18px] md:text-[20px] text-[25px] text-white-A700 w-[97%] sm:w-full"
+            className="leading-[32.00px] text-justify ml-1.5 md:ml-[0] mt-[25px] text-lg xs:text-xs sm:text-sm md:text-md text-white-A700 w-[97%] sm:w-full"
             size="txtUbuntuRegular25"
           >
             {getRemainingSentences(lembaga.overview)}
           </Text>
-          <div className="flex justify-center mt-5 self-center">
+          <div className="flex justify-center mt-8 self-center">
             <Button
-              className="common-pointer cursor-pointer min-w-[142px] md:ml-[0] text-center text-lg  mt-8"
+              className="common-pointer cursor-pointer min-w-[130px] md:ml-[0] text-center text-md xs:text-xs sm:text-sm md:text-md  "
               onClick={() => navigate('/formvolunteer')}
               shape="round"
               color="light_green_800"

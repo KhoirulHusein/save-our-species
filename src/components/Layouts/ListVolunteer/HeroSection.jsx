@@ -15,13 +15,13 @@ function HeroListVolunteer() {
       <div className="absolute inset-0 flex flex-col items-center justify-center">
         <div className="flex flex-col items-center justify-start p-10 sm:px-5 drop-shadow-[0_35px_35px_#000]">
           <Text
-            className="sm:text-2xl md:text-3xl lg:text-4xl text-5xl text-orange-50 tracking-[-0.40px] z-[999]"
+            className="xs:text-md sm:text-xl md:text-2xl lg:text-3xl text-4xl text-orange-50 tracking-[-0.40px] z-[999]"
             size="txtUbuntuBold40"
           >
             Animals Need You
           </Text>
           <Text
-            className="my-[3px] sm:text-lg md:text-xl lg:text-2xl text-3xl text-orange-50 tracking-[-0.40px] z-[999]"
+            className="my-[3px] text-center xs:text-sm sm:text-lg md:text-xl lg:text-2xl text-3xl text-orange-50 tracking-[-0.40px] z-[999]"
             size="txtUbuntuBold40"
           >
             Bergabung Dalam Aksi Lestarikan Satwa
