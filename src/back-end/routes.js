@@ -14,7 +14,8 @@ const {
   registerUserHandler,
   loginUserHandler,
   isUserLoggedIn,
-  userLogoutHandler
+  userLogoutHandler,
+  addPayment,
 } = require('./handler');
 
 const routes = [
@@ -78,8 +79,14 @@ const routes = [
   },
   {
     method: 'POST',
-    path: '/api/v1/payment',
+    path: '/midtrans',
     handler: paymentHandler,
+  },
+
+  {
+    method: 'POST',
+    path: '/payment',
+    handler: addPayment,
   },
 
   // Authentication Endpoint
