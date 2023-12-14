@@ -34,7 +34,7 @@ Save Our Species adalah platform online yang didedikasikan untuk perlindungan sa
 ### Alasan dibalik S.O.S
 Indonesia memiliki keanekaragaman hayati yang sangat tinggi, mencakup berbagai macam satwa liar. Namun, pengetahuan yang terbatas di kalangan penduduk Indonesia tentang hewan liar di negara ini menjadi tantangan signifikan dalam upaya konservasi satwa liar. Untuk mengatasi kesenjangan ini, proyek SOS diinisiasi. SOS bertujuan untuk memanfaatkan teknologi web modern guna menyediakan platform untuk meningkatkan kesadaran dan pemahaman tentang keanekaragaman satwa liar di Indonesia.
 
-### Kenapa harus S.O.S
+### Kenapa harus S.O.S?
 Berbeda dari website lembaga hewan lainnya, S.O.S memberikan akses edukasi yang disertai keterangan perlindungan hukum dari setiap hewan yang dilindungi di Indonesia. S.O.S juga memberikan opsi kepada penggunanya untuk memilih kegiatan volunteer, tujuan donasi, form pelaporan, hingga pemberitaan terkini dalam dunia perlindungan hewan pada fitur artikel.
 
 ### Kalau mau lapor ke mana?
@@ -50,7 +50,7 @@ S.O.S menyediakan beberapa pilihan lembaga untuk diikuti beserta keterangan kegi
 (ss foto volunteer)
 
 ### Mau donasi aja deh..
-Bagi yang mau donasi aja, S.O.S menyediakan form donasi dan opsi lembaga yang ingin diberikan donasinya. Pengguna bisa menentukan jumlah donasi dan memilih lembaga apa yang mau dituju.
+Bagi pengguna yang mau donasi, S.O.S menyediakan form donasi dan opsi lembaga yang ingin diberikan donasinya. Pengguna bisa menentukan jumlah donasi dan memilih lembaga apa yang mau dituju.
 
 (ss foto donasi)
 
