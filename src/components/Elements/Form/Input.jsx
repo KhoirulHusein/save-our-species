@@ -15,6 +15,8 @@ const Input = React.forwardRef(
       isLabel,
       wrapClassName,
       textLabelColor,
+      roundedCorner,
+      inputWidth,
       ...restProps
     },
     ref,
@@ -26,7 +28,7 @@ const Input = React.forwardRef(
     const defaultTextColor = textLabelColor || 'text-white-900';
 
     return (
-      <div className={wrapClassName}>
+      <div className={`${wrapClassName} ${inputWidth}`}>
         {isLabel && (
           <label htmlFor={inputId} className={`block mb-2 text-sm font-medium ${defaultTextColor} dark:text-white`}>
             {labelName}
@@ -35,7 +37,7 @@ const Input = React.forwardRef(
         <input
           ref={ref}
           id={inputId}
-          className={`${className} bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
+          className={`${className} bg-gray-50 border border-gray-300 text-gray-900 text-sm ${roundedCorner} focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
           type={type}
           name={name}
           onChange={handleChange}
@@ -58,6 +60,8 @@ Input.propTypes = {
   isLabel: PropTypes.bool,
   onChange: PropTypes.func,
   textLabelColor: PropTypes.string,
+  roundedCorner: PropTypes.string,
+  inputWidth: PropTypes.string,
 };
 
 Input.defaultProps = {
@@ -70,7 +74,9 @@ Input.defaultProps = {
   type: 'input',
   isLabel: false,
   onChange: null,
-  textLabelColor: 'text-white-900',
+  textLabelColor: 'text-white-A700',
+  roundedCorner: 'rounded-sm',
+  inputWidth: ' ',
 };
 
 export { Input };

@@ -33,14 +33,14 @@ function Card({
     <div className={`card z-50 bg-cover bg-center border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 pt-60 ${cardMaxWidth}`} style={{ backgroundImage: `url(${backgroundImage})` }}>
       <div className={`bg-opacity-95 ${blurClass} rounded-lg p-5`}>
         {showHeader && (
-          <div className="card-header flex gap-4">
+          <div className="card-header flex justify-between gap-4">
             <div className="card-headline flex">
               <h3 className={`font-bold text-secondary-4 ${headingColor}`}>
                 {name}
               </h3>
             </div>
             {showStatus && (
-              <div className="card-status flex text-center items-center">
+              <div className="card-status flex text-center items-center text-white-A700">
                 <img src={`${statusIcon}`} alt="" />
                 <p className="text-sm">{status}</p>
               </div>

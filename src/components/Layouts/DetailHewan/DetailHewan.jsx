@@ -126,7 +126,7 @@ const DetailHewan = () => {
             <div className="animal-overview">
               <h4 className="font-bold">Animal Overview</h4>
             </div>
-            <div className="detail-overview grid grid-cols-2 gap-6 sm:grid-cols-1 mt-6">
+            <div className="detail-overview grid grid-cols-2 gap-6 sm:grid-cols-1 mt-6 text-md sm:text-sm">
               <div className="location flex gap-4">
                 <svg className="w-6 h-6 text-light_green-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 20">
                   <path d="M8 0a7.992 7.992 0 0 0-6.583 12.535 1 1 0 0 0 .12.183l.12.146c.112.145.227.285.326.4l5.245 6.374a1 1 0 0 0 1.545-.003l5.092-6.205c.206-.222.4-.455.578-.7l.127-.155a.934.934 0 0 0 .122-.192A8.001 8.001 0 0 0 8 0Zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z" />
@@ -143,14 +143,14 @@ const DetailHewan = () => {
                 <p>{`${animalData && animalData.tempatHidup ? animalData.tempatHidup : 'Loading...'}`}</p>
               </div>
               <div className="threats flex flex-col gap-4">
-                <div className="icon flex gap-4 text-md sm:text-sm">
+                <div className="icon flex gap-4">
                   <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-alert-triangle-filled text-light_green-800" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <path d="M12 1.67c.955 0 1.845 .467 2.39 1.247l.105 .16l8.114 13.548a2.914 2.914 0 0 1 -2.307 4.363l-.195 .008h-16.225a2.914 2.914 0 0 1 -2.582 -4.2l.099 -.185l8.11 -13.538a2.914 2.914 0 0 1 2.491 -1.403zm.01 13.33l-.127 .007a1 1 0 0 0 0 1.986l.117 .007l.127 -.007a1 1 0 0 0 0 -1.986l-.117 -.007zm-.01 -7a1 1 0 0 0 -.993 .883l-.007 .117v4l.007 .117a1 1 0 0 0 1.986 0l.007 -.117v-4l-.007 -.117a1 1 0 0 0 -.993 -.883z" strokeWidth="0" fill="currentColor" />
                   </svg>
                   <p>Perlindungan Hukum</p>
                 </div>
-                <div className="container text-justify flex flex-col gap-4 text-md sm:text-sm">
+                <div className="container text-justify flex flex-col gap-4">
                   {animalData && animalData.ancamanPerlindunganHukum ? (
                     animalData.ancamanPerlindunganHukum.map((item, index) => (
                       // eslint-disable-next-line react/no-array-index-key
@@ -162,13 +162,13 @@ const DetailHewan = () => {
                 </div>
               </div>
               <div className="characteristics flex flex-col gap-4">
-                <div className="icon flex gap-4 text-md sm:text-sm">
+                <div className="icon flex gap-4">
                   <svg className="w-6 h-6 text-light_green-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
                     <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
                   </svg>
                   <p>Karakteristik :</p>
                 </div>
-                <div className="container text-justify flex flex-col gap-4 text-md sm:text-sm">
+                <div className="container text-justify flex flex-col gap-4">
                   {animalData && animalData.ciriFisik ? (
                     animalData.ciriFisik.map((item, index) => (
                       // eslint-disable-next-line react/no-array-index-key
