@@ -69,7 +69,7 @@ Pastikan kamu telah menginstal *software* berikut pada lokal:
 Clone repo S.O.S dengan mendownload berkas zip dari repository ini *(main)*, atau dengan menjalankan perintah berikut pada terminal:
 
 ```bash
-    $ git clone https://github.com/your-username/sos.git
+    $ git clone https://github.com/sparkle31/save-our-species
 ```
 
 #### 2. Buka repository di IDE pilihanmu
