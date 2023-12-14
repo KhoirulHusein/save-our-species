@@ -49,7 +49,7 @@ const DetailArticles = () => {
     }
   };
 
-  const postComment = () => {
+  const postComment = async () => {
     if (!comments) {
       alert('Komentar tidak boleh kosong');
       return;
@@ -64,11 +64,17 @@ const DetailArticles = () => {
       postDate,
     };
 
-    axios.post('http://localhost:9000/article/comment', commentData, {
+    const response = await axios.post('http://localhost:9000/article/comment', commentData, {
       headers: {
         'Content-Type': 'application/json',
       },
     });
+
+    const newComment = response.data;
+    setAllComments([...allComments, newComment]);
+    setComment('');
+    setCharCount(1000);
+    setCommentCount(commentCount + 1);
   };
 
   const isUserLogged = async () => {
