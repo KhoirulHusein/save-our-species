@@ -67,18 +67,25 @@ Pastikan kamu telah menginstal *software* berikut pada lokal:
 
 #### 1. Clone repository S.O.S
 Clone repo S.O.S dengan mendownload berkas zip dari repository ini *(main)*, atau dengan menjalankan perintah berikut pada terminal:
-    ```bash
-    git clone https://github.com/your-username/sos.git
-    
+
+```bash
+    $ git clone https://github.com/your-username/sos.git
+```
+
 #### 2. Buka repository di IDE pilihanmu
-Dalam pengembangan aplikasi S.O.S kami menggunakan Visual Studio Code
-    ```bash
-    cd save-our-species
+Dalam pengembangan aplikasi S.O.S kami menggunakan Visual Studio Code, lalu pada terminal masuk ke repository save-our-species.
+
+```bash
+   $ cd save-our-species
+```   
 
 #### 3. Pasang dependencies yang diperlukan
-    ```bash
-    npm install
-    
+Pasang dependencies yang diperlukan dalam project ini
+
+```bash
+   $ npm install
+```
+
 ### Jalankan kode S.O.S dengan perintah berikut
 Untuk menjalankan project, gunakan perintah berikut pada *directory project*:
 - npm start: Jalankan aplikasi di *development mode*.
