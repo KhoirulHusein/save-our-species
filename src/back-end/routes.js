@@ -15,6 +15,7 @@ const {
   loginUserHandler,
   isUserLoggedIn,
   userLogoutHandler,
+  addPayment,
   addCommentHandler,
   getCommentHandler,
   getArticleCommentHandler,
@@ -83,8 +84,14 @@ const routes = [
   // Payment Endpoint
   {
     method: 'POST',
-    path: '/api/v1/payment',
+    path: '/midtrans',
     handler: paymentHandler,
+  },
+
+  {
+    method: 'POST',
+    path: '/payment',
+    handler: addPayment,
   },
 
   // Authentication Endpoint

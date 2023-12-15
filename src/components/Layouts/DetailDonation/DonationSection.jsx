@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-use-before-define */
 /* eslint-disable prefer-const */
 /* eslint-disable no-console */
 /* eslint-disable object-shorthand */
@@ -22,6 +24,10 @@ const DonationSection = () => {
 
   // Validasi
   const [emailError, setEmailError] = useState('');
+  const [firstNameError, setFirstNameError] = useState('');
+  const [lastNameError, setLastNameError] = useState('');
+  const [amountError, setAmountError] = useState('');
+
   const validateEmail = (inputEmail) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(inputEmail);
@@ -69,6 +75,29 @@ const DonationSection = () => {
     // clear email error
     setEmailError('');
 
+    if (!firstName.trim()) {
+      setFirstNameError('First name is required');
+      return;
+    }
+
+    // Clear first name error
+    setFirstNameError('');
+
+    if (!lastName.trim()) {
+      setLastNameError('Last name is required');
+      return;
+    }
+    // Clear last name error
+    setLastNameError('');
+
+    // Validate amount
+    if (!amount.trim()) {
+      setAmountError('Amount is required');
+      return;
+    }
+    // Clear amount error
+    setAmountError('');
+
     const order_id = generateOrderId();
     const data = {
       email: email,
@@ -85,7 +114,7 @@ const DonationSection = () => {
       },
     };
 
-    const response = await axios.post('http://18.141.159.81/api/v1/payment', data, config);
+    const response = await axios.post('http://localhost:9000/midtrans', data, config);
 
     setToken(response.data.token);
   };
@@ -93,13 +122,57 @@ const DonationSection = () => {
   useEffect(() => {
     if (token) {
       window.snap.pay(token, {
-        onSuccess: (result) => {
+        onSuccess: async (result) => {
           localStorage.setItem('Pembayaran', JSON.stringify(result));
-          setToken('');
+
+          try {
+            const response = await fetch('http://localhost:9000/payment', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ result }),
+            });
+
+            if (response.ok) {
+              const responseData = await response.json();
+              console.log('Success:', responseData);
+              setPaymentResult(responseData);
+            } else {
+              const errorData = await response.json();
+              console.error('Error:', errorData);
+            }
+          } catch (error) {
+            console.error('Error sending POST request:', error);
+          } finally {
+            setToken('');
+          }
         },
-        onPending: (result) => {
+        onPending: async (result) => {
           localStorage.setItem('Pembayaran', JSON.stringify(result));
-          setToken('');
+
+          try {
+            const response = await fetch('http://localhost:9000/payment', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ result }),
+            });
+
+            if (response.ok) {
+              const responseData = await response.json();
+              console.log('Success:', responseData);
+              setPaymentResult(responseData);
+            } else {
+              const errorData = await response.json();
+              console.error('Error:', errorData);
+            }
+          } catch (error) {
+            console.error('Error sending POST request:', error);
+          } finally {
+            setToken('');
+          }
         },
         onError: (error) => {
           console.log(error);
@@ -110,12 +183,13 @@ const DonationSection = () => {
           setToken('');
         },
       });
+
       setEmail('');
       setFirstName('');
       setLastName('');
       setAmount('');
     }
-  }, [token]);
+  }, [token, setEmail, setFirstName, setLastName, setAmount, setToken]);
 
   useEffect(() => {
     const midtransurl = 'https://app.sandbox.midtrans.com/snap/snap.js';
@@ -177,6 +251,8 @@ const DonationSection = () => {
           onChange={(e) => handleChange({ target: { name: 'lastName', value: e } })}
         />
       </div>
+      {firstNameError && <p className="text-red-500 text-sm mt-1">{firstNameError}</p>}
+      {lastNameError && <p className="text-red-500 text-sm mt-1">{lastNameError}</p>}
       <Text
         className="my-4 text-deep_orange-800 text-xl tracking-[-0.20px]"
         size="txtUbuntuBold20Deeporange800"
@@ -192,6 +268,7 @@ const DonationSection = () => {
         value={amount}
         onChange={(e) => handleChange({ target: { name: 'amount', value: e } })}
       />
+      {amountError && <p className="text-red-500 text-sm mt-1">{amountError}</p>}
       <CheckBox
         className="mt-5 mb-5 text-[15px] text-left text-orange-50 xs:text-sm"
         inputClassName="border border-light_green-800 border-solid mr-3 w-5 h-5"

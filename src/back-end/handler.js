@@ -9,6 +9,7 @@ const uri = 'mongodb://capstonedcd2023:Dicoding2023@ac-pamozt8-shard-00-00.frtoe
 const client = new MongoClient(uri);
 
 const AnimalModel = mongoose.model('animals', {
+
   namaHewan: String,
   daerah: String,
   status: String,
@@ -20,6 +21,7 @@ const AnimalModel = mongoose.model('animals', {
   gambarLandscape: String,
   gambarPotrait: String,
 });
+
 
 const LembagaModel = mongoose.model('lembagas', {
   namaLembagaYayasan: String,
@@ -35,13 +37,49 @@ const UserModel = mongoose.model('users', {
   password: String,
 });
 
+const paymentModel = mongoose.model('payments', {
+  status_message: String,
+  transaction_id: String,
+  order_id: String,
+  gross_amount: String,
+  payment_type: String,
+  transaction_time: String,
+  transaction_status: String,
+  fraud_status: String,
+  va_numbers: Array,
+});
+
+const addPayment = async (request, h) => {
+  try {
+    const paymentData = request.payload.result;
+    console.log('Received payment data:', paymentData);
+
+    const payment = new paymentModel({
+      status_message: paymentData.status_message,
+      transaction_id: paymentData.transaction_id,
+      order_id: paymentData.order_id,
+      gross_amount: paymentData.gross_amount,
+      payment_type: paymentData.payment_type,
+      transaction_time: paymentData.transaction_time,
+      transaction_status: paymentData.transaction_status,
+      fraud_status: paymentData.fraud_status,
+      va_numbers: paymentData.va_numbers || [],
+    });
+
+    const result = await payment.save();
+    return h.response(result);
+  } catch (error) {
+    console.error(error);
+    return h.response({ message: error.message }).code(500);
+  }
+};
+
 const CommentModel = mongoose.model('comments', {
   idArticle: String,
   username: String,
   comments: String,
   postDate: String,
 });
-
 // POST data animals
 const addAnimalHandler = async (request, h) => {
   const animals = new AnimalModel(request.payload);
@@ -172,8 +210,6 @@ const paymentHandler = async (request, h) => {
       serverKey: 'SB-Mid-server-N7Of0iJ7TbvMBAYvorw7ZkGo',
       clientKey: 'SB-Mid-client-lGpWVxBMZHS4pBnj',
     });
-    console.log('Server Key:', process.env.SECRET);
-    console.log('Client Key:', process.env.NEXT_PUBLIC_CLIENT);
 
     const parameter = {
       transaction_details: {
@@ -194,6 +230,7 @@ const paymentHandler = async (request, h) => {
 
     return h.response({ message: 'Success', dataPayment, token }).code(200);
   } catch (error) {
+    console.log(error);
     return h.response({ message: error.message }).code(500);
   }
 };
@@ -353,6 +390,7 @@ module.exports = {
   loginUserHandler,
   isUserLoggedIn,
   userLogoutHandler,
+  addPayment,
   addCommentHandler,
   getCommentHandler,
   getArticleCommentHandler,
