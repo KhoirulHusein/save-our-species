@@ -16,6 +16,9 @@ const {
   isUserLoggedIn,
   userLogoutHandler,
   addPayment,
+  addCommentHandler,
+  getCommentHandler,
+  getArticleCommentHandler,
 } = require('./handler');
 
 const routes = [
@@ -77,6 +80,8 @@ const routes = [
     path: '/lembaga/{id}',
     handler: deleteLembagaByIdHandler,
   },
+
+  // Payment Endpoint
   {
     method: 'POST',
     path: '/midtrans',
@@ -92,24 +97,42 @@ const routes = [
   // Authentication Endpoint
   {
     method: 'POST',
-    path:  '/register',
+    path: '/register',
     handler: registerUserHandler,
   },
   {
     method: 'POST',
-    path:  '/login',
+    path: '/login',
     handler: loginUserHandler,
   },
   {
     method: 'GET',
-    path:  '/isLogged',
+    path: '/isLogged',
     handler: isUserLoggedIn,
   },
   {
     method: 'GET',
     path: '/logout',
     handler: userLogoutHandler,
-  }
+  },
+
+  // Comment Endpoint
+  {
+    method: 'POST',
+    path: '/article/comment',
+    handler: addCommentHandler,
+  },
+
+  {
+    method: 'GET',
+    path: '/comment',
+    handler: getCommentHandler,
+  },
+  {
+    method: 'GET',
+    path: '/comment/articleid',
+    handler: getArticleCommentHandler,
+  },
 ];
 
 module.exports = routes;

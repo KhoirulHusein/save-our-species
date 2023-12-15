@@ -1,25 +1,58 @@
-import React, { useEffect } from 'react';
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable implicit-arrow-linebreak */
+/* eslint-disable no-confusing-arrow */
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import AOS from 'aos';
+
 import { Img } from '../../Elements/Jumroton/Images';
 import { Text } from '../../Elements/Text/Texts';
 import { Button } from '../../Elements/Button/Buttons';
-import { initializeAOS } from '../../Fragments/AosInit/AosInits';
+
+import 'aos/dist/aos.css';
 
 function HeroLanding() {
+  const carouselImages = [
+    'images/heroLandingPage1.jpg',
+    'images/heroLandingPage2.png',
+    'images/heroLandingPage3.png',
+    'images/heroLandingPage4.png',
+  ];
+
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const handleNextImage = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === carouselImages.length - 1 ? 0 : prevIndex + 1);
+  };
+
   useEffect(() => {
-    initializeAOS();
-  }, []);
+    const intervalId = setInterval(handleNextImage, 5000);
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [currentImageIndex]);
+
+  useEffect(() => {
+    AOS.init({ duration: 3000 });
+    AOS.refresh();
+  }, [currentImageIndex]);
 
   const navigate = useNavigate();
   return (
     <>
-      <Img
-        className="absolute top-0 left-0 w-full h-screen object-cover object-center"
-        src="images/heroLandingPage.jpg"
-        alt="herolandingpage"
-        data-aos="fade-up"
-        data-aos-duration="3000"
-      />
+      {carouselImages.map((image, index) => (
+        <Img
+          key={index}
+          className={`absolute top-0 left-0 w-full h-screen object-cover object-center ${
+            index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+          }`}
+          src={image}
+          alt={`carousel-image-${index}`}
+          data-aos={index === currentImageIndex ? 'fade-up' : ''}
+        />
+      ))}
       <div className="absolute flex flex-col md:gap-10 gap-[291px] inset-x-[0] items-start justify-start mx-auto xl:top-[40%] lg:top-[28%] content-center w-[89%]">
         <div className="flex flex-col gap-[23px] items-start justify-start w-[38%] md:w-full">
           <Text

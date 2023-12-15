@@ -44,6 +44,15 @@ function FormSection() {
     umurVolunteer: '',
   });
 
+  const [validationErrors, setValidationErrors] = useState({
+    namaVolunteer: '',
+    emailVolunteer: '',
+    notelpVolunteer: '',
+    statusVolunteer: '',
+    genderVolunteer: '',
+    umurVolunteer: '',
+  });
+
   const handleChange = (e) => {
     if (e.target) {
       // Handle regular input changes
@@ -62,6 +71,21 @@ function FormSection() {
   };
 
   const handleSubmit = async () => {
+    const errors = {};
+    Object.keys(formData).forEach((key) => {
+      if (!formData[key]) {
+        errors[key] = 'Field ini tidak boleh kosong';
+      } else {
+        errors[key] = '';
+      }
+    });
+
+    setValidationErrors(errors);
+
+    if (Object.values(errors).some((error) => error)) {
+      return;
+    }
+
     console.log('Mengirimkan Data Formulir:', formData);
     try {
       const response = await fetch('http://18.141.159.81/volunteer', {
@@ -75,7 +99,7 @@ function FormSection() {
       if (response.ok) {
         navigate('/formvolunteersucces');
       } else {
-        const errorData = await response.json(); // Assuming the server returns a JSON error message
+        const errorData = await response.json();
         console.error('Error:', errorData);
       }
     } catch (error) {
@@ -84,68 +108,84 @@ function FormSection() {
   };
   return (
     <>
-      <div className="bg-gray-900 flex flex-col font-ubuntu items-center justify-start mx-auto w-[50%]">
-        <Text
-          className="md:ml-[0] mt-[11vh] w-full text-white-A700 text-xl"
-          size="txtUbuntuBold20WhiteA700"
-        >
-          Nama
-        </Text>
-        <Input
-          labelName=""
-          name="namaVolunteer"
-          placeholder="Isi disini...."
-          className="md:ml-[0] font-bold leading-[normal] p-2 placeholder:text-black-900_6d text-[15px] text-left w-full"
-          wrapClassName="border border-blue_gray-900_01 border-solid flex mt-[19px] mx-auto w-full"
-          shape="round"
-          size="sm"
-          value={formData.namaVolunteer}
-          onChange={(e) => handleChange({ target: { name: 'namaVolunteer', value: e } })}
-        />
-        <Text
-          className="md:ml-[0] mt-[35px] text-white-A700 text-xl w-full"
-          size="txtUbuntuBold20WhiteA700"
-        >
-          Email
-        </Text>
-        <Input
-          labelName=""
-          name="emailVolunteer"
-          placeholder="Isi disini...."
-          className="md:ml-[0] font-bold leading-[normal] p-2 placeholder:text-black-900_6d text-[15px] text-left w-full"
-          wrapClassName="border border-blue_gray-900_01 border-solid flex mt-[19px] mx-auto w-full"
-          shape="round"
-          size="sm"
-          value={formData.emailVolunteer}
-          onChange={(e) => handleChange({ target: { name: 'emailVolunteer', value: e } })}
-        />
-        <Text
-          className="md:ml-[0] mt-[35px] text-white-A700 text-xl w-full"
-          size="txtUbuntuBold20WhiteA700"
-        >
-          No. Telp
-        </Text>
-        <Input
-          labelName=""
-          name="notelpVolunteer"
-          placeholder="Isi disini...."
-          className="md:ml-[0] font-bold leading-[normal] p-2 placeholder:text-black-900_6d text-[15px] text-left w-full"
-          wrapClassName="border border-blue_gray-900_01 border-solid flex mt-[19px] mx-auto w-full"
-          shape="round"
-          size="sm"
-          value={formData.notelpVolunteer}
-          onChange={(e) => handleChange({ target: { name: 'notelpVolunteer', value: e } })}
-        />
+      <div className="bg-gray-900 flex flex-col font-ubuntu items-center justify-start mx-auto w-[60%] md:w-[75%]">
+        <div className="w-full">
+          <Text
+            className="md:ml-[0] mt-10 w-full text-white-A700 text-xl md:text-[17px]"
+            size="txtUbuntuBold20WhiteA700"
+          >
+            Nama
+          </Text>
+          <Input
+            labelName=""
+            name="namaVolunteer"
+            placeholder="Isi disini...."
+            className="md:ml-[0] font-bold leading-[normal] p-2 placeholder:text-black-900_6d text-[15px] text-left w-full"
+            wrapClassName="border border-blue_gray-900_01 border-solid flex mt-[19px] mx-auto w-full"
+            shape="round"
+            size="sm"
+            value={formData.namaVolunteer}
+            onChange={(e) => handleChange({ target: { name: 'namaVolunteer', value: e } })}
+          />
+          {validationErrors.namaVolunteer && (
+          <small className="text-red-500">{validationErrors.namaVolunteer}</small>
+          )}
+        </div>
+        <div className="w-full">
+          <Text
+            className="md:ml-[0] mt-[35px] text-white-A700 text-xl w-full md:text-[17px]"
+            size="txtUbuntuBold20WhiteA700"
+          >
+            Email
+          </Text>
+          <Input
+            labelName=""
+            name="emailVolunteer"
+            placeholder="Isi disini...."
+            className="md:ml-[0] font-bold leading-[normal] p-2 placeholder:text-black-900_6d text-[15px] text-left w-full"
+            wrapClassName="border border-blue_gray-900_01 border-solid flex mt-[19px] mx-auto w-full"
+            shape="round"
+            size="sm"
+            value={formData.emailVolunteer}
+            onChange={(e) => handleChange({ target: { name: 'emailVolunteer', value: e } })}
+          />
+          {validationErrors.emailVolunteer && (
+          <small className="text-red-500">{validationErrors.emailVolunteer}</small>
+          )}
+        </div>
+        <div className="w-full">
+          <Text
+            className="md:ml-[0] mt-[35px] text-white-A700 text-xl w-full md:text-[17px]"
+            size="txtUbuntuBold20WhiteA700"
+          >
+            No. Telp
+          </Text>
+          <Input
+            labelName=""
+            name="notelpVolunteer"
+            placeholder="Isi disini...."
+            className="md:ml-[0] font-bold leading-[normal] p-2 placeholder:text-black-900_6d text-[15px] text-left w-full"
+            wrapClassName="border border-blue_gray-900_01 border-solid flex mt-[19px] mx-auto w-full"
+            shape="round"
+            size="sm"
+            value={formData.notelpVolunteer}
+            onChange={(e) => handleChange({ target: { name: 'notelpVolunteer', value: e } })}
+          />
+          {validationErrors.notelpVolunteer && (
+          <small className="text-red-500">{validationErrors.notelpVolunteer}</small>
+          )}
+        </div>
+
       </div>
-      <div className="md:mx-auto md:ml-0 md:items-start md:w-full mt-[35px] flex flex-row md:flex-col items-center justify-center w-full">
+      <div className="md:mx-auto md:ml-0 md:items-start md:w-[50%] mt-[35px] flex flex-row md:flex-col items-center md:place-items-start sm:place-items-baseline justify-center w-full">
         <div className="md:ml-[25%] flex items-center">
-          <Text className="text-white-A700 text-xl" size="txtUbuntuBold20WhiteA700">
+          <Text className="text-white-A700 text-xl md:text-[17px]" size="txtUbuntuBold20WhiteA700">
             Status
           </Text>
           <SelectBox
             className="border border-blue_gray-900_01 border-solid font-bold leading-[normal] text-[15px] text-left w-full ml-5 md:ml-8  md:pt-[5px] md:pb-[5px]"
-            placeholderClassName="text-black-900"
-            indicator={<FontAwesomeIcon icon={faCaretDown} className="h-[25px] ml-10 mr-[0] w-2.5 text-green-800 cursor-pointer" />}
+            placeholderClassName="text-black-900 md:mr-[50vh] sm:mr-[10vh] xs:mr-[3vh]"
+            indicator={<FontAwesomeIcon icon={faCaretDown} className="h-[25px] ml-10 mr-[0] md:ml-0 md:mr-0 w-2.5 text-green-800 cursor-pointer" />}
             isMulti={false}
             name="statusVolunteer"
             options={statusOptionsList}
@@ -159,13 +199,16 @@ function FormSection() {
             onChange={(selectedOption) => handleChange({ name: 'statusVolunteer', value: selectedOption })}
           />
         </div>
+        {validationErrors.statusVolunteer && (
+        <small className="text-red-500 md:ml-[32vh] sm:ml-0">{validationErrors.statusVolunteer}</small>
+        )}
         <div className="md:ml-[25%] flex items-center ml-7 md:mt-[35px]">
-          <Text className="text-white-A700 text-xl" size="txtUbuntuBold20WhiteA700">
+          <Text className="text-white-A700 text-xl md:text-[17px]" size="txtUbuntuBold20WhiteA700">
             Jenis kelamin
           </Text>
           <SelectBox
             className="border border-blue_gray-900_01 border-solid font-bold leading-[normal] text-[15px] text-left w-full ml-5 md:pt-[5px] md:pb-[5px]"
-            placeholderClassName="text-black-900"
+            placeholderClassName="text-black-900 md:mr-[57.5vh] sm:mr-[15vh] xs:mr-[7vh]"
             indicator={<FontAwesomeIcon icon={faCaretDown} className="h-[25px] ml-5 mr-[0] w-2.5 text-green-800 cursor-pointer" />}
             isMulti={false}
             name="genderVolunteer"
@@ -180,13 +223,16 @@ function FormSection() {
             onChange={(selectedOption) => handleChange({ name: 'genderVolunteer', value: selectedOption })}
           />
         </div>
+        {validationErrors.genderVolunteer && (
+        <small className="text-red-500 md:ml-[32vh] sm:ml-0">{validationErrors.genderVolunteer}</small>
+        )}
         <div className="md:ml-[25%] flex items-center ml-10 md:mt-[35px]">
-          <Text className="text-white-A700 text-xl" size="txtUbuntuBold20WhiteA700">
+          <Text className="text-white-A700 text-xl md:text-[17px]" size="txtUbuntuBold20WhiteA700">
             Umur
           </Text>
           <SelectBox
             className="border border-blue_gray-900_01 border-solid font-bold leading-[normal] text-[15px] text-left w-full ml-5 md:ml-11 md:pt-[5px] md:pb-[5px]"
-            placeholderClassName="text-black-900"
+            placeholderClassName="text-black-900 md:mr-[10vh] sm:mr-[15vh] xs:mr-[7vh]"
             indicator={<FontAwesomeIcon icon={faCaretDown} className="h-[25px] ml-5 mr-[0] w-2.5 text-green-800 cursor-pointer" />}
             isMulti={false}
             name="umurVolunteer"
@@ -201,7 +247,11 @@ function FormSection() {
             onChange={(selectedOption) => handleChange({ name: 'umurVolunteer', value: selectedOption })}
           />
         </div>
+        {validationErrors.umurVolunteer && (
+        <small className="text-red-500 md:ml-[32vh] sm:ml-0">{validationErrors.umurVolunteer}</small>
+        )}
       </div>
+
       <div className="bg-gray-900 font-ubuntu mx-auto grid grid-cols-1 md:grid-cols-1 gap-8 p-0">
         <Button
           className="common-pointer cursor-pointer mx-auto mb-20 mt-20 text-center min-w-[198px] md:min-w-[198px] text-lg tracking-[-0.18px] transition-transform duration-300 transform hover:scale-105 sm:text-sm rounded-full"

@@ -37,7 +37,7 @@ const ListCards = () => {
 
   // Fetch API
   useEffect(() => {
-    if (searchTerm) {
+    if (searchTerm && !filterTerm) {
       axios.get(`http://18.141.159.81/search?searchTerm=${searchTerm}`)
         .then((response) => {
           setData(response.data);
@@ -46,7 +46,7 @@ const ListCards = () => {
           console.error(error);
         });
     }
-    if (filterTerm) {
+    if (filterTerm && !searchTerm) {
       axios.get(`http://18.141.159.81/search?statusTerm=${filterTerm}`)
         .then((response) => {
           setData(response.data);
@@ -99,7 +99,7 @@ const ListCards = () => {
       <div className="bg-cover bg-center h-96 w-full" style={{ backgroundImage: "url('./images/animals-banner.png')" }}>
         <div className="max-w-sm sm:max-w-xs mx-auto pt-36 flex flex-col gap-8 p-4">
           <h1 className="text-center font-bold text-3xl md:text-2xl text-white-A700">Explore Protected Animal</h1>
-          <Input type="search" onChange={handleSearch} isLabel={false} value={searchTerm} className="rounded-full border-gray-700 p-3 sm:px-4 sm:py-2 focus:outline-none focus:ring-2 focus:ring-light_green-800 focus:border-transparent " placeholder="Search here..." />
+          <Input type="search" onChange={handleSearch} roundedCorner="rounded-full" isLabel={false} value={searchTerm} className="rounded-full border-gray-700 p-3 sm:px-4 sm:py-2 focus:outline-none focus:ring-2 focus:ring-light_green-800 focus:border-transparent " placeholder="Search here..." />
         </div>
       </div>
       <div className="wrapper bg-gray-900">
@@ -107,7 +107,7 @@ const ListCards = () => {
           <div className="wrapper">
             <div className="filter flex gap-4 sm:gap-2 justify-start mt-6">
               <Button
-                className={`Button text-black-900 rounded-full px-8 py-4 sm:px-4 sm:py-2 sm:text-sm xs:text-xs ${selectedButton !== null ? 'bg-light_green-800 text-white-A700' : 'bg-white-A700'}`}
+                className={`Button rounded-full text-black-900 px-8 py-4 sm:px-4 sm:py-2 sm:text-sm xs:text-xs ${selectedButton !== null ? 'bg-light_green-800 text-white-A700' : 'bg-white-A700'}`}
                 shape=""
                 variant="fill"
                 color=""

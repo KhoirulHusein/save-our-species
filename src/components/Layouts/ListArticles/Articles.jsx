@@ -40,8 +40,8 @@ const ListArticles = () => {
     setSearchTriggered(true); // Setel state untuk menandai bahwa pencarian telah dipicu
   };
 
-  const handleSearchInputChange = (e) => {
-    setSearchTerm(e.target.value);
+  const handleSearchInputChange = (value) => {
+    setSearchTerm(value);
   };
 
   return (
@@ -52,10 +52,12 @@ const ListArticles = () => {
           <div className="search-box flex relative top-28 sm:top-24">
             <Input
               type="search"
+              inputWidth="w-full"
               isLabel={false}
               value={searchTerm}
+              roundedCorner="rounded-md"
               onChange={handleSearchInputChange}
-              className="rounded-md border-gray-700 p-4 sm:px-4 sm:py-2 focus:outline-none focus:ring-2 focus:ring-light_green-800 focus:border-transparent "
+              className="border-gray-700 p-4 sm:px-4 sm:py-2 focus:outline-none focus:ring-2 focus:ring-light_green-800 focus:border-transparent "
               placeholder="Search here..."
             />
             <Button
@@ -80,16 +82,23 @@ const ListArticles = () => {
               .map((article) => (
                 // eslint-disable-next-line no-underscore-dangle
                 <a href={`http://localhost:3000/artikel/details/${article._id}`}>
-                  <div className="container flex gap-6 sm:gap-0 xs:gap-4 max-w-6xl sm:max-w-sm md:max-w-lg xl:max-w-7xl max-h-80 md:max-h-60 sm:max-h-24 mx-auto">
+                  <div className="container flex sm:flex-col sm:text-center gap-4 mx-auto">
                     <div className="image-container max-w-md">
                       <img className="rounded-md max-w-full max-h-full" src={article.gambarArticle} alt="" />
                     </div>
                     <div className="detail-container flex flex-col gap-6">
-                      <div className="headline text-light_green-800 font-bold text-xl md:text-md sm:text-xs">
+                      <div className="headline text-light_green-800 font-bold text-xl sm:text-md xs:text-sm">
                         <h1>{article.judulArticle}</h1>
                       </div>
-                      <div className="description text-sm text-justify max-w-md overflow-hidden h-56 text-white-A700 md:hidden">
-                        <p>{article.isiArticle}</p>
+                      <div className="description flex flex-col gap-2 text-sm text-left max-w-md overflow-hidden h-56 text-white-A700 md:hidden">
+                        {article && article.isiArticle ? (
+                          article.isiArticle.map((item, index) => (
+                          // eslint-disable-next-line react/no-array-index-key
+                            <p key={index}>{item}</p>
+                          ))
+                        ) : (
+                          'Loading...'
+                        )}
                       </div>
                     </div>
                   </div>
@@ -97,7 +106,7 @@ const ListArticles = () => {
               ))}
 
           </div>
-          <div className="listAnimals grid grid-cols-3 sm:max-w-sm md:max-w-xl mx-auto sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-x-4 gap-y-8 items-stretch sm:text-xs">
+          <div className="listAnimals grid grid-cols-3 sm:max-w-sm md:max-w-xl mx-auto sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-x-4 gap-y-8 items-stretch sm:text-md xs:text-sm">
             {renderData.slice(0, visibleData).map((article, index) => (
               <Card
               // eslint-disable-next-line react/no-array-index-key

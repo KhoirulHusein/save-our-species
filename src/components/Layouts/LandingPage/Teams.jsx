@@ -23,8 +23,8 @@ const Teams = () => {
         size="txtUbuntuRegular18"
         data-aos="zoom-in"
       >
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry.
+        Bersama Team Capstone kami, temukan sinergi dalam kreativitas dan dedikasi,
+        mewujudkan inovasi yang memimpin perubahan di setiap langkah.
       </Text>
       <List
         className="sm:flex-col px-5 flex-row gap-5 grid sm:grid-cols-1 md:grid-cols-3 grid-cols-5 justify-center max-w-7xl mt-[79px] mx-auto md:px-5 w-full pb-[150px]"
@@ -33,8 +33,8 @@ const Teams = () => {
         <div className="h-80 relative w-full" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-delay="100">
           <Img
             className="h-80 m-auto object-cover rounded-[20px] w-full"
-            src="images/photos.png"
-            alt="rectangle527"
+            src="images/KhoirulHusein.jpeg"
+            alt="Khoirul Husein"
           />
           <div className="absolute bg-gray-900_7f bottom-[0] flex flex-col gap-2.5 inset-x-[0] items-start justify-start mx-auto p-2.5 w-full">
             <Text
@@ -48,16 +48,17 @@ const Teams = () => {
               className="mb-[27px] md:ml-[0] ml-[9px] text-orange-50 w-[92%] sm:w-full text-xs"
               size="txtUbuntuRegular12"
             >
-              Lorem Ipsum is simply dummy text of the printing and
-              typesetting industry.
+              Dari Universitas Pancasila,
+              <br />
+              Jakarta selatan
             </Text>
           </div>
         </div>
         <div className="h-80 relative w-full" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-delay="200">
           <Img
             className="h-80 m-auto object-cover rounded-[20px] w-full"
-            src="images/photos.png"
-            alt="rectangle528"
+            src="images/SalsaMaulidinaPuteri.jpg"
+            alt="Salsa Maulidina Puteri"
           />
           <div className="absolute bg-gray-900_7f bottom-[0] flex flex-col gap-2.5 inset-x-[0] items-start justify-start mx-auto p-2.5 w-full">
             <Text
@@ -71,16 +72,17 @@ const Teams = () => {
               className="mb-[27px] md:ml-[0] ml-[9px] text-orange-50 text-xs w-[92%] sm:w-full"
               size="txtUbuntuRegular12"
             >
-              Lorem Ipsum is simply dummy text of the printing and
-              typesetting industry.
+              Universitas Lampung Mangkurat,
+              <br />
+              Kalimantan Selatan
             </Text>
           </div>
         </div>
         <div className="h-80 relative w-full" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-delay="300">
           <Img
             className="h-80 m-auto object-cover rounded-[20px] w-full"
-            src="images/photos.png"
-            alt="rectangle529"
+            src="images/SitiRahmah.jpg"
+            alt="Siti Rahmah"
           />
           <div className="absolute bg-gray-900_7f bottom-[0] flex flex-col gap-2.5 inset-x-[0] items-start justify-start mx-auto p-2.5 w-full">
             <Text
@@ -94,16 +96,17 @@ const Teams = () => {
               className="mb-[27px] md:ml-[0] ml-[9px] text-orange-50 text-xs w-[92%] sm:w-full"
               size="txtUbuntuRegular12"
             >
-              Lorem Ipsum is simply dummy text of the printing and
-              typesetting industry.
+              Universitas Lampung Mangkurat,
+              <br />
+              Kalimantan Selatan
             </Text>
           </div>
         </div>
         <div className="h-80 relative w-full" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-delay="400">
           <Img
             className="h-80 m-auto object-cover rounded-[20px] w-full"
-            src="images/photos.png"
-            alt="rectangle530"
+            src="images/KevinRaihanHidayat.jpg"
+            alt="Kevin Raihan Hidayat"
           />
           <div className="absolute bg-gray-900_7f bottom-[0] flex flex-col gap-2.5 inset-x-[0] items-start justify-start mx-auto p-2.5 w-full">
             <Text
@@ -117,16 +120,17 @@ const Teams = () => {
               className="mb-[27px] md:ml-[0] ml-[9px] text-orange-50 text-xs w-[92%] sm:w-full"
               size="txtUbuntuRegular12"
             >
-              Lorem Ipsum is simply dummy text of the printing and
-              typesetting industry.
+              Dari Universitas Pancasila,
+              <br />
+              Jakarta selatan
             </Text>
           </div>
         </div>
         <div className="h-80 relative w-full" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-delay="500">
           <Img
             className="h-80 m-auto object-cover rounded-[20px] w-full"
-            src="images/photos.png"
-            alt="rectangle531"
+            src="images/AgungRomadhon.jpg"
+            alt="Agung Romadhon"
           />
           <div className="absolute bg-gray-900_7f bottom-[0] flex flex-col gap-2.5 inset-x-[0] items-start justify-start mx-auto p-2.5 w-full">
             <Text
@@ -140,8 +144,9 @@ const Teams = () => {
               className="mb-[27px] md:ml-[0] ml-[9px] text-orange-50 text-xs w-[92%] sm:w-full"
               size="txtUbuntuRegular12"
             >
-              Lorem Ipsum is simply dummy text of the printing and
-              typesetting industry.
+              Institut Informatika dan Bisnis Darmajaya
+              <br />
+              Sumatra Selatan
             </Text>
           </div>
         </div>

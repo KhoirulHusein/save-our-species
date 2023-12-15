@@ -16,13 +16,13 @@ const Donation = () => {
       <Img
         className="h-screen m-auto object-cover w-full"
         src="images/donationTurtle.jpg"
-        alt="rectangle521"
+        alt="donation Turtle"
         data-aos="fade-up"
         data-aos-anchor-placement="top-bottom"
       />
-      <div className="absolute bottom-[28%] flex flex-col gap-[19px] inset-x-[0] items-center justify-start mx-auto w-[77%] xs:justify-center sm:justify-center" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-detaly="200">
+      <div className="absolute bottom-[28%] flex flex-col gap-[19px] inset-x-[0] items-center justify-start mx-auto w-[77%] xs:bottom-[40%] xs:justify-center sm:justify-center sm:bottom-[40%] md:bottom-[42%]" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-detaly="200">
         <Text
-          className="text-4xl sm:text-[32px] md:text-[34px] text-center text-white-A700 w-full xs:text-xl sm:text-xl"
+          className="text-4xl sm:text-[32px] md:text-[32px] text-center text-white-A700 w-full xs:text-xl sm:text-xl"
           size="txtUbuntuBold36WhiteA700"
         >
           Kami Mengandalkan Dukungan Kalian untuk Melindungi Hewan Liar

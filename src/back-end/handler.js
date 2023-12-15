@@ -8,7 +8,8 @@ const jwt = require('jsonwebtoken');
 const uri = 'mongodb://capstonedcd2023:Dicoding2023@ac-pamozt8-shard-00-00.frtoemt.mongodb.net:27017,ac-pamozt8-shard-00-01.frtoemt.mongodb.net:27017,ac-pamozt8-shard-00-02.frtoemt.mongodb.net:27017/SOS?ssl=true&replicaSet=atlas-yd6omn-shard-0&authSource=admin&retryWrites=true&w=majority';
 const client = new MongoClient(uri);
 
-const animalModel = mongoose.model('animals', {
+const AnimalModel = mongoose.model('animals', {
+
   namaHewan: String,
   daerah: String,
   status: String,
@@ -21,7 +22,8 @@ const animalModel = mongoose.model('animals', {
   gambarPotrait: String,
 });
 
-const lembagaModel = mongoose.model('lembagas', {
+
+const LembagaModel = mongoose.model('lembagas', {
   namaLembagaYayasan: String,
   overview: String,
   kontak: String,
@@ -30,6 +32,7 @@ const lembagaModel = mongoose.model('lembagas', {
 });
 
 const UserModel = mongoose.model('users', {
+  username: String,
   email: String,
   password: String,
 });
@@ -71,95 +74,132 @@ const addPayment = async (request, h) => {
   }
 };
 
+const CommentModel = mongoose.model('comments', {
+  idArticle: String,
+  username: String,
+  comments: String,
+  postDate: String,
+});
 // POST data animals
 const addAnimalHandler = async (request, h) => {
-  const animals = new animalModel(request.payload);
+  const animals = new AnimalModel(request.payload);
   const result = await animals.save();
   return h.response(result);
 };
 
 // GET semua data animals
 const getAnimalHandler = async (request, h) => {
-  const animals = await animalModel.find().exec();
+  const animals = await AnimalModel.find().exec();
   return h.response(animals);
 };
 
-// GET data animals berdasarkan keyword dari nama hewan
 const getSearchAnimalHandler = async (request, h) => {
   const db = client.db('SOS');
   const collection = db.collection('animals');
-  const { searchTerm } = request.query;
+  const { searchTerm, statusTerm } = request.query;
 
-  const searchResults = await collection
-    .aggregate([
+  let searchResults = [];
+
+  if (searchTerm) {
+    searchResults = await collection.aggregate([
       {
         $search: {
-          index: 'search',
+          index: 'search-animals',
           text: {
             query: searchTerm,
             path: 'namaHewan',
           },
         },
       },
-    ])
-    .toArray();
+    ]).toArray();
+  }
+
+  if (statusTerm) {
+    searchResults = await collection.aggregate([
+      {
+        $match: {
+          status: statusTerm,
+        },
+      },
+    ]).toArray();
+  }
+
+  if (searchTerm && statusTerm) {
+    searchResults = await collection.aggregate([
+      {
+        $search: {
+          index: 'search-animals',
+          text: {
+            query: searchTerm,
+            path: 'namaHewan',
+          },
+        },
+      },
+      {
+        $match: {
+          status: statusTerm,
+        },
+      },
+    ]).toArray();
+  }
+
   return h.response(searchResults);
 };
 
 // GET data animals berdasarkan id
 const getAnimalByIdHandler = async (request, h) => {
-  const animals = await animalModel.findById(request.params.id).exec();
+  const animals = await AnimalModel.findById(request.params.id).exec();
   return h.response(animals);
 };
 
 // PUT data animals berdasarkan id
 const editAnimalByIdHandler = async (request, h) => {
-  const result = await animalModel.findByIdAndUpdate(
+  const result = await AnimalModel.findByIdAndUpdate(
     request.params.id,
     request.payload,
-    { new: true }
+    { new: true },
   );
   return h.response(result);
 };
 
 // DELETE data animals berdasarkan id
 const deleteAnimalByIdHandler = async (request, h) => {
-  const result = await animalModel.findByIdAndDelete(request.params.id);
+  const result = await AnimalModel.findByIdAndDelete(request.params.id);
   return h.response(result);
 };
 
 // POST data lembaga
 const addLembagaHandler = async (request, h) => {
-  const lembaga = new lembagaModel(request.payload);
+  const lembaga = new LembagaModel(request.payload);
   const result = await lembaga.save();
   return h.response(result);
 };
 
 // GET semua data lembaga
 const getLembagaHandler = async (request, h) => {
-  const lembaga = await lembagaModel.find().exec();
+  const lembaga = await LembagaModel.find().exec();
   return h.response(lembaga);
 };
 
 // GET data lembaga berdasarkan id
 const getLembagaByIdHandler = async (request, h) => {
-  const lembaga = await lembagaModel.findById(request.params.id).exec();
+  const lembaga = await LembagaModel.findById(request.params.id).exec();
   return h.response(lembaga);
 };
 
 // PUT data lembaga berdasarkan id
 const editLembagaByIdHandler = async (request, h) => {
-  const result = await lembagaModel.findByIdAndUpdate(
+  const result = await LembagaModel.findByIdAndUpdate(
     request.params.id,
     request.payload,
-    { new: true }
+    { new: true },
   );
   return h.response(result);
 };
 
 // DELETE data lembaga berdasarkan id
 const deleteLembagaByIdHandler = async (request, h) => {
-  const result = await lembagaModel.findByIdAndDelete(request.params.id);
+  const result = await LembagaModel.findByIdAndDelete(request.params.id);
   return h.response(result);
 };
 
@@ -170,8 +210,6 @@ const paymentHandler = async (request, h) => {
       serverKey: 'SB-Mid-server-N7Of0iJ7TbvMBAYvorw7ZkGo',
       clientKey: 'SB-Mid-client-lGpWVxBMZHS4pBnj',
     });
-    // console.log("Server Key:", process.env.SECRET);
-    // console.log("Client Key:", process.env.NEXT_PUBLIC_CLIENT);
 
     const parameter = {
       transaction_details: {
@@ -188,7 +226,7 @@ const paymentHandler = async (request, h) => {
       response: JSON.stringify(transaction),
     };
 
-    const token = transaction.token;
+    const { token } = transaction;
 
     return h.response({ message: 'Success', dataPayment, token }).code(200);
   } catch (error) {
@@ -209,7 +247,7 @@ const registerUserHandler = async (request, h) => {
       return h.response({ message: 'Anda sudah masuk' }).code(400);
     }
 
-    const { email, password } = request.payload;
+    const { username, email, password } = request.payload;
 
     // Cek apakah email sudah ada
     const existingUser = await UserModel.findOne({ email });
@@ -218,10 +256,10 @@ const registerUserHandler = async (request, h) => {
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    const user = new UserModel({ email, password: hashedPassword });
+    const user = new UserModel({ username, email, password: hashedPassword });
     await user.save();
 
-    const token = jwt.sign({ id: user.id }, 'secret_jwt_key');
+    const token = jwt.sign({ id: user.id, username: user.username }, 'secret_jwt_key');
 
     return h
       .response({ message: 'Akun Berhasil Dibuat' })
@@ -258,7 +296,7 @@ const loginUserHandler = async (request, h) => {
       return h.response({ error: 'Wrong password' }).code(401);
     }
 
-    const token = jwt.sign({ id: user.id }, 'secret_jwt_key');
+    const token = jwt.sign({ id: user.id, username: user.username }, 'secret_jwt_key');
 
     return h
       .response({ message: 'anda berhasil login' })
@@ -277,20 +315,24 @@ const loginUserHandler = async (request, h) => {
 
 const isUserLoggedIn = async (request, h) => {
   try {
-    const token = request.state.token;
+    const { token } = request.state;
     if (!token) {
-      throw new Error(null);
+      return h.response({ error: 'User not logged in' }).code(401);
     }
-    return token;
+
+    const decodedToken = jwt.verify(token, 'secret_jwt_key');
+    const { username } = decodedToken;
+
+    return h.response({ username }).code(200);
   } catch (err) {
-    throw err;
+    return h.response({ error: 'User not logged in' }).code(401);
   }
 };
 
 const userLogoutHandler = async (request, h) => {
   const token = jwt.sign('', 'secret_jwt_key');
   return h.response({ message: 'anda berhasil logout' }).state('token', token, {
-    ttl: 1, 
+    ttl: 1,
     encoding: 'none',
     isSecure: true,
     isHttpOnly: true,
@@ -298,6 +340,39 @@ const userLogoutHandler = async (request, h) => {
     path: '/',
   });
 };
+
+// POST comment
+const addCommentHandler = async (request, h) => {
+  const comments = new CommentModel(request.payload);
+  const result = await comments.save();
+  return h.response(result);
+};
+
+// GET comment
+const getCommentHandler = async (request, h) => {
+  const comments = await CommentModel.find().exec();
+  return h.response(comments);
+};
+
+// GET comment berdasarkan id article
+const getArticleCommentHandler = async (request, h) => {
+  const db = client.db('SOS');
+  const collection = db.collection('comments');
+  const { id } = request.query;
+
+  let searchResults = [];
+
+  searchResults = await collection.aggregate([
+    {
+      $match: {
+        idArticle: id,
+      },
+    },
+  ]).toArray();
+
+  return h.response(searchResults);
+};
+
 module.exports = {
   addAnimalHandler,
   getAnimalHandler,
@@ -316,4 +391,7 @@ module.exports = {
   isUserLoggedIn,
   userLogoutHandler,
   addPayment,
+  addCommentHandler,
+  getCommentHandler,
+  getArticleCommentHandler,
 };
