@@ -9,6 +9,7 @@ import { Button } from '../../Elements/Button/Buttons';
 // eslint-disable-next-line
 
 const RegisterFormSection = () => {
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -43,6 +44,7 @@ const RegisterFormSection = () => {
     if (!isError) {
       const url = 'http://localhost:9000/register';
       const data = {
+        username,
         email,
         password,
       };
@@ -74,6 +76,18 @@ const RegisterFormSection = () => {
       >
         Sign Up
       </Text>
+      <div className="py-3">
+        <Input
+          isLabel
+          inputId="username"
+          labelName="Username"
+          textLabelColor="text-white-A700"
+          type="username"
+          placeholder="Isi Username"
+          className="w-full bg-blue_gray-100 border border-light_green-800 border-solid h-10 justify-center pl-[17px] sm:pr-5 pr-[35px] py-[11px] rounded-[5px] text-black-900_6d text-sm tracking-[-0.14px]"
+          onChange={(value) => setUsername(value)}
+        />
+      </div>
       <div className="py-3">
         <Input
           isLabel
