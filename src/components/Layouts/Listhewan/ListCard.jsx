@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Card from '../../Elements/Card/Card';
@@ -22,23 +21,21 @@ const ListCards = () => {
   const [visibleData, setVisibleData] = useState(9);
   const [selectedButton, setSelectedButton] = useState();
   const [selectedValue, setSelectedValue] = useState('');
-  const apiUrl = 'http://18.141.159.81/animals';
+  const apiUrl = 'http://localhost:9000/animals';
 
   const getAllData = () => {
     axios.get(apiUrl)
       .then((response) => {
         setData(response.data);
-        console.log(response.data);
       })
       .catch((error) => {
-        console.error(error);
       });
   };
 
   // Fetch API
   useEffect(() => {
     if (searchTerm && !filterTerm) {
-      axios.get(`http://18.141.159.81/search?searchTerm=${searchTerm}`)
+      axios.get(`http://localhost:9000/search?searchTerm=${searchTerm}`)
         .then((response) => {
           setData(response.data);
         })
@@ -47,7 +44,7 @@ const ListCards = () => {
         });
     }
     if (filterTerm && !searchTerm) {
-      axios.get(`http://18.141.159.81/search?statusTerm=${filterTerm}`)
+      axios.get(`http://localhost:9000/search?statusTerm=${filterTerm}`)
         .then((response) => {
           setData(response.data);
         })
@@ -56,7 +53,7 @@ const ListCards = () => {
         });
     }
     if (filterTerm && searchTerm) {
-      axios.get(`http://18.141.159.81/search?searchTerm=${searchTerm}&statusTerm=${filterTerm}`)
+      axios.get(`http://localhost:9000/search?searchTerm=${searchTerm}&statusTerm=${filterTerm}`)
         .then((response) => {
           setData(response.data);
         })
@@ -76,9 +73,8 @@ const ListCards = () => {
     setSearchTerm('');
   };
 
-  // eslint-disable-next-line no-shadow
   const handleStatusChange = (selectedValue) => {
-    setSelectedValue(selectedValue); // Update the selected value
+    setSelectedValue(selectedValue);
     setFilterTerm(selectedValue);
     setSelectedButton(null);
   };
@@ -164,13 +160,11 @@ const ListCards = () => {
           <div className="listAnimals max-w-6xl sm:max-w-sm md:max-w-lg xl:max-w-7xl mx-auto sm:gap-x-4 grid grid-cols-3 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-x-24 gap-y-8 items-stretch sm:text-xs">
             {data.slice(0, visibleData).map((animal, index) => (
               <Card
-              // eslint-disable-next-line react/no-array-index-key
                 key={index}
                 name={animal.namaHewan}
                 backgroundImage={animal.gambarPortrait}
                 description={animal.deskripsi}
                 status={animal.status}
-              // eslint-disable-next-line no-underscore-dangle
                 idData={`animals/details/${animal._id}`}
                 heightImage="pt-60 md:pt-40 sm:pt-20"
               />

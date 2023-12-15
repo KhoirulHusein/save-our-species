@@ -1,8 +1,5 @@
-/* eslint-disable import/no-unresolved */
 import React from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import Select from 'react-select';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import PropTypes from 'prop-types';
 
 const shapes = { round: 'rounded-[5px]' };
@@ -128,7 +125,6 @@ const SelectBox = React.forwardRef(
 SelectBox.propTypes = {
   placeholder: PropTypes.string,
   className: PropTypes.string,
-  // eslint-disable-next-line react/forbid-prop-types
   options: PropTypes.array,
   isSearchable: PropTypes.bool,
   placeholderClassName: PropTypes.string,

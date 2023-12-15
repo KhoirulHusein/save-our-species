@@ -6,8 +6,6 @@ import { Text } from '../../Elements/Text/Texts';
 import { Input } from '../../Elements/Form/Input';
 import { Button } from '../../Elements/Button/Buttons';
 
-// eslint-disable-next-line
-
 const RegisterFormSection = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -48,23 +46,13 @@ const RegisterFormSection = () => {
         email,
         password,
       };
-      try {
-        await axios.post(url, data, { withCredentials: true });
-        Swal.fire({
-          title: 'Sukses',
-          text: 'Yeay berhasil login',
-          icon: 'success',
-        });
-        navigate('/');
-      } catch (error) {
-        const errorMessage = error.request.response;
-        console.log(error.request);
-        Swal.fire({
-          title: 'Error',
-          text: errorMessage,
-          icon: 'error',
-        });
-      }
+      await axios.post(url, data, { withCredentials: true });
+      Swal.fire({
+        title: 'Sukses',
+        text: 'Yeay berhasil login',
+        icon: 'success',
+      });
+      navigate('/');
     }
   };
 

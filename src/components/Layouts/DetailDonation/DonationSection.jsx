@@ -1,9 +1,3 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-use-before-define */
-/* eslint-disable prefer-const */
-/* eslint-disable no-console */
-/* eslint-disable object-shorthand */
-/* eslint-disable camelcase */
 import React, { useEffect, useState } from 'react';
 
 import axios from 'axios';
@@ -136,7 +130,6 @@ const DonationSection = () => {
 
             if (response.ok) {
               const responseData = await response.json();
-              console.log('Success:', responseData);
               setPaymentResult(responseData);
             } else {
               const errorData = await response.json();
@@ -162,7 +155,6 @@ const DonationSection = () => {
 
             if (response.ok) {
               const responseData = await response.json();
-              console.log('Success:', responseData);
               setPaymentResult(responseData);
             } else {
               const errorData = await response.json();
@@ -175,11 +167,9 @@ const DonationSection = () => {
           }
         },
         onError: (error) => {
-          console.log(error);
           setToken('');
         },
         onClose: () => {
-          console.log('customer closed the popup without finishing the payment');
           setToken('');
         },
       });

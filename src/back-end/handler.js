@@ -9,7 +9,6 @@ const uri = 'mongodb://capstonedcd2023:Dicoding2023@ac-pamozt8-shard-00-00.frtoe
 const client = new MongoClient(uri);
 
 const AnimalModel = mongoose.model('animals', {
-
   namaHewan: String,
   daerah: String,
   status: String,
@@ -17,11 +16,20 @@ const AnimalModel = mongoose.model('animals', {
   deskripsi: String,
   ciriFisik: Array,
   distribusiHabitat: String,
-  ancamanPerlindunganHukum: String,
+  ancamanPerlindunganHukum: Array,
   gambarLandscape: String,
   gambarPotrait: String,
 });
 
+const ArticlesModel = mongoose.model('articles', {
+  judul: String,
+  gambarArticle: String,
+  gambarPenulis: String,
+  namaPenulis: String,
+  tanggalArticle: String,
+  isiArticle: Array,
+  palingAtas: Boolean,
+});
 
 const LembagaModel = mongoose.model('lembagas', {
   namaLembagaYayasan: String,
@@ -37,7 +45,14 @@ const UserModel = mongoose.model('users', {
   password: String,
 });
 
-const paymentModel = mongoose.model('payments', {
+const CommentModel = mongoose.model('comments', {
+  idArticle: String,
+  username: String,
+  comments: String,
+  postDate: String,
+});
+
+const PaymentModel = mongoose.model('payments', {
   status_message: String,
   transaction_id: String,
   order_id: String,
@@ -49,12 +64,30 @@ const paymentModel = mongoose.model('payments', {
   va_numbers: Array,
 });
 
+const VolunteerModel = mongoose.model('form_volunteer', {
+  namaVolunteer: String,
+  emailVolunteer: String,
+  notelpVolunteer: Number,
+  statusVolunteer: String,
+  genderVolunteer: String,
+  umurVolunteer: Number,
+});
+
+const ReportModel = mongoose.model('report', {
+  namaPelapor: String,
+  prioritasPelapor: String,
+  tkpPelapor: String,
+  ciriPelapor: String,
+  deskripsiPelapor: String,
+  isResolve: Boolean,
+});
+
 const addPayment = async (request, h) => {
   try {
     const paymentData = request.payload.result;
     console.log('Received payment data:', paymentData);
 
-    const payment = new paymentModel({
+    const payment = new PaymentModel({
       status_message: paymentData.status_message,
       transaction_id: paymentData.transaction_id,
       order_id: paymentData.order_id,
@@ -74,12 +107,6 @@ const addPayment = async (request, h) => {
   }
 };
 
-const CommentModel = mongoose.model('comments', {
-  idArticle: String,
-  username: String,
-  comments: String,
-  postDate: String,
-});
 // POST data animals
 const addAnimalHandler = async (request, h) => {
   const animals = new AnimalModel(request.payload);
@@ -230,7 +257,6 @@ const paymentHandler = async (request, h) => {
 
     return h.response({ message: 'Success', dataPayment, token }).code(200);
   } catch (error) {
-    console.log(error);
     return h.response({ message: error.message }).code(500);
   }
 };
@@ -373,6 +399,52 @@ const getArticleCommentHandler = async (request, h) => {
   return h.response(searchResults);
 };
 
+// GET semua data articles
+const getArticleHandler = async (request, h) => {
+  const article = await ArticlesModel.find().exec();
+  return h.response(article);
+};
+
+// GET data articles berdasarkan keyword
+const getSearchArticleHandler = async (request, h) => {
+  const db = client.db('SOS');
+  const collection = db.collection('articles');
+  const { searchTerm } = request.query;
+
+  const searchResults = await collection.aggregate([
+    {
+      $search: {
+        index: 'search-articles',
+        text: {
+          query: searchTerm,
+          path: 'judulArticle',
+        },
+      },
+    },
+  ]).toArray();
+  return h.response(searchResults);
+};
+
+// GET data articles berdasarkan id
+const getArticleByIdHandler = async (request, h) => {
+  const result = await ArticlesModel.findById(request.params.id).exec();
+  return h.response(result);
+};
+
+// POST data form volunteer
+const addVolunteerHandler = async (request, h) => {
+  const volunteer = new VolunteerModel(request.payload);
+  const result = await volunteer.save();
+  return h.response(result);
+};
+
+// POST data form report
+const addReportHandler = async (request, h) => {
+  const report = new ReportModel(request.payload);
+  const result = await report.save();
+  return h.response(result);
+};
+
 module.exports = {
   addAnimalHandler,
   getAnimalHandler,
@@ -394,4 +466,9 @@ module.exports = {
   addCommentHandler,
   getCommentHandler,
   getArticleCommentHandler,
+  getArticleHandler,
+  getSearchArticleHandler,
+  getArticleByIdHandler,
+  addVolunteerHandler,
+  addReportHandler,
 };

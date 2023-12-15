@@ -19,6 +19,11 @@ const {
   addCommentHandler,
   getCommentHandler,
   getArticleCommentHandler,
+  getArticleHandler,
+  getArticleByIdHandler,
+  getSearchArticleHandler,
+  addReportHandler,
+  addVolunteerHandler,
 } = require('./handler');
 
 const routes = [
@@ -132,6 +137,38 @@ const routes = [
     method: 'GET',
     path: '/comment/articleid',
     handler: getArticleCommentHandler,
+  },
+
+  // Articles Endpoints
+  {
+    method: 'GET',
+    path: '/article',
+    handler: getArticleHandler,
+  },
+
+  {
+    method: 'GET',
+    path: '/article/{id}',
+    handler: getArticleByIdHandler,
+  },
+  {
+    method: 'GET',
+    path: '/searcharticle',
+    handler: getSearchArticleHandler,
+  },
+
+  // volunteer endpoint
+  {
+    method: 'POST',
+    path: '/volunteer',
+    handler: addVolunteerHandler,
+  },
+
+  // report endpoint
+  {
+    method: 'POST',
+    path: '/report',
+    handler: addReportHandler,
   },
 ];
 

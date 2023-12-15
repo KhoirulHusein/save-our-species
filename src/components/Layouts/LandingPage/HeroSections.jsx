@@ -1,6 +1,3 @@
-/* eslint-disable react/no-array-index-key */
-/* eslint-disable implicit-arrow-linebreak */
-/* eslint-disable no-confusing-arrow */
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AOS from 'aos';

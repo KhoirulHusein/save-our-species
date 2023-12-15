@@ -1,6 +1,3 @@
-/* eslint-disable react/jsx-boolean-value */
-/* eslint-disable no-underscore-dangle */
-/* eslint-disable no-shadow */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -24,7 +21,7 @@ const DonationPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://18.141.159.81/lembaga');
+        const response = await axios.get('http://localhost:9000/lembaga');
         setData(response.data);
         setLoading(false);
       } catch (error) {

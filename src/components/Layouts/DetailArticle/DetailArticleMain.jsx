@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable no-console */
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -26,7 +24,7 @@ const DetailArticles = () => {
 
   const fetchArticlesData = async () => {
     try {
-      const response = await axios.get(`http://18.141.159.81/article/${id}`);
+      const response = await axios.get(`http://localhost:9000/article/${id}`);
       setArticleData(response.data);
     } catch (error) {
       console.error('Error fetching animal data:', error);
@@ -55,7 +53,6 @@ const DetailArticles = () => {
       return;
     }
     const postDate = new Date().toLocaleDateString('id-ID', dateOptions);
-    // eslint-disable-next-line no-underscore-dangle
     const idArticle = articleData._id;
     const commentData = {
       idArticle,
@@ -89,8 +86,8 @@ const DetailArticles = () => {
   const handleInputChange = (e) => {
     const inputText = e.target.value;
     setComment(inputText);
-    const remainingChars = 1000 - inputText.length; // Menghitung karakter yang tersisa
-    setCharCount(remainingChars); // Mengupdate state charCount dengan jumlah karakter yang tersisa
+    const remainingChars = 1000 - inputText.length;
+    setCharCount(remainingChars);
   };
 
   useEffect(() => {
@@ -119,7 +116,6 @@ const DetailArticles = () => {
         <div className="article text-lg md:text-md sm:text-sm max-w-7xl mx-auto flex flex-col gap-4 text-left text-white-A700 p-6">
           {articleData && articleData.isiArticle ? (
             articleData.isiArticle.map((item, index) => (
-            // eslint-disable-next-line react/no-array-index-key
               <p key={index}>{item}</p>
             ))
           ) : (
@@ -170,7 +166,6 @@ const DetailArticles = () => {
           )}
           {allComments
             .map((comment) => (
-              // eslint-disable-next-line no-underscore-dangle
               <div className="comments-container rounded-lg bg-gray-800 p-4" key={comment._id}>
                 <p className="font-bold sm:text-md xs:text-sm">{comment.username}</p>
                 <p className="text-xs font-thin mb-2">{comment.postDate}</p>

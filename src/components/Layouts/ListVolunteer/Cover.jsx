@@ -1,5 +1,4 @@
-/* eslint-disable max-len */
-import React, { useRef } from 'react'; // Import useRef
+import React, { useRef } from 'react';
 import { Img } from '../../Elements/Jumroton/Images';
 import { Text } from '../../Elements/Text/Texts';
 import { Button } from '../../Elements/Button/Buttons';
@@ -12,7 +11,6 @@ function CoverListVolunteer() {
     if (listVolunteerElement) {
       listVolunteerElement.scrollIntoView({ behavior: 'smooth' });
     } else {
-      // eslint-disable-next-line no-console
       console.error('listVolunteerElement is null');
     }
   };

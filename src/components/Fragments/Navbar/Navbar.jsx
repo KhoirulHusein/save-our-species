@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
-/* eslint-disable react/button-has-type */
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { NavLink } from 'react-router-dom';
@@ -18,7 +16,6 @@ const getTokenUser = async () => {
 function Navbar() {
   const [scrollBackground, setScrollBackground] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  // eslint-disable-next-line no-unused-vars
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navbarRef = useRef(null);
   const handleLogout = async () => {

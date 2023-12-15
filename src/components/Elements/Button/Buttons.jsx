@@ -1,6 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable react/require-default-props */
-/* eslint-disable react/button-has-type */
 import React from 'react';
 import PropTypes from 'prop-types';
 

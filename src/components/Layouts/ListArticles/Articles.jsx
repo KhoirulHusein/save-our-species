@@ -9,13 +9,13 @@ const ListArticles = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchTriggered, setSearchTriggered] = useState(false);
   const [visibleData, setVisibleData] = useState(9);
-  const apiUrl = 'http://18.141.159.81/article';
+  const apiUrl = 'http://localhost:9000/article';
   const renderData = data;
 
   // Fetch API
   useEffect(() => {
     if (searchTriggered) {
-      axios.get(`http://18.141.159.81/searcharticle?searchTerm=${searchTerm}`)
+      axios.get(`http://localhost:9000/searcharticle?searchTerm=${searchTerm}`)
         .then((response) => {
           setData(response.data);
         })
@@ -37,7 +37,7 @@ const ListArticles = () => {
   };
 
   const handleSearch = () => {
-    setSearchTriggered(true); // Setel state untuk menandai bahwa pencarian telah dipicu
+    setSearchTriggered(true);
   };
 
   const handleSearchInputChange = (value) => {
@@ -80,7 +80,6 @@ const ListArticles = () => {
               .filter((article) => article.palingAtas === true)
               .slice(0, visibleData)
               .map((article) => (
-                // eslint-disable-next-line no-underscore-dangle
                 <a href={`http://localhost:3000/artikel/details/${article._id}`}>
                   <div className="container flex sm:flex-col sm:text-center gap-4 mx-auto">
                     <div className="image-container max-w-md">
@@ -93,7 +92,6 @@ const ListArticles = () => {
                       <div className="description flex flex-col gap-2 text-sm text-left max-w-md overflow-hidden h-56 text-white-A700 md:hidden">
                         {article && article.isiArticle ? (
                           article.isiArticle.map((item, index) => (
-                          // eslint-disable-next-line react/no-array-index-key
                             <p key={index}>{item}</p>
                           ))
                         ) : (
@@ -109,12 +107,10 @@ const ListArticles = () => {
           <div className="listAnimals grid grid-cols-3 sm:max-w-sm md:max-w-xl mx-auto sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-x-4 gap-y-8 items-stretch sm:text-md xs:text-sm">
             {renderData.slice(0, visibleData).map((article, index) => (
               <Card
-              // eslint-disable-next-line react/no-array-index-key
                 key={index}
                 name={article.judulArticle}
                 backgroundImage={article.gambarArticle}
                 description={article.isiArticle}
-              // eslint-disable-next-line no-underscore-dangle
                 idData={`artikel/details/${article._id}`}
                 heightImage="pt-40 sm:pt-20"
               />

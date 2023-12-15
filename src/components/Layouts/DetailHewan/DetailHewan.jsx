@@ -45,10 +45,9 @@ const DetailHewan = () => {
 
   const fetchAnimalData = async () => {
     try {
-      const response = await axios.get(`http://18.141.159.81/animals/${id}`);
+      const response = await axios.get(`http://localhost:9000/animals/${id}`);
       setAnimalData(response.data);
     } catch (error) {
-      // eslint-disable-next-line no-console
       console.error('Error fetching animal data:', error);
     }
   };
@@ -153,7 +152,6 @@ const DetailHewan = () => {
                 <div className="container text-justify flex flex-col gap-4">
                   {animalData && animalData.ancamanPerlindunganHukum ? (
                     animalData.ancamanPerlindunganHukum.map((item, index) => (
-                      // eslint-disable-next-line react/no-array-index-key
                       <p key={index}>{item}</p>
                     ))
                   ) : (
@@ -171,7 +169,6 @@ const DetailHewan = () => {
                 <div className="container text-justify flex flex-col gap-4">
                   {animalData && animalData.ciriFisik ? (
                     animalData.ciriFisik.map((item, index) => (
-                      // eslint-disable-next-line react/no-array-index-key
                       <li key={index}>{item}</li>
                     ))
                   ) : (

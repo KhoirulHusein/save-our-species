@@ -29,11 +29,10 @@ const DetailVolunteerPage = () => {
   useEffect(() => {
     const fetchLembaga = async () => {
       try {
-        const response = await fetch(`http://45.76.149.156/lembaga/${id}`);
+        const response = await fetch(`http://localhost:9000/lembaga/${id}`);
         const data = await response.json();
         setLembaga(data);
       } catch (err) {
-        // eslint-disable-next-line no-console
         console.error('Error fetching lembaga details:', error);
         setError(error);
       } finally {

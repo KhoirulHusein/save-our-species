@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -65,9 +64,8 @@ function FormSection() {
       return;
     }
 
-    console.log('Mengirimkan Data Formulir:', formData);
     try {
-      const response = await fetch('http://18.141.159.81/report', {
+      const response = await fetch('http://localhost:9000/report', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

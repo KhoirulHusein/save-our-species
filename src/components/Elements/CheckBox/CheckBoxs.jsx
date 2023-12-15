@@ -1,9 +1,5 @@
-/* eslint-disable react/require-default-props */
-/* eslint-disable no-unused-vars */
-/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import PropTypes from 'prop-types';
-// import { ErrorMessage } from '../../components/ErrorMessage';
 
 const variants = { fill: { blue_gray_100: 'bg-blue_gray-100 text-orange-50' } };
 const shapes = { square: 'rounded-none' };

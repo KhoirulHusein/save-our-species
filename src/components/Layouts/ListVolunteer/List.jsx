@@ -1,7 +1,3 @@
-/* eslint-disable no-shadow */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-underscore-dangle */
-/* eslint-disable no-console */
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -17,7 +13,7 @@ const ListVolunteer = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://18.141.159.81/lembaga');
+        const response = await axios.get('http://localhost:9000/lembaga');
         setData(response.data);
         setLoading(false);
       } catch (error) {
@@ -39,7 +35,6 @@ const ListVolunteer = () => {
               <div>Loading...</div>
             ) : (
               data.slice(0).map((lembaga, index) => (
-                // eslint-disable-next-line react/no-array-index-key
                 <Link key={index} to={`/DetailVolunteerPage/${lembaga._id}`}>
                   <Card
                     showButton

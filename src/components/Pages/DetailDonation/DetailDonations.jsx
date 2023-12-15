@@ -1,4 +1,3 @@
-/* eslint-disable no-shadow */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { IconArrowLeft } from '@tabler/icons-react';
@@ -22,7 +21,7 @@ const DetailDonations = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://18.141.159.81/lembaga/${_id}`);
+        const response = await axios.get(`http://localhost:9000/lembaga/${_id}`);
         setData(response.data);
       } catch (error) {
         setError('An error occurred while fetching data.');
