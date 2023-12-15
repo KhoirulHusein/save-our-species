@@ -17,7 +17,7 @@ const Volunteer = () => {
         <Img
           className="h-[539px] m-auto object-cover w-full"
           src="images/forestBurning.png"
-          alt="rectangle524"
+          alt="forest Burning"
           data-aos="fade-up"
           data-aos-anchor-placement="top-bottom"
         />
@@ -77,7 +77,7 @@ const Volunteer = () => {
       <Img
         className="absolute bottom-[0] h-[530px] xl:left-[5%] xl:w-[500px] object-cover rounded-[20px] w-[560px] xs:flex xs:justify-center xs:top-3 xs:w-[180px] xs:h-[180px] sm:flex sm:justify-center sm:top-5 sm:w-[230px] sm:h-[230px] sm:left-auto md:flex md:justify-center md:w-[280px] md:h-[280px] md:bottom-[35%] md:left-5 lg:w-[325px] lg:h-[325px] lg:bottom-[22.5%] lg:left-[3%]"
         src="images/volunteerOrangUtan.jpg"
-        alt="rectangle522"
+        alt="volunteer Orang Utan"
         data-aos="fade-right"
         data-aos-duration="2000"
       />

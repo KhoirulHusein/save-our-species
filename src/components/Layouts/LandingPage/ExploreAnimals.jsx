@@ -1,7 +1,5 @@
-/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-
 import React, { useEffect } from 'react';
 
 import { useNavigate } from 'react-router-dom';
@@ -35,7 +33,7 @@ function ExploreAnimals() {
           <Img
             className="absolute h-[621px] inset-[0] justify-center m-auto object-cover rounded-[20px] w-full"
             src="images/tiger.png"
-            alt="rectangle475"
+            alt="tiger"
           />
           <div className="absolute backdrop-opacity-[0.5] bg-black-900_4c backdrop-blur-md bottom-[0] flex flex-col inset-x-[0] items-center justify-start mx-auto p-2.5 rounded-b-[20px] w-full" style={{ zIndex: 1 }}>
             <Text
@@ -51,7 +49,7 @@ function ExploreAnimals() {
           <Img
             className="absolute h-[621px] inset-[0] justify-center m-auto object-cover rounded-[20px] w-full"
             src="images/orangUtan.png"
-            alt="rectangle476"
+            alt="orangUtan"
           />
           <div className="absolute backdrop-opacity-[0.5] bg-black-900_4c backdrop-blur-md bottom-[0] flex flex-col inset-x-[0] items-center justify-start mx-auto p-1.5 rounded-b-[20px] w-full">
             <Text
@@ -67,7 +65,7 @@ function ExploreAnimals() {
           <Img
             className="absolute h-[621px] inset-[0] justify-center m-auto object-cover rounded-[20px] w-full"
             src="images/peacock.png"
-            alt="rectangle477"
+            alt="peacock"
           />
           <div className="absolute backdrop-opacity-[0.5] bg-black-900_4c backdrop-blur-md bottom-[0] flex flex-col inset-x-[0] items-center justify-start mx-auto p-1.5 rounded-b-[20px] w-full">
             <Text
