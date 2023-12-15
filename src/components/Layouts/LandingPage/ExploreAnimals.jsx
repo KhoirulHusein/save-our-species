@@ -59,7 +59,7 @@ function ExploreAnimals() {
             </Text>
           </div>
         </div>
-        <div className="md:h-[621px] h-[625px] md:ml-[0] ml-[35px] lg:ml-5 relative w-[30%] md:w-full" onClick={() => navigate('/animals')} data-aos="zoom-in-left" data-aos-duration="3000">
+        <div className="md:h-[621px] h-[625px] md:ml-[0] ml-[35px] lg:ml-5 relative w-[30%] md:w-full" onClick={() => navigate('/animals/details/657c1aee39e87064bb85fcdd')} data-aos="zoom-in-left" data-aos-duration="3000">
           <Img
             className="absolute h-[621px] inset-[0] justify-center m-auto object-cover rounded-[20px] w-full"
             src="images/peacock.png"
