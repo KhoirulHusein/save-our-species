@@ -52,5 +52,6 @@ module.exports = {
     'jsx-a11y/click-events-have-key-events': 0,
     'implicit-arrow-linebreak': 0,
     'no-confusing-arrow': 0,
+    'linebreak-style': 0,
   },
 };

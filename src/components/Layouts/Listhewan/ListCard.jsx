@@ -14,6 +14,25 @@ const statusOptionsList = [
   { label: 'Hampir Punah', value: 'Hampir Punah' },
 ];
 
+const getStatusColorClass = (status) => {
+  switch (status) {
+    case 'Punah':
+      return 'text-emerald-800';
+    case 'Hampir Punah':
+      return 'text-red-800';
+    case 'Resiko':
+      return 'text-blue-500';
+    case 'Terancam':
+      return 'text-red-600';
+    case 'Terancam Kritis':
+      return 'text-yellow-800';
+    case 'Hampir Terancam':
+      return 'text-teal-800';
+    default:
+      return '';
+  }
+};
+
 const ListCards = () => {
   const [data, setData] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -167,6 +186,11 @@ const ListCards = () => {
                 status={animal.status}
                 idData={`animals/details/${animal._id}`}
                 heightImage="pt-60 md:pt-40 sm:pt-20"
+                statusIcon={
+                  animal
+                    ? getStatusColorClass(animal.status)
+                    : ''
+                }
               />
             ))}
           </div>
