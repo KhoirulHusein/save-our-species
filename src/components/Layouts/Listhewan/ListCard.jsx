@@ -176,7 +176,7 @@ const ListCards = () => {
               )}
             </div>
           </div>
-          <div className="listAnimals max-w-6xl sm:max-w-sm md:max-w-lg xl:max-w-7xl mx-auto sm:gap-x-4 grid grid-cols-3 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-x-24 gap-y-8 items-stretch sm:text-xs">
+          <div className="listAnimals max-w-6xl sm:max-w-sm md:max-w-2xl xl:max-w-7xl mx-auto sm:gap-x-4 grid grid-cols-3 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-x-24 gap-y-8 items-stretch sm:text-sm">
             {data.slice(0, visibleData).map((animal, index) => (
               <Card
                 key={index}
@@ -186,11 +186,13 @@ const ListCards = () => {
                 status={animal.status}
                 idData={`animals/details/${animal._id}`}
                 heightImage="pt-60 md:pt-40 sm:pt-20"
+                showStatus
                 statusIcon={
                   animal
                     ? getStatusColorClass(animal.status)
                     : ''
                 }
+                hiddenOption="truncate sm:hidden"
               />
             ))}
           </div>
