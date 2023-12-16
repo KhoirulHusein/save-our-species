@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import Card from '../../Elements/Card/Card';
 import { Input } from '../../Elements/Form/Input';
 import { Button } from '../../Elements/Button/Buttons';
@@ -178,22 +179,24 @@ const ListCards = () => {
           </div>
           <div className="listAnimals max-w-6xl sm:max-w-sm md:max-w-2xl xl:max-w-7xl mx-auto sm:gap-x-4 grid grid-cols-3 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-x-24 gap-y-8 items-stretch sm:text-sm">
             {data.slice(0, visibleData).map((animal, index) => (
-              <Card
-                key={index}
-                name={animal.namaHewan}
-                backgroundImage={animal.gambarPortrait}
-                description={animal.deskripsi}
-                status={animal.status}
-                idData={`animals/details/${animal._id}`}
-                heightImage="pt-60 md:pt-40 sm:pt-20"
-                showStatus
-                statusIcon={
+              <Link key={index} to={`/animals/details/${animal._id}`}>
+                <Card
+                  key={index}
+                  name={animal.namaHewan}
+                  backgroundImage={animal.gambarPortrait}
+                  description={animal.deskripsi}
+                  status={animal.status}
+                  idData={`animals/details/${animal._id}`}
+                  heightImage="pt-60 md:pt-40 sm:pt-20"
+                  showStatus
+                  statusIcon={
                   animal
                     ? getStatusColorClass(animal.status)
                     : ''
                 }
-                hiddenOption="truncate sm:hidden"
-              />
+                  hiddenOption="truncate sm:hidden"
+                />
+              </Link>
             ))}
           </div>
           {data.length > visibleData && (

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import Card from '../../Elements/Card/Card';
 import { Button } from '../../Elements/Button/Buttons';
 import { Input } from '../../Elements/Form/Input';
@@ -80,40 +81,43 @@ const ListArticles = () => {
               .filter((article) => article.palingAtas === true)
               .slice(0, visibleData)
               .map((article) => (
-                <a href={`http://localhost:3000/artikel/details/${article._id}`}>
-                  <div className="container flex sm:flex-col sm:text-center gap-4 mx-auto">
-                    <div className="image-container max-w-md">
-                      <img className="rounded-md max-w-full max-h-full" src={article.gambarArticle} alt="" />
-                    </div>
-                    <div className="detail-container flex flex-col gap-6">
-                      <div className="headline text-light_green-800 font-bold text-xl sm:text-md xs:text-sm">
-                        <h1>{article.judulArticle}</h1>
+                <Link key={article} to={`/artikel/details/${article._id}`}>
+                  <a href={`http://localhost:3000/artikel/details/${article._id}`}>
+                    <div className="container flex sm:flex-col sm:text-center gap-4 mx-auto">
+                      <div className="image-container max-w-md">
+                        <img className="rounded-md max-w-full max-h-full" src={article.gambarArticle} alt="" />
                       </div>
-                      <div className="description flex flex-col gap-2 text-sm text-left max-w-md overflow-hidden h-56 text-white-A700 md:hidden">
-                        {article && article.isiArticle ? (
-                          article.isiArticle.map((item, index) => (
-                            <p key={index}>{item}</p>
-                          ))
-                        ) : (
-                          'Loading...'
-                        )}
+                      <div className="detail-container flex flex-col gap-6">
+                        <div className="headline text-light_green-800 font-bold text-xl sm:text-md xs:text-sm">
+                          <h1>{article.judulArticle}</h1>
+                        </div>
+                        <div className="description flex flex-col gap-2 text-sm text-left max-w-md overflow-hidden h-56 text-white-A700 md:hidden">
+                          {article && article.isiArticle ? (
+                            article.isiArticle.map((item, index) => (
+                              <p key={index}>{item}</p>
+                            ))
+                          ) : (
+                            'Loading...'
+                          )}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </a>
+                  </a>
+                </Link>
               ))}
-
           </div>
           <div className="listAnimals grid grid-cols-3 sm:max-w-sm md:max-w-xl mx-auto sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-x-4 gap-y-8 items-stretch sm:text-md xs:text-sm">
             {renderData.slice(0, visibleData).map((article, index) => (
-              <Card
-                key={index}
-                name={article.judulArticle}
-                backgroundImage={article.gambarArticle}
-                description={article.isiArticle}
-                idData={`artikel/details/${article._id}`}
-                heightImage="pt-40 sm:pt-20"
-              />
+              <Link key={index} to={`/artikel/details/${article._id}`}>
+                <Card
+                  key={index}
+                  name={article.judulArticle}
+                  backgroundImage={article.gambarArticle}
+                  description={article.isiArticle}
+                  idData={`artikel/details/${article._id}`}
+                  heightImage="pt-40 sm:pt-20"
+                />
+              </Link>
             ))}
           </div>
           {renderData.length > visibleData && (
