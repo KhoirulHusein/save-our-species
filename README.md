@@ -21,7 +21,7 @@
     - [2. Buka repository di IDE pilihanmu](#2-buka-repository-di-ide-pilihanmu)
     - [3. Pasang dependencies yang diperlukan](#3-pasang-dependencies-yang-diperlukan)
   - [Jalankan kode S.O.S dengan perintah berikut](#jalankan-kode-sos-dengan-perintah-berikut)
-- [Resource proyek S.O.S](#resource-proyek-sos)
+- [Teknologi dalam proyek S.O.S](#teknologi-dalam-proyek-sos)
 - [Creator](#creator)
 - [Didukung Oleh](#didukung-oleh)
 
@@ -40,22 +40,28 @@ Berbeda dari website lembaga hewan lainnya, S.O.S memberikan akses edukasi yang 
 ### Kalau mau lapor ke mana?
 S.O.S menyediakan fitur lapor, diperuntukan untuk pengguna yang memiliki laporan mengenai pelanggaran hukum terkait hewan dilindungi. Akses form lapor melalui pilihan LAPOR pada website S.O.S
 
-(ss foto form lapor)
+<p align="center">
+  <img src="https://github.com/sparkle31/save-our-species/blob/main/public/images/screencapture-saveourspecies-my-id-lapor-2023-12-17-01_11_12.png" alt="Fitur Lapor">
+</p>
 
 ### Mau ikut volunteer? Banyak pilihannya!
 Banyak masyarakat umum yang kebingungan dan ragu dalam mengikuti kegiatan volunteer perlindungan/pelestarian hewan dan alam. Ini dikarenakan kurangnya informasi pada web lembaga lain dan setiap lembaganya hanya menyediakan satu opsi volunteer.
 
 S.O.S menyediakan beberapa pilihan lembaga untuk diikuti beserta keterangan kegiatan dan informasi mengenai lembaga. Bisa langsung daftar volunteer juga! Akses form volunteer melalui pilihan Volunteer pada website S.O.S.
 
-(ss foto volunteer)
+<p align="center">
+  <img src="https://github.com/sparkle31/save-our-species/blob/main/public/images/screencapture-saveourspecies-my-id-Volunteer-2023-12-17-01_08_38.png" alt="Fitur Volunteer">
+</p>
 
 ### Mau donasi aja deh..
 Bagi pengguna yang mau donasi, S.O.S menyediakan form donasi dan opsi lembaga yang ingin diberikan donasinya. Pengguna bisa menentukan jumlah donasi dan memilih lembaga apa yang mau dituju.
 
-(ss foto donasi)
+<p align="center">
+  <img src="https://github.com/sparkle31/save-our-species/blob/main/public/images/screencapture-saveourspecies-my-id-donation-lembaga-6565769689c3b7056081153f-2023-12-17-01_11_49.png" alt="Fitur Donasi">
+</p>
 
 ## Backend
-SOS menggunakan Axios untuk menangani permintaan HTTP dan berbagai alat dan pustaka lain untuk menyederhanakan pengembangan. Source code backend ada pada [link](#) berikut.
+SOS menggunakan Axios untuk menangani permintaan HTTP dan berbagai alat dan pustaka lain untuk menyederhanakan pengembangan. Source code backend ada pada [link](https://github.com/sparkle31/save-our-species/tree/main/src/back-end) berikut.
 
 ## Akses kode S.O.S
 Akses *source code* S.O.S untuk build proyek S.O.S di lokal mu
@@ -86,13 +92,28 @@ Pasang dependencies yang diperlukan dalam project ini
    $ npm install
 ```
 
+<p> :red_circle: <strong>Catatan Penting:</strong> <u>Sebelum melakukan pengembangan, pastikan untuk mengganti fetch data menjadi localhost untuk mengambil data dari server!</u></p>
+
 ### Jalankan kode S.O.S dengan perintah berikut
 Untuk menjalankan project, gunakan perintah berikut pada *directory project*:
 - npm start: Jalankan aplikasi di *development mode*.
 - npm build: Membangun aplikasi menggunakan *Webpack*.
 
-## Resource proyek S.O.S
-**(ini blum ya)**
+## Teknologi dalam proyek S.O.S
+### Frontend
+- HTML dan CSS
+- JavaScript
+- [Axios] (https://github.com/axios/axios)
+- [Tailwind] (https://tailwindcss.com/)
+- [Flowbite] (https://flowbite.com/)
+- [Tabler icons] (https://tabler-icons.io/)
+- [Font Awesome] (https://fontawesome.com/icons)
+- [React] (https://react.dev/)
+- [Webpack] (https://webpack.js.org/)
+
+### Backend
+- [Node.js] (https://nodejs.org/en)
+- [MongoDB] (https://www.mongodb.com/)
 
 ## Creator
 - Khoirul Husein
