@@ -26,7 +26,7 @@
 - [Didukung Oleh](#didukung-oleh)
 
 ## Bergabung bersama S.O.S
-Bergabung untuk berpartisipasi langsung dalam perlindungan satwa dilindungi di Indonesia dengan S.O.S. Akses web S.O.S pada [link deploy S.O.S](#).
+Bergabung untuk berpartisipasi langsung dalam perlindungan satwa dilindungi di Indonesia dengan S.O.S. Akses web S.O.S pada [link](https://www.saveourspecies.my.id/) berikut.
 
 ## S.O.S itu apa?
 Save Our Species adalah platform online yang didedikasikan untuk perlindungan satwa dilindungi di Indonesia. S.O.S bukan hanya sebuah situs web, tetapi juga merupakan sumber informasi dan aksi nyata dalam menjaga keberlanjutan kehidupan satwa liar yang terancam di Indonesia.
