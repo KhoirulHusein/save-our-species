@@ -82,27 +82,25 @@ const ListArticles = () => {
               .slice(0, visibleData)
               .map((article) => (
                 <Link key={article} to={`/artikel/details/${article._id}`}>
-                  <a href={`http://localhost:3000/artikel/details/${article._id}`}>
-                    <div className="container flex sm:flex-col sm:text-center gap-4 mx-auto">
-                      <div className="image-container max-w-md">
-                        <img className="rounded-md max-w-full max-h-full" src={article.gambarArticle} alt="" />
+                  <div className="container flex sm:flex-col sm:text-center gap-4 mx-auto">
+                    <div className="image-container max-w-md">
+                      <img className="rounded-md max-w-full max-h-full" src={article.gambarArticle} alt="" />
+                    </div>
+                    <div className="detail-container flex flex-col gap-6">
+                      <div className="headline text-light_green-800 font-bold text-xl sm:text-md xs:text-sm">
+                        <h1>{article.judulArticle}</h1>
                       </div>
-                      <div className="detail-container flex flex-col gap-6">
-                        <div className="headline text-light_green-800 font-bold text-xl sm:text-md xs:text-sm">
-                          <h1>{article.judulArticle}</h1>
-                        </div>
-                        <div className="description flex flex-col gap-2 text-sm text-left max-w-md overflow-hidden h-56 text-white-A700 md:hidden">
-                          {article && article.isiArticle ? (
-                            article.isiArticle.map((item, index) => (
-                              <p key={index}>{item}</p>
-                            ))
-                          ) : (
-                            'Loading...'
-                          )}
-                        </div>
+                      <div className="description flex flex-col gap-2 text-sm text-left max-w-md overflow-hidden h-56 text-white-A700 md:hidden">
+                        {article && article.isiArticle ? (
+                          article.isiArticle.map((item, index) => (
+                            <p key={index}>{item}</p>
+                          ))
+                        ) : (
+                          'Loading...'
+                        )}
                       </div>
                     </div>
-                  </a>
+                  </div>
                 </Link>
               ))}
           </div>

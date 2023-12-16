@@ -28,7 +28,7 @@ function Card({
   const blurClass = showBlur ? 'backdrop-filter backdrop-blur-sm' : '';
   const navigate = useNavigate();
 
-  const cardContent = (
+  return (
     <div className={`card z-50 bg-cover bg-center border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 pt-60 ${cardMaxWidth}`} style={{ backgroundImage: `url(${backgroundImage})` }}>
       <div className={`bg-opacity-95 ${blurClass} rounded-lg p-5`}>
         {showHeader && (
@@ -69,14 +69,6 @@ function Card({
         )}
       </div>
     </div>
-  );
-
-  return showButton ? (
-    cardContent
-  ) : (
-    <a href={`http://localhost:3000/${idData}`} className="z-0">
-      {cardContent}
-    </a>
   );
 }
 
