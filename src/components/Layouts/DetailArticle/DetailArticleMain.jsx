@@ -24,7 +24,7 @@ const DetailArticles = () => {
 
   const fetchArticlesData = async () => {
     try {
-      const response = await axios.get(`http://localhost:9000/article/${id}`);
+      const response = await axios.get(`https://api.saveourspecies.my.id/article/${id}`);
       setArticleData(response.data);
     } catch (error) {
       console.error('Error fetching animal data:', error);
@@ -32,14 +32,14 @@ const DetailArticles = () => {
   };
 
   const fetchCommentsData = async () => {
-    const response = await axios.get(`http://localhost:9000/comment/articleid?id=${id}`);
+    const response = await axios.get(`https://api.saveourspecies.my.id/comment/articleid?id=${id}`);
     setAllComments(response.data);
     setCommentCount(response.data.length);
   };
 
   const getTokenUser = async () => {
     try {
-      const response = await axios.get('http://localhost:9000/isLogged', { withCredentials: true });
+      const response = await axios.get('https://api.saveourspecies.my.id/isLogged', { withCredentials: true });
       setUsername(response.data.username);
       return true;
     } catch (err) {
@@ -61,7 +61,7 @@ const DetailArticles = () => {
       postDate,
     };
 
-    const response = await axios.post('http://localhost:9000/article/comment', commentData, {
+    const response = await axios.post('https://api.saveourspecies.my.id/article/comment', commentData, {
       headers: {
         'Content-Type': 'application/json',
       },

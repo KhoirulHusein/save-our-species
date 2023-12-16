@@ -9,13 +9,13 @@ const ListArticles = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchTriggered, setSearchTriggered] = useState(false);
   const [visibleData, setVisibleData] = useState(9);
-  const apiUrl = 'http://localhost:9000/article';
+  const apiUrl = 'https://api.saveourspecies.my.id/article';
   const renderData = data;
 
   // Fetch API
   useEffect(() => {
     if (searchTriggered) {
-      axios.get(`http://localhost:9000/searcharticle?searchTerm=${searchTerm}`)
+      axios.get(`https://api.saveourspecies.my.id/searcharticle?searchTerm=${searchTerm}`)
         .then((response) => {
           setData(response.data);
         })

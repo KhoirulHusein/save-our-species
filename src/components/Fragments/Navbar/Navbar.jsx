@@ -5,7 +5,7 @@ import { Text } from '../../Elements/Text/Texts';
 
 const getTokenUser = async () => {
   try {
-    const url = 'http://localhost:9000/isLogged';
+    const url = 'https://api.saveourspecies.my.id/isLogged';
     await axios.get(url, { withCredentials: true });
     return true;
   } catch (err) {
@@ -20,7 +20,7 @@ function Navbar() {
   const navbarRef = useRef(null);
   const handleLogout = async () => {
     try {
-      const url = 'http://localhost:9000/logout';
+      const url = 'https://api.saveourspecies.my.id/logout';
       await axios.get(url, { withCredentials: true });
       window.location.reload();
     } catch (error) {

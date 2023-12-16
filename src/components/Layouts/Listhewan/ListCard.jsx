@@ -40,7 +40,7 @@ const ListCards = () => {
   const [visibleData, setVisibleData] = useState(9);
   const [selectedButton, setSelectedButton] = useState();
   const [selectedValue, setSelectedValue] = useState('');
-  const apiUrl = 'http://localhost:9000/animals';
+  const apiUrl = 'https://api.saveourspecies.my.id/animals';
 
   const getAllData = () => {
     axios.get(apiUrl)
@@ -54,7 +54,7 @@ const ListCards = () => {
   // Fetch API
   useEffect(() => {
     if (searchTerm && !filterTerm) {
-      axios.get(`http://localhost:9000/search?searchTerm=${searchTerm}`)
+      axios.get(`https://api.saveourspecies.my.id/search?searchTerm=${searchTerm}`)
         .then((response) => {
           setData(response.data);
         })
@@ -63,7 +63,7 @@ const ListCards = () => {
         });
     }
     if (filterTerm && !searchTerm) {
-      axios.get(`http://localhost:9000/search?statusTerm=${filterTerm}`)
+      axios.get(`https://api.saveourspecies.my.id/search?statusTerm=${filterTerm}`)
         .then((response) => {
           setData(response.data);
         })
@@ -72,7 +72,7 @@ const ListCards = () => {
         });
     }
     if (filterTerm && searchTerm) {
-      axios.get(`http://localhost:9000/search?searchTerm=${searchTerm}&statusTerm=${filterTerm}`)
+      axios.get(`http://api.saveourspecies.my.id/search?searchTerm=${searchTerm}&statusTerm=${filterTerm}`)
         .then((response) => {
           setData(response.data);
         })

@@ -29,7 +29,7 @@ const DetailVolunteerPage = () => {
   useEffect(() => {
     const fetchLembaga = async () => {
       try {
-        const response = await fetch(`http://localhost:9000/lembaga/${id}`);
+        const response = await fetch(`https://api.saveourspecies.my.id/lembaga/${id}`);
         const data = await response.json();
         setLembaga(data);
       } catch (err) {

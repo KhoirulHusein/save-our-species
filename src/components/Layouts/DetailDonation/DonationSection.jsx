@@ -108,7 +108,7 @@ const DonationSection = () => {
       },
     };
 
-    const response = await axios.post('http://localhost:9000/midtrans', data, config);
+    const response = await axios.post('https://api.saveourspecies.my.id/midtrans', data, config);
 
     setToken(response.data.token);
   };
@@ -120,7 +120,7 @@ const DonationSection = () => {
           localStorage.setItem('Pembayaran', JSON.stringify(result));
 
           try {
-            const response = await fetch('http://localhost:9000/payment', {
+            const response = await fetch('https://api.saveourspecies.my.id/payment', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
@@ -145,7 +145,7 @@ const DonationSection = () => {
           localStorage.setItem('Pembayaran', JSON.stringify(result));
 
           try {
-            const response = await fetch('http://localhost:9000/payment', {
+            const response = await fetch('https://api.saveourspecies.my.id/payment', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',

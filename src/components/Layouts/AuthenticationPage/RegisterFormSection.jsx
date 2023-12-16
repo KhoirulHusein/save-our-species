@@ -40,7 +40,7 @@ const RegisterFormSection = () => {
     }
 
     if (!isError) {
-      const url = 'http://localhost:9000/register';
+      const url = 'https://api.saveourspecies.my.id/register';
       const data = {
         username,
         email,

@@ -45,7 +45,7 @@ const DetailHewan = () => {
 
   const fetchAnimalData = async () => {
     try {
-      const response = await axios.get(`http://localhost:9000/animals/${id}`);
+      const response = await axios.get(`https://api.saveourspecies.my.id/animals/${id}`);
       setAnimalData(response.data);
     } catch (error) {
       console.error('Error fetching animal data:', error);

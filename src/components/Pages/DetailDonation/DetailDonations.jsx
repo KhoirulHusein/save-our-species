@@ -21,7 +21,7 @@ const DetailDonations = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:9000/lembaga/${_id}`);
+        const response = await axios.get(`https://api.saveourspecies.my.id/lembaga/${_id}`);
         setData(response.data);
       } catch (error) {
         setError('An error occurred while fetching data.');

@@ -21,7 +21,7 @@ const DonationPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:9000/lembaga');
+        const response = await axios.get('https://api.saveourspecies.my.id/lembaga');
         setData(response.data);
         setLoading(false);
       } catch (error) {
