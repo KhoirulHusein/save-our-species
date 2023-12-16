@@ -103,13 +103,13 @@ Untuk menjalankan project, gunakan perintah berikut pada *directory project*:
 ### Frontend
 - HTML dan CSS
 - JavaScript
-- [Axios] (https://github.com/axios/axios)
-- [Tailwind] (https://tailwindcss.com/)
-- [Flowbite] (https://flowbite.com/)
-- [Tabler icons] (https://tabler-icons.io/)
-- [Font Awesome] (https://fontawesome.com/icons)
-- [React] (https://react.dev/)
-- [Webpack] (https://webpack.js.org/)
+- [Axios](https://github.com/axios/axios)
+- [Tailwind](https://tailwindcss.com/)
+- [Flowbite](https://flowbite.com/)
+- [Tabler icons](https://tabler-icons.io/)
+- [Font Awesome](https://fontawesome.com/icons)
+- [React](https://react.dev/)
+- [Webpack](https://webpack.js.org/)
 
 ### Backend
 - [Node.js] (https://nodejs.org/en)
