@@ -12,6 +12,7 @@ const DonationSection = () => {
   const [lastName, setLastName] = useState('');
   const [amount, setAmount] = useState('');
   const [agreementChecked, setAgreementChecked] = useState(false);
+  const [setPaymentResult] = useState(null);
 
   // get Token
   const [token, setToken] = useState('');
