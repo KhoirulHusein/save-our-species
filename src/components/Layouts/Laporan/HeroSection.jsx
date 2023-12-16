@@ -6,7 +6,7 @@ function HeroLanding() {
   return (
     <div className="relative w-full">
       <Img
-        className="h-[595px] m-auto object-cover w-[full] sm:w-auto sm:object-cover"
+        className="m-auto object-cover w-full sm:w-auto sm:object-cover"
         src="images/img_aarmedhunter.png"
         alt="hero-image"
       />

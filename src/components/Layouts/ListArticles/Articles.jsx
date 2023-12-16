@@ -46,7 +46,7 @@ const ListArticles = () => {
 
   return (
     <>
-      <div className="bg-cover bg-center h-96" style={{ backgroundImage: "url('./images/articles-banner.jpg')" }}>
+      <div className="bg-cover bg-center h-96" style={{ backgroundImage: "url('./images/articles-banner.png')" }}>
         <div className="max-w-md sm:max-w-xs mx-auto pt-36 flex flex-col gap-8 p-4">
           <h1 className="text-center font-bold text-3xl md:text-2xl text-white-A700">Baca Article Hewan Terbaru Diwaktu Senggangmu</h1>
           <div className="search-box flex relative top-28 sm:top-24">
