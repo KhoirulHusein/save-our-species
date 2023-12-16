@@ -112,8 +112,8 @@ Untuk menjalankan project, gunakan perintah berikut pada *directory project*:
 - [Webpack](https://webpack.js.org/)
 
 ### Backend
-- [Node.js] (https://nodejs.org/en)
-- [MongoDB] (https://www.mongodb.com/)
+- [Node.js](https://nodejs.org/en)
+- [MongoDB](https://www.mongodb.com/)
 
 ## Creator
 - Khoirul Husein
