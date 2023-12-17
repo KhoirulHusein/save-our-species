@@ -11,6 +11,7 @@
 - [S.O.S itu apa?](#sos-itu-apa)
   - [Alasan dibalik S.O.S](#alasan-dibalik-sos)
   - [Kenapa harus S.O.S?](#kenapa-harus-sos)
+  - [Akses informasi mengenai satwa dilindungi](#akses-informasi-mengenai-satwa-dilindungi)
   - [Kalau mau lapor ke mana?](#kalau-mau-lapor-ke-mana)
   - [Mau ikut volunteer? Banyak pilihannya!](#mau-ikut-volunteer-banyak-pilihannya)
   - [Mau donasi aja deh..](#mau-donasi-aja-deh)
@@ -36,6 +37,13 @@ Indonesia memiliki keanekaragaman hayati yang sangat tinggi, mencakup berbagai m
 
 ### Kenapa harus S.O.S?
 Berbeda dari website lembaga hewan lainnya, S.O.S memberikan akses edukasi yang disertai keterangan perlindungan hukum dari setiap hewan yang dilindungi di Indonesia. S.O.S juga memberikan opsi kepada penggunanya untuk memilih kegiatan volunteer, tujuan donasi, form pelaporan, hingga pemberitaan terkini dalam dunia perlindungan hewan pada fitur artikel.
+
+### Akses informasi mengenai satwa dilindungi
+Jelajahi informasi mengenai ragam satwa di Indonesia dan pelajari mengenai ancaman dan perlindungan hukumya. Akses list hewan dilindungi melalui fitur Lindungi pada website S.O.S
+
+<p align="center">
+  <img src="https://github.com/sparkle31/save-our-species/blob/main/public/images/screencapture-save-our-species-app-animals.png" alt="Fitur Lindungi">
+</p>
 
 ### Kalau mau lapor ke mana?
 S.O.S menyediakan fitur lapor, diperuntukan untuk pengguna yang memiliki laporan mengenai pelanggaran hukum terkait hewan dilindungi. Akses form lapor melalui pilihan LAPOR pada website S.O.S
